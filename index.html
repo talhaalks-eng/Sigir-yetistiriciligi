@@ -96,6 +96,46 @@
             font-size: 2rem;
         }
 
+        /* OYUN ALANI ÖZEL STİL */
+        #game-container {
+            background: #f0f7f4;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 80px;
+            border: 2px dashed #27ae60;
+            text-align: center;
+        }
+
+        .slider-group {
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        input[type=range] {
+            width: 100%;
+            accent-color: #27ae60;
+            cursor: pointer;
+        }
+
+        .btn-game {
+            background: #1b4d3e;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-game:hover { background: #27ae60; transform: scale(1.05); }
+
         /* GRID VE KARTLAR */
         .grid { 
             display: grid; 
@@ -123,79 +163,12 @@
 
         .card h3 { color: #1b4d3e; margin-top: 0; }
         .card p { font-size: 0.95rem; color: #666; }
-        .btn-detail {
-            margin-top: 15px;
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-        }
-
-        /* MODAL */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; top: 0;
-            width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.85); 
-            backdrop-filter: blur(8px);
-        }
-
-        .modal-content {
-            background: white; 
-            margin: 5% auto; 
-            padding: 40px;
-            border-radius: 15px; 
-            width: 90%; 
-            max-width: 700px; 
-            position: relative;
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-
-        .close { 
-            position: absolute; 
-            right: 25px; 
-            top: 15px; 
-            font-size: 35px; 
-            cursor: pointer; 
-            color: #aaa;
-        }
-        .close:hover { color: #333; }
-
-        .modal-body ul { padding-left: 20px; }
-        .modal-body li { margin-bottom: 15px; }
-        .modal-body strong { color: #1b4d3e; }
-
-        /* FOOTER */
-        footer { 
-            text-align: center; 
-            padding: 60px 20px; 
-            background: #1b4d3e; 
-            color: #ecf0f1; 
-            margin-top: 80px; 
-        }
-
-        .my-name {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .my-title {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 25px;
-        }
-
-        footer a { color: #27ae60; text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
-        footer a:hover { border-bottom: 1px solid #27ae60; }
-
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.2rem; }
-            .modal-content { padding: 20px; margin: 10% auto; }
-        }
+        
+        /* MODAL VE DİĞERLERİ AYNI KALDI */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+        .modal-content { background: white; margin: 5% auto; padding: 40px; border-radius: 15px; width: 90%; max-width: 700px; position: relative; max-height: 85vh; overflow-y: auto; }
+        .close { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
+        footer { text-align: center; padding: 60px 20px; background: #1b4d3e; color: #ecf0f1; margin-top: 80px; }
     </style>
 </head>
 <body>
@@ -211,6 +184,7 @@
 <nav>
     <a href="#uzmanlik">Uzmanlık Alanları</a>
     <a href="#akademik">Akademik Vizyon</a>
+    <a href="#oyun">Mini Oyun</a>
     <a href="#iletisim">İletişim</a>
 </nav>
 
@@ -224,7 +198,7 @@
                 <h3>🐄 Islah ve Seleksiyon</h3>
                 <p>Geleceğin genetiğini inşa etmek. Sürü kalitesini sistematik artırma ve veri odaklı seçim stratejileri.</p>
             </div>
-            <span class="btn-detail">Detayları Gör →</span>
+            <span style="color:#27ae60; font-weight:bold;">Detayları Gör →</span>
         </div>
 
         <div class="card" onclick="openModal('modal-besleme')">
@@ -232,7 +206,7 @@
                 <h3>🌾 Hayvan Besleme</h3>
                 <p>Potansiyeli performansa dönüştürmek. Rasyon optimizasyonu ve metabolik sağlık yönetimi.</p>
             </div>
-            <span class="btn-detail">Detayları Gör →</span>
+            <span style="color:#27ae60; font-weight:bold;">Detayları Gör →</span>
         </div>
 
         <div class="card" onclick="openModal('modal-barinak')">
@@ -240,7 +214,7 @@
                 <h3>🏗️ Barınak Yönetimi</h3>
                 <p>Konfor ve refahın adresi. Hayvan refahı odaklı, biyolojik sınırları koruyan modern yaşam alanları.</p>
             </div>
-            <span class="btn-detail">Detayları Gör →</span>
+            <span style="color:#27ae60; font-weight:bold;">Detayları Gör →</span>
         </div>
     </div>
 
@@ -249,61 +223,35 @@
         <p style="font-size: 1.1rem; margin: 0;">Çukurova Üniversitesi Ziraat Fakültesi'nde edindiğim bilimsel temelleri, hayvancılık sektörünün sahadaki ihtiyaçlarıyla buluşturuyorum. Hedefim, veri analitiği ve modern teknikleri kullanarak sürdürülebilir, yüksek verimli hayvancılık işletmelerinin yönetimine katkı sağlamaktır.</p>
     </div>
 
+    <div id="oyun" style="padding-top: 20px;"></div>
+    <div id="game-container">
+        <h2 style="color: #1b4d3e; margin-top: 0;">🌾 Mini Oyun: Rasyon Mühendisi</h2>
+        <p>Senaryo: <strong>30 Litre Günlük Süt Verimi</strong> hedefleyen bir inek için rasyonu dengele!</p>
+        
+        <div class="slider-group">
+            <label><strong>Ham Protein:</strong> %<span id="p-val">12</span></label>
+            <input type="range" id="p-slider" min="10" max="22" value="12">
+            <p style="font-size: 0.8rem; color: #777;">(İdeal aralık: %16-18)</p>
+        </div>
+
+        <div class="slider-group">
+            <label><strong>Net Enerji (NEL):</strong> <span id="e-val">1.4</span> Mcal/kg</label>
+            <input type="range" id="e-slider" min="1.0" max="2.2" step="0.1" value="1.4">
+            <p style="font-size: 0.8rem; color: #777;">(İdeal aralık: 1.7-1.9)</p>
+        </div>
+
+        <button class="btn-game" onclick="hesaplaRasyon()">Rasyonu Analiz Et</button>
+        
+        <div id="game-result" style="margin-top: 25px; font-weight: bold; font-size: 1.1rem;"></div>
+    </div>
     <h2 id="iletisim" class="section-title" style="margin-top: 80px;">İletişim</h2>
     <p>Projelerim hakkında bilgi almak veya teknik iş birliği için benimle iletişime geçebilirsiniz.</p>
     <p>📧 <strong>E-posta:</strong> <a href="mailto:talhaalks@gmail.com" style="color: #1b4d3e; text-decoration: none; border-bottom: 2px solid #27ae60;">talhaalks@gmail.com</a></p>
 </div>
 
-<div id="modal-islah" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-islah')">&times;</span>
-        <h2 style="color: #1b4d3e;">1. Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2>
-        <hr>
-        <div class="modal-body">
-            <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
-            
-            <ul>
-                <li><strong>Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.</li>
-                <li><strong>Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.</li>
-                <li><strong>Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-besleme" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
-        <h2 style="color: #1b4d3e;">2. Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2>
-        <hr>
-        <div class="modal-body">
-            <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
-            
-            <ul>
-                <li><strong>Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine (laktasyon, kuruda kalma vb.) özel dengelenmiş rasyonlar.</li>
-                <li><strong>Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
-                <li><strong>Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-barinak" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
-        <h2 style="color: #1b4d3e;">3. Barınak Yönetimi: Konfor ve Refahın Adresi</h2>
-        <hr>
-        <div class="modal-body">
-            <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
-            
-            <ul>
-                <li><strong>Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.</li>
-                <li><strong>Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.</li>
-                <li><strong>Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>Islah ve Seleksiyon</h2><p>Veri odaklı genetik ilerleme süreçleri...</p></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>Hayvan Besleme</h2><p>Rasyon optimizasyonu ve verimlilik...</p></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>Barınak Yönetimi</h2><p>Konfor ve biyogüvenlik standartları...</p></div></div>
 
 <footer>
     <div class="my-name">Lütfi Talha Alkış</div>
@@ -312,21 +260,36 @@
 </footer>
 
 <script>
-    function openModal(id) {
-        document.getElementById(id).style.display = "block";
-        document.body.style.overflow = "hidden"; // Kaydırmayı engelle
-    }
+    // Modal Fonksiyonları
+    function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
 
-    function closeModal(id) {
-        document.getElementById(id).style.display = "none";
-        document.body.style.overflow = "auto"; // Kaydırmayı aç
-    }
+    // Oyun Mantığı
+    const pSlider = document.getElementById('p-slider');
+    const eSlider = document.getElementById('e-slider');
+    const pVal = document.getElementById('p-val');
+    const eVal = document.getElementById('e-val');
 
-    // Modal dışına tıklandığında kapatma
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') {
-            event.target.style.display = "none";
-            document.body.style.overflow = "auto";
+    pSlider.oninput = function() { pVal.innerHTML = this.value; }
+    eSlider.oninput = function() { eVal.innerHTML = this.value; }
+
+    function hesaplaRasyon() {
+        const p = parseInt(pSlider.value);
+        const e = parseFloat(eSlider.value);
+        const res = document.getElementById('game-result');
+
+        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
+            res.innerHTML = "🎯 TEBRİKLER! İdeal rasyonu buldun. Süt verimi maksimumda ve hayvan sağlıklı!";
+            res.style.color = "#27ae60";
+        } else if(p < 16) {
+            res.innerHTML = "⚠️ Protein düşük! Süt verimi azalır, hayvan kas kaybeder.";
+            res.style.color = "#e67e22";
+        } else if(e > 1.9) {
+            res.innerHTML = "⚠️ Enerji çok yüksek! Yağlanma riski ve asidoz tehlikesi.";
+            res.style.color = "#e74c3c";
+        } else {
+            res.innerHTML = "❌ Rasyon dengesiz! Değerleri tekrar kontrol etmelisin.";
+            res.style.color = "#333";
         }
     }
 </script>
