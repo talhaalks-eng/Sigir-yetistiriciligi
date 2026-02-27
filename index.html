@@ -39,14 +39,17 @@
         .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
         .vision-text { max-width: 750px; margin: 30px auto 0; font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; position: relative; padding: 0 30px; }
+        
+        /* İMZA (KÜÇÜLTÜLDÜ) */
         .signature { 
             font-family: 'Brush Script MT', 'Cursive', sans-serif; 
-            font-size: 2.2rem; 
+            font-size: 1.6rem; 
             color: #1b4d3e; 
-            margin-top: 15px; 
+            margin-top: 10px; 
             display: block;
             text-align: right;
-            padding-right: 20px;
+            padding-right: 40px;
+            opacity: 0.9;
         }
 
         /* SİMÜLASYON */
@@ -66,11 +69,12 @@
 
         /* MODAL SİSTEMİ */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-        .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 700px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
+        .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 750px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
-        .modal-body strong { color: #1b4d3e; display: block; margin-top: 15px; font-size: 1.1rem; }
-        .modal-body ul { list-style-type: none; padding-left: 0; margin-top: 10px; }
-        .modal-body li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
+        .modal-body strong { color: #1b4d3e; display: block; margin-top: 12px; }
+        .modal-body ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
+        .modal-body li { margin-bottom: 8px; font-size: 0.95rem; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -120,25 +124,21 @@
             <img src="holstein.jpg" alt="Holstein" onerror="this.src='https://via.placeholder.com/300x160?text=Holstein'">
             <h3>Holstein</h3>
             <p>Dünyanın süt makinesi: Yüksek verim ve endüstriyel adaptasyon.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
         <div class="card" onclick="openModal('modal-simmental')">
             <img src="simmental.jpg" alt="Simental" onerror="this.src='https://via.placeholder.com/300x160?text=Simental'">
             <h3>Simental</h3>
             <p>Kombine güç: Hem et hem süt verimiyle çiftçinin dostu.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
         <div class="card" onclick="openModal('modal-jersey')">
             <img src="jersey.jpg" alt="Jersey" onerror="this.src='https://via.placeholder.com/300x160?text=Jersey'">
             <h3>Jersey</h3>
             <p>Küçük dev: Süt yağı ve proteini en yüksek butik ırk.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
         <div class="card" onclick="openModal('modal-yerlikara')">
             <img src="yerlikara.jpg" alt="Yerli Kara" onerror="this.src='https://via.placeholder.com/300x160?text=Yerli+Kara'">
             <h3>Yerli Kara</h3>
             <p>Anadolu'nun kadim yerli ırkı: Hastalıklara en dirençli miras.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
     </div>
 
@@ -187,13 +187,14 @@
 <div id="modal-islah" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal-islah')">&times;</span>
-        <h2>🐄 Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2>
+        <h2>🐄 1. Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2>
         <hr>
         <div class="modal-body">
+            <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
             <ul>
-                <li><strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi karakterlerin nesilden nesile aktarılması.</li>
-                <li><strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa seçimleriyle kalıtsal kusurların elimine edilmesi.</li>
-                <li><strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında damızlıkların bilimsel belirlenmesi.</li>
+                <li><strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.</li>
+                <li><strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.</li>
+                <li><strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.</li>
             </ul>
         </div>
     </div>
@@ -202,13 +203,14 @@
 <div id="modal-besleme" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
-        <h2>🌾 Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2>
+        <h2>🌾 2. Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2>
         <hr>
         <div class="modal-body">
+            <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
             <ul>
-                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, ağırlığına ve verim dönemine özel dengelenmiş besleme.</li>
-                <li><strong>📈 Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
-                <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz ve ketozis gibi besleme kaynaklı hastalıkların önlenmesi.</li>
+                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine (laktasyon, kuruda kalma vb.) özel dengelenmiş rasyonlar.</li>
+                <li><strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
+                <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.</li>
             </ul>
         </div>
     </div>
@@ -217,82 +219,24 @@
 <div id="modal-barinak" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
-        <h2>🏗️ Barınak Yönetimi: Konfor ve Refahın Adresi</h2>
+        <h2>🏗️ 3. Barınak Yönetimi: Konfor ve Refahın Adresi</h2>
         <hr>
         <div class="modal-body">
+            <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
             <ul>
-                <li><strong>🛡️ Hayvan Refahı:</strong> Temiz hava, uygun sıcaklık ve kuru yataklık ile stres faktörlerinin ortadan kaldırılması.</li>
-                <li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen havalandırma ve uygun aydınlatma yönetimi.</li>
-                <li><strong>🧼 Hijyen:</strong> Hastalık yayılımını engelleyen biyotasarım ve periyodik dezenfeksiyon süreçleri.</li>
+                <li><strong>🛡️ Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.</li>
+                <li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.</li>
+                <li><strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.</li>
             </ul>
+            <p style="margin-top:20px; border-top:1px solid #eee; padding-top:15px; font-weight:bold; color:#27ae60;">Özetle: Güçlü bir genetik (Islah), doğru bir yakıt (Besleme) ve huzurlu bir ortam (Barınak) bir araya geldiğinde hayvancılık bir maliyet unsuru değil, karlı bir yatırıma dönüşür.</p>
         </div>
     </div>
 </div>
 
-<div id="modal-holstein" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-holstein')">&times;</span>
-        <h2>🐄 Holstein (Siyah-Alaca): Süt Endüstrisinin Lideri</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li>
-                <li><strong>🥛 Süt Verimi:</strong> Laktasyon başına ortalama 8.000 - 12.000 kg.</li>
-                <li><strong>🧬 Kalite:</strong> %3.5 - 3.7 Yağ ve %3.2 Protein.</li>
-                <li><strong>⚖️ Canlı Ağırlık:</strong> Ergin dişilerde 600 - 750 kg.</li>
-                <li><strong>🛠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve ısı stresi yönetimi şarttır.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-simmental" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-simmental')">&times;</span>
-        <h2>🐂 Simental (Fleckvieh): Çift Yönlü Güç</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> İsviçre (Simme Vadisi).</li>
-                <li><strong>🥩 Et Verimi:</strong> Canlı ağırlık artışı 1.200 - 1.500 gram/gün. Randıman %55-60.</li>
-                <li><strong>🥛 Süt Verimi:</strong> Kombine verimle 6.000 - 8.000 kg süt.</li>
-                <li><strong>🛡️ Avantaj:</strong> Sağlam ayak yapısı, döl verimi ve uzun ömürlülük.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-jersey" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-jersey')">&times;</span>
-        <h2>🥛 Jersey: Kalitenin Temsilcisi</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası).</li>
-                <li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranıyla peynir üretimi için altın standart.</li>
-                <li><strong>🍃 Yem Verimliliği:</strong> Vücut ağırlığına oranla en yüksek süt verimi.</li>
-                <li><strong>☀️ Adaptasyon:</strong> Sıcak iklimlere karşı oldukça dayanıklıdır.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-yerlikara" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-yerlikara')">&times;</span>
-        <h2>Anadolu Yerli Kara: Milli Genetik Mirasımız</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu Bölgesi).</li>
-                <li><strong>🦠 Direnç:</strong> Yerel hastalıklara ve zor doğa şartlarına muazzam direnç.</li>
-                <li><strong>📉 Verim:</strong> Miktar düşük olsa da kuru madde oranı çok yüksektir.</li>
-                <li><strong>🌳 Önem:</strong> Gelecekteki dirençli ıslah çalışmaları için paha biçilemez gen kaynağı.</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li><li><strong>🥛 Süt Verimi:</strong> 8.000 - 12.000 kg/laktasyon.</li><li><strong>⚖️ Canlı Ağırlık:</strong> 600 - 750 kg.</li><li><strong>🛠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve ısı stresi yönetimi şarttır.</li></ul></div></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İsviçre (Simme Vadisi).</li><li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200 - 1.500 gram. Randıman %55-60.</li><li><strong>🥛 Süt Verimi:</strong> 6.000 - 8.000 kg süt.</li><li><strong>🛡️ Avantaj:</strong> Sağlam ayak yapısı ve döl verimi yüksektir.</li></ul></div></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası).</li><li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranı (Peynir üretimi için ideal).</li><li><strong>🍃 Verimlilik:</strong> Vücut ağırlığına oranla en yüksek süt üretimi.</li></ul></div></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu).</li><li><strong>🦠 Direnç:</strong> Kan parazitlerine ve yerel hastalıklara tam direnç.</li><li><strong>📈 Önem:</strong> Gelecekteki dirençli ıslah çalışmaları için paha biçilemez gen kaynağı.</li></ul></div></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -303,18 +247,14 @@
 <script>
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
+    window.onclick = function(e) { if(e.target.className === 'modal') closeModal(e.target.id); }
 
     function switchMode(mode) {
         document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(mode + '-mode').classList.add('active');
-        if(mode === 'engineer') {
-            document.getElementById('btn-eng').classList.add('active');
-            arcActive = false;
-        } else {
-            document.getElementById('btn-arc').classList.add('active');
-            startArcade();
-        }
+        if(mode === 'engineer') { document.getElementById('btn-eng').classList.add('active'); arcActive = false; }
+        else { document.getElementById('btn-arc').classList.add('active'); startArcade(); }
     }
 
     function updateEngValues() {
@@ -355,11 +295,8 @@
     function gameLoop() {
         if(!arcActive) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.font = "50px Arial";
-        ctx.fillText("🐄", cowX, 380);
-
+        ctx.font = "50px Arial"; ctx.fillText("🐄", cowX, 380);
         if(Math.random() < 0.05) items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: 1.5 });
-
         items.forEach((it, i) => {
             it.y += it.speed; ctx.font = "30px Arial"; ctx.fillText(it.type, it.x, it.y);
             if(it.y > 340 && it.y < 390 && it.x > cowX-15 && it.x < cowX+45) {
@@ -368,13 +305,9 @@
                 document.getElementById('p-fill').style.width = pScore + "%";
                 document.getElementById('e-fill').style.width = eScore + "%";
             }
+            if(it.y > 400) items.splice(i, 1);
         });
-
-        if(pScore >= 100 && eScore >= 100) {
-            arcActive = false;
-            document.getElementById('start-btn').innerText = "Yeniden Başlat";
-            document.getElementById('start-btn').style.display = "inline-block";
-        }
+        if(pScore >= 100 && eScore >= 100) { arcActive = false; document.getElementById('start-btn').style.display = "inline-block"; }
         if(arcActive) animationId = requestAnimationFrame(gameLoop);
     }
 </script>
