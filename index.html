@@ -205,8 +205,8 @@
 </div>
 
 <div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg süt.</li><li><strong>Yağ Oranı:</strong> %3.5 - 3.7.</li></ul></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Avantaj:</strong> Hem et hem süt verimi yüksektir.</li><li><strong>Dayanıklılık:</strong> Hastalıklara direnci yüksektir.</li></ul></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Yağ:</strong> %5.0 - 6.0.</li><li><strong>Cüsse:</strong> Küçük yapılı, yüksek yem verimliliği.</li></ul></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Verim:</strong> Kombine (Et ve Süt).</li><li><strong>Özellik:</strong> Sağlam yapısı ve hastalıklara direnci yüksektir.</li></ul></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Süt Yağı:</strong> %5.0 - 6.0.</li><li><strong>Cüsse:</strong> Küçük yapılı, yüksek yem verimliliği.</li></ul></div></div>
 <div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Hastalıklara karşı en dirençli yerli gen kaynağımızdır.</p></div></div>
 
 <footer>
@@ -257,10 +257,23 @@
         gameLoop();
     }
 
+    // GÜNCELLENDİ: Kaydırma Kontrolü
     canvas.addEventListener('mousemove', (e) => {
         if (!arcActive) return;
         const rect = canvas.getBoundingClientRect();
+        // Fare imlecinin kanvas üzerindeki yatay pozisyonuna göre ineği hareket ettirir
         cowX = (e.clientX - rect.left) * (canvas.width / rect.width) - 25;
+        // İneği kanvas sınırları içinde tutar
+        if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
+    });
+
+    // GÜNCELLENDİ: Dokunmatik Kaydırma Kontrolü
+    canvas.addEventListener('touchmove', (e) => {
+        if (!arcActive) return;
+        const rect = canvas.getBoundingClientRect();
+        // Parmağın kanvas üzerindeki yatay pozisyonuna göre ineği hareket ettirir
+        cowX = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width) - 25;
+        // İneği kanvas sınırları içinde tutar
         if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
     });
 
