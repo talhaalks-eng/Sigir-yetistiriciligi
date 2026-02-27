@@ -34,32 +34,20 @@
         .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
 
-        /* VİZYON ALANI VE ÖZEL İMZA */
+        /* VİZYON ALANI VE ÖZEL İMZA (DÜZ VE KÜÇÜK) */
         .personal-section { text-align: center; margin: 60px 0; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
         .vision-text { max-width: 750px; margin: 30px auto 0; font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; position: relative; padding: 0 30px; }
         
-        /* İMZA STİLİ */
         .signature { 
             font-family: 'Brush Script MT', 'Cursive', sans-serif; 
-            color: #1b4d3e; 
-            margin-top: 15px; 
-            display: block; 
-            text-align: right; 
-            padding-right: 50px; 
-            font-size: 2.2rem; /* Masaüstü/Tablet boyutu */
-            letter-spacing: 1px;
+            color: #1b4d3e; margin-top: 15px; display: block; text-align: right; padding-right: 50px; font-size: 1.6rem; letter-spacing: 1px;
+            /* EĞİM (rotate) KALDIRILDI */
         }
 
-        /* MOBİL İMZA DÜZELTMESİ (Telefonda imza gibi durması için) */
         @media (max-width: 600px) {
-            .signature {
-                font-size: 1.8rem;
-                padding-right: 20px;
-                margin-top: 10px;
-                transform: rotate(-2deg); /* Hafif eğim imza hissini artırır */
-            }
+            .signature { font-size: 1.4rem; padding-right: 20px; margin-top: 10px; /* EĞİM KALDIRILDI */ }
             .vision-text { font-size: 1rem; padding: 0 15px; }
         }
 
@@ -73,12 +61,13 @@
 
         .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
         .target-box { background: #e8f5e9; padding: 10px; border-radius: 8px; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; border: 1px dashed #27ae60; color: #1b4d3e; }
+        .tech-info { font-size: 0.82rem; color: #666; margin-top: 8px; border-top: 1px solid #ddd; padding-top: 5px; }
 
         #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; display: block; margin: 0 auto; }
         .game-bars { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
         .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; }
-        .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
+        .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
         /* MODAL SİSTEMİ */
@@ -87,6 +76,7 @@
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
         .modal-body ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
         .modal-body li { margin-bottom: 8px; font-size: 0.95rem; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -115,17 +105,17 @@
     <div class="grid">
         <div class="card" onclick="openModal('modal-islah')">
             <h3>🐄 Islah ve Seleksiyon</h3>
-            <p>Geleceğin Genetiğini İnşa Etmek: Sürü kalitesini sistematik artırma stratejileri.</p>
+            <p>Sürü kalitesini sistematik olarak artırmak amacıyla yapılan genetik iyileştirme çalışmalarıdır.</p>
             <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-besleme')">
             <h3>🌾 Hayvan Besleme</h3>
-            <p>Potansiyeli Performansa Dönüştürmek: Fizyolojik ihtiyaçları ekonomik karşılama.</p>
+            <p>Rasyon optimizasyonu ve genetik potansiyeli performansa dönüştürme.</p>
             <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-barinak')">
             <h3>🏗️ Barınak Yönetimi</h3>
-            <p>Konfor ve Refahın Adresi: Stres faktörlerini minimize eden yaşam alanları.</p>
+            <p>Konfor ve refah standartlarına uygun modern yaşam alanları tasarımı.</p>
             <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
         </div>
     </div>
@@ -140,12 +130,12 @@
         <div class="card" onclick="openModal('modal-simmental')">
             <img src="simmental.jpg" alt="Simental" onerror="this.src='https://via.placeholder.com/300x160?text=Simental'">
             <h3>Simental</h3>
-            <p>Kombine yetenek: Et ve Süt.</p>
+            <p>Et ve sütte kombine verim.</p>
         </div>
         <div class="card" onclick="openModal('modal-jersey')">
             <img src="jersey.jpg" alt="Jersey" onerror="this.src='https://via.placeholder.com/300x160?text=Jersey'">
             <h3>Jersey</h3>
-            <p>Süt bileşenlerinde dünya zirvesi.</p>
+            <p>Yüksek yağ oranıyla endüstriyel değer.</p>
         </div>
         <div class="card" onclick="openModal('modal-yerlikara')">
             <img src="yerlikara.jpg" alt="Yerli Kara" onerror="this.src='https://via.placeholder.com/300x160?text=Yerli+Kara'">
@@ -158,7 +148,7 @@
         <h2>🌾 Rasyon Simülasyonu</h2>
         <div class="mode-selector">
             <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Mühendis Modu</button>
-            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎬 Animasyon Modu</button>
+            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎬 Kariyer Yolu</button>
         </div>
 
         <div id="engineer-mode" class="game-content active">
@@ -181,14 +171,14 @@
         </div>
 
         <div id="arcade-mode" class="game-content">
-            <div id="level-display" style="font-weight: bold; color: #1b4d3e; margin-bottom: 10px;">Kariyer: <span id="current-level-name">Stajyer Mühendis</span></div>
+            <div id="level-display" style="font-weight: bold; color: #1b4d3e; margin-bottom: 10px;">Görev: <span id="current-level-name">Bölüm 1: Stajyer Mühendis</span></div>
             <canvas id="arcadeCanvas" width="400" height="400"></canvas>
             <div class="game-bars">
                 <div class="bar-wrap">Protein (🌾)<div class="bar-bg"><div id="p-fill" class="bar-fill" style="background:#27ae60;"></div></div></div>
                 <div class="bar-wrap">Enerji (🌽)<div class="bar-bg"><div id="e-fill" class="bar-fill" style="background:#f1c40f;"></div></div></div>
             </div>
             <p id="arcade-msg" style="font-weight:bold; margin-top:10px; min-height:1.5em;"></p>
-            <button class="btn-action" id="start-btn" onclick="startArcade()">Oyunu Başlat</button>
+            <button class="btn-action" id="start-btn" onclick="startArcade()">Göreve Başla</button>
         </div>
     </div>
 
@@ -203,14 +193,59 @@
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 1. Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2><hr><div class="modal-body"><p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır.</p><ul><li>🧬 <strong>Genetik İlerleme:</strong> Ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.</li><li>🎯 <strong>Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa seçimleri.</li><li>📊 <strong>Veri Odaklı Seçim:</strong> Genomik testler ışığında bilimsel damızlık belirleme.</li></ul></div></div></div>
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 2. Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2><hr><div class="modal-body"><p>Besleme, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p><ul><li>🍲 <strong>Rasyon Optimizasyonu:</strong> Verim dönemine özel dengelenmiş rasyonlar.</li><li>📈 <strong>Verimlilik:</strong> Yemden yararlanma oranının (FCR) maksimize edilmesi.</li><li>🏥 <strong>Metabolik Sağlık:</strong> Asidoz ve ketozis gibi hastalıkların önlenmesi.</li></ul></div></div></div>
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ 3. Barınak Yönetimi: Konfor ve Refahın Adresi</h2><hr><div class="modal-body"><p>Modern barınaklar stres seviyesini minimize eden yaşam alanlarıdır.</p><ul><li>🛡️ <strong>Hayvan Refahı:</strong> Temiz hava, uygun sıcaklık ve kuru yataklık.</li><li>🌬️ <strong>Havalandırma:</strong> Amonyak birikimini önleyen etkin hava sirkülasyonu.</li><li>🧼 <strong>Biyogüvenlik:</strong> Hastalık yayılımını engelleyen altyapı tasarımı.</li></ul><p style="margin-top:20px; font-weight:bold; color:#27ae60;">Özetle: Islah + Besleme + Barınak = Karlı Yatırım.</p></div></div></div>
+<div id="modal-islah" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-islah')">&times;</span>
+        <h2>🐄 1. Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2>
+        <hr>
+        <div class="modal-body">
+            <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
+            <ul>
+                <li>🧬 Genetik İlerleme: Karakterlerin aktarılması.</li>
+                <li>🎯 Doğru Eşleştirme: Boğa/koç seçimleri.</li>
+                <li>📊 Veri Odaklı Seçim: Bilimsel yöntemler.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr><div class="modal-body"><ul><li>🌍 Köken: Hollanda/Almanya.</li><li>🥛 Verim: 8.000-12.000 kg ortalama.</li><li>🧬 Özellik: Endüstriyel sağım için dünya lideri.</li></ul></div></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr><div class="modal-body"><ul><li>🌍 Köken: İsviçre.</li><li>🥩 Et: Günlük 1.200-1.500g canlı ağırlık artışı.</li><li>🛡️ Özellik: Sağlam ayak yapısı ve kombine verim.</li></ul></div></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><div class="modal-body"><ul><li>🌍 Köken: İngiltere.</li><li>💎 Kalite: %5-6 yağ oranıyla peynir üretimi için ideal.</li></ul></div></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><div class="modal-body"><ul><li>🌍 Köken: Türkiye.</li><li>🦠 Direnç: Yerel hastalıklara muazzam direnç gösterir.</li></ul></div></div></div>
+<div id="modal-besleme" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
+        <h2>🌾 2. Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2>
+        <hr>
+        <div class="modal-body">
+            <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
+            <ul>
+                <li>🍲 Rasyon Optimizasyonu: Hayvanın verim dönemine (laktasyon, kuru vb.) özel dengelenmiş rasyonlar.</li>
+                <li>📈 Verimlilik: Yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
+                <li>🏥 Metabolik Sağlık: Asidoz ve ketozis gibi besleme kaynaklı hastalıkların önlenmesi.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-barinak" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
+        <h2>🏗️ 3. Barınak Yönetimi: Konfor ve Refahın Adresi</h2>
+        <hr>
+        <div class="modal-body">
+            <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
+            <ul>
+                <li>🛡️ Hayvan Refahı (Animal Welfare): Temiz hava, uygun sıcaklık ve kuru yataklık.</li>
+                <li>🌬️ Havalandırma ve Aydınlatma: Amonyak birikimini önleyen havalandırma.</li>
+                <li>🧼 Hijyen ve Biyogüvenlik: Dezenfeksiyon ve hastalık yayılımını engelleyen tasarım.</li>
+            </ul>
+            <p style="margin-top:20px; font-weight:bold; color:#27ae60;">Özetle: Islah + Besleme + Barınak = Karlı Yatırım.</p>
+        </div>
+    </div>
+</div>
+
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca): Süt Makinesi</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Hollanda/Almanya.</li><li><strong>🥛 Verim:</strong> Laktasyon başına 8.000-12.000 kg ortalama.</li><li><strong>🧬 Süt Kalitesi:</strong> Endüstriyel sağım için en ideal ırk.</li></ul></div></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh): Kombine Güç</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İsviçre.</li><li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200-1.500 gram arasındadır. randımanı çok yüksektir.</li><li><strong>🛡️ Avantaj:</strong> Sağlam ayak yapısı döl verimi ve uzun ömürlü olmasıyla çiftçinin en büyük dostudur.</li></ul></div></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey: Altın Sütün Kaynağı</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası).</li><li><strong>💎 Yağ Oranı:</strong> %5.0-6.0 yağ oranıyla peynir üretimi için altın standarttır.</li><li><strong>🍃 Verimlilik:</strong> Vücut ağırlığına oranla en fazla süt üreten ve yemi en verimli kullanan ırktır.</li></ul></div></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara: Genetik Sigortamız</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu Bölgesi).</li><li><strong>🦠 Direnç:</strong> Yerel hastalıklara ve zor doğa şartlarına muazzam uyum sağlar.</li><li><strong>🌳 Önem:</strong> Gelecekteki dirençli ıslah çalışmaları için paha biçilemez milli bir kaynaktır.</li></ul></div></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -258,9 +293,9 @@
     
     let currentLevel = 1;
     const levels = {
-        1: { name: "Stajyer Mühendis", speed: 1.2, cooldown: 1300 },
-        2: { name: "İşletme Sorumlusu", speed: 1.8, cooldown: 850 },
-        3: { name: "Baş Mühendis (ZOR)", speed: 2.6, cooldown: 480 }
+        1: { name: "Bölüm 1: Stajyer Mühendis", speed: 1.2, cooldown: 1300 },
+        2: { name: "Bölüm 2: İşletme Sorumlusu", speed: 1.8, cooldown: 850 },
+        3: { name: "Bölüm 3: Baş Mühendis (PRO)", speed: 2.6, cooldown: 480 }
     };
 
     function startArcade() {
@@ -323,15 +358,15 @@
         if(pScore >= 100 && eScore >= 100) {
             arcActive = false;
             if(currentLevel < 3) {
-                document.getElementById('arcade-msg').innerText = "🎉 Tebrikler! Üst Seviyeye Geçtin.";
+                document.getElementById('arcade-msg').innerText = "🎉 Tebrikler Mühendis! Üst Seviyeye Geçtin.";
                 document.getElementById('arcade-msg').style.color = "#27ae60";
                 currentLevel++;
-                document.getElementById('start-btn').innerText = levels[currentLevel].name + " Başlat";
+                document.getElementById('start-btn').innerText = "Sonraki Bölümü Başlat";
             } else {
-                document.getElementById('arcade-msg').innerText = "🏆 MUHTEŞEM! Baş Mühendis Oldun.";
+                document.getElementById('arcade-msg').innerText = "🏆 MUHTEŞEM! Baş Mühendis Unvanını Aldın.";
                 document.getElementById('arcade-msg').style.color = "#27ae60";
-                currentLevel = 1;
-                document.getElementById('start-btn').innerText = "Kariyerine Baştan Başla";
+                currentLevel = 1; // Başa dön
+                document.getElementById('start-btn').innerText = "Kariyere Baştan Başla";
             }
             document.getElementById('start-btn').style.display = "inline-block";
         }
