@@ -34,12 +34,34 @@
         .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
 
-        /* VİZYON ALANI */
+        /* VİZYON ALANI VE ÖZEL İMZA */
         .personal-section { text-align: center; margin: 60px 0; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
         .vision-text { max-width: 750px; margin: 30px auto 0; font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; position: relative; padding: 0 30px; }
-        .signature { font-family: 'Brush Script MT', 'Cursive', sans-serif; font-size: 1.6rem; color: #1b4d3e; margin-top: 10px; display: block; text-align: right; padding-right: 40px; opacity: 0.9; }
+        
+        /* İMZA STİLİ */
+        .signature { 
+            font-family: 'Brush Script MT', 'Cursive', sans-serif; 
+            color: #1b4d3e; 
+            margin-top: 15px; 
+            display: block; 
+            text-align: right; 
+            padding-right: 50px; 
+            font-size: 2.2rem; /* Masaüstü/Tablet boyutu */
+            letter-spacing: 1px;
+        }
+
+        /* MOBİL İMZA DÜZELTMESİ (Telefonda imza gibi durması için) */
+        @media (max-width: 600px) {
+            .signature {
+                font-size: 1.8rem;
+                padding-right: 20px;
+                margin-top: 10px;
+                transform: rotate(-2deg); /* Hafif eğim imza hissini artırır */
+            }
+            .vision-text { font-size: 1rem; padding: 0 15px; }
+        }
 
         /* SİMÜLASYON */
         #game-center { background: #ffffff; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0; }
@@ -51,7 +73,6 @@
 
         .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
         .target-box { background: #e8f5e9; padding: 10px; border-radius: 8px; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; border: 1px dashed #27ae60; color: #1b4d3e; }
-        .tech-info { font-size: 0.82rem; color: #666; margin-top: 8px; border-top: 1px solid #ddd; padding-top: 5px; }
 
         #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; display: block; margin: 0 auto; }
         .game-bars { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -66,7 +87,6 @@
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
         .modal-body ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
         .modal-body li { margin-bottom: 8px; font-size: 0.95rem; }
-        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -95,17 +115,17 @@
     <div class="grid">
         <div class="card" onclick="openModal('modal-islah')">
             <h3>🐄 Islah ve Seleksiyon</h3>
-            <p>Sürü kalitesini sistematik artırma stratejileri.</p>
+            <p>Geleceğin Genetiğini İnşa Etmek: Sürü kalitesini sistematik artırma stratejileri.</p>
             <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-besleme')">
             <h3>🌾 Hayvan Besleme</h3>
-            <p>Potansiyeli Performansa Dönüştürmek.</p>
+            <p>Potansiyeli Performansa Dönüştürmek: Fizyolojik ihtiyaçları ekonomik karşılama.</p>
             <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-barinak')">
             <h3>🏗️ Barınak Yönetimi</h3>
-            <p>Konfor ve Refah odaklı teknolojik tasarım.</p>
+            <p>Konfor ve Refahın Adresi: Stres faktörlerini minimize eden yaşam alanları.</p>
             <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
         </div>
     </div>
@@ -148,12 +168,10 @@
             <div class="slider-box">
                 <label>Ham Protein: %<strong><span id="p-val">12.0</span></strong></label>
                 <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()">
-                <div class="tech-info">Protein süt sentezi ve doku onarımı için kritiktir.</div>
             </div>
             <div class="slider-box">
                 <label>Enerji (NEL): <strong><span id="e-val">1.4</span> Mcal</strong></label>
                 <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()">
-                <div class="tech-info">Net Enerji süt üretiminin ana yakıtıdır.</div>
             </div>
             <button class="btn-action" onclick="checkEngRation()">Analiz Et</button>
             <div id="eng-result-box" style="margin-top:20px; padding:15px; border-radius:10px; display:none; background:#f0f0f0;">
@@ -163,6 +181,7 @@
         </div>
 
         <div id="arcade-mode" class="game-content">
+            <div id="level-display" style="font-weight: bold; color: #1b4d3e; margin-bottom: 10px;">Kariyer: <span id="current-level-name">Stajyer Mühendis</span></div>
             <canvas id="arcadeCanvas" width="400" height="400"></canvas>
             <div class="game-bars">
                 <div class="bar-wrap">Protein (🌾)<div class="bar-bg"><div id="p-fill" class="bar-fill" style="background:#27ae60;"></div></div></div>
@@ -184,14 +203,14 @@
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 1. Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2><hr><div class="modal-body"><p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p><ul><li><strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.</li><li><strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.</li><li><strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.</li></ul></div></div></div>
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 2. Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2><hr><div class="modal-body"><p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p><ul><li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine özel dengelenmiş rasyonlar.</li><li><strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li><li><strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.</li></ul></div></div></div>
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ 3. Barınak Yönetimi: Konfor ve Refahın Adresi</h2><hr><div class="modal-body"><p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p><ul><li><strong>🛡️ Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.</li><li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.</li><li><strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.</li></ul><p style="margin-top:20px; font-weight:bold; color:#27ae60;">Özetle: Güçlü bir genetik (Islah), doğru bir yakıt (Besleme) ve huzurlu bir ortam (Barınak) bir araya geldiğinde hayvancılık bir maliyet unsuru değil, karlı bir yatırıma dönüşür.</p></div></div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 1. Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2><hr><div class="modal-body"><p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır.</p><ul><li>🧬 <strong>Genetik İlerleme:</strong> Ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.</li><li>🎯 <strong>Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa seçimleri.</li><li>📊 <strong>Veri Odaklı Seçim:</strong> Genomik testler ışığında bilimsel damızlık belirleme.</li></ul></div></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 2. Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2><hr><div class="modal-body"><p>Besleme, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p><ul><li>🍲 <strong>Rasyon Optimizasyonu:</strong> Verim dönemine özel dengelenmiş rasyonlar.</li><li>📈 <strong>Verimlilik:</strong> Yemden yararlanma oranının (FCR) maksimize edilmesi.</li><li>🏥 <strong>Metabolik Sağlık:</strong> Asidoz ve ketozis gibi hastalıkların önlenmesi.</li></ul></div></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ 3. Barınak Yönetimi: Konfor ve Refahın Adresi</h2><hr><div class="modal-body"><p>Modern barınaklar stres seviyesini minimize eden yaşam alanlarıdır.</p><ul><li>🛡️ <strong>Hayvan Refahı:</strong> Temiz hava, uygun sıcaklık ve kuru yataklık.</li><li>🌬️ <strong>Havalandırma:</strong> Amonyak birikimini önleyen etkin hava sirkülasyonu.</li><li>🧼 <strong>Biyogüvenlik:</strong> Hastalık yayılımını engelleyen altyapı tasarımı.</li></ul><p style="margin-top:20px; font-weight:bold; color:#27ae60;">Özetle: Islah + Besleme + Barınak = Karlı Yatırım.</p></div></div></div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li><li><strong>🥛 Verim:</strong> 8.000-12.000 kg ortalama.</li><li><strong>🧬 Kalite:</strong> Endüstriyel sağım ve süt verimi için dünya lideri.</li></ul></div></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İsviçre.</li><li><strong>🥩 Et:</strong> Günlük canlı ağırlık artışı 1.200-1.500g.</li><li><strong>🛡️ Dayanıklılık:</strong> Sağlam ayak yapısı ve yüksek döl verimi.</li></ul></div></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İngiltere.</li><li><strong>💎 Yağ Oranı:</strong> %5-6 yağ oranıyla peynir üretimi için ideal.</li><li><strong>🍃 Verimlilik:</strong> Yemi en verimli süte dönüştüren ırk.</li></ul></div></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Türkiye.</li><li><strong>🦠 Direnç:</strong> Yerel hastalıklara muazzam direnç gösterir.</li><li><strong>🌳 Önem:</strong> Milli genetik mirasımız ve paha biçilemez bir kaynak.</li></ul></div></div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr><div class="modal-body"><ul><li>🌍 Köken: Hollanda/Almanya.</li><li>🥛 Verim: 8.000-12.000 kg ortalama.</li><li>🧬 Özellik: Endüstriyel sağım için dünya lideri.</li></ul></div></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr><div class="modal-body"><ul><li>🌍 Köken: İsviçre.</li><li>🥩 Et: Günlük 1.200-1.500g canlı ağırlık artışı.</li><li>🛡️ Özellik: Sağlam ayak yapısı ve kombine verim.</li></ul></div></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><div class="modal-body"><ul><li>🌍 Köken: İngiltere.</li><li>💎 Kalite: %5-6 yağ oranıyla peynir üretimi için ideal.</li></ul></div></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><div class="modal-body"><ul><li>🌍 Köken: Türkiye.</li><li>🦠 Direnç: Yerel hastalıklara muazzam direnç gösterir.</li></ul></div></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -224,7 +243,7 @@
         const adv = document.getElementById('eng-advice');
         resBox.style.display = "block";
         if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
-            res.innerText = "🎯 İdeal Rasyon!"; res.style.color = "#27ae60";
+            res.innerText = "🎯 İdeal Rasyon Dengesi!"; res.style.color = "#27ae60";
             adv.innerText = "Mükemmel. Sürü sağlığı ve üretim verimliliği için en uygun aralıktasınız.";
         } else {
             res.innerText = "⚠️ Dengesiz Rasyon!"; res.style.color = "#e74c3c";
@@ -232,15 +251,24 @@
         }
     }
 
+    // OYUN MOTORU (BÖLÜMLÜ SİSTEM)
     const canvas = document.getElementById('arcadeCanvas');
     const ctx = canvas.getContext('2d');
     let arcActive = false, cowX = 175, pScore = 0, eScore = 0, items = [], animationId, lastSpawnTime = 0;
+    
+    let currentLevel = 1;
+    const levels = {
+        1: { name: "Stajyer Mühendis", speed: 1.2, cooldown: 1300 },
+        2: { name: "İşletme Sorumlusu", speed: 1.8, cooldown: 850 },
+        3: { name: "Baş Mühendis (ZOR)", speed: 2.6, cooldown: 480 }
+    };
 
     function startArcade() {
         cancelAnimationFrame(animationId);
         arcActive = true; pScore = 0; eScore = 0; items = []; lastSpawnTime = 0;
         document.getElementById('start-btn').style.display = "none";
         document.getElementById('arcade-msg').innerText = "";
+        document.getElementById('current-level-name').innerText = levels[currentLevel].name;
         document.getElementById('p-fill').style.width = "0%";
         document.getElementById('e-fill').style.width = "0%";
         gameLoop(0);
@@ -261,10 +289,11 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = "50px Arial"; ctx.fillText("🐄", cowX, 380);
 
-        // Zaman kilidi iyileştirildi (Düşüş sıklığı: 0.9 sn)
-        if (timestamp - lastSpawnTime > 900) {
-            if(Math.random() < 0.04) {
-                items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: 1.6 }); // Hız hafifçe artırıldı
+        const config = levels[currentLevel];
+
+        if (timestamp - lastSpawnTime > config.cooldown) {
+            if(Math.random() < 0.2) {
+                items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: config.speed });
                 lastSpawnTime = timestamp;
             }
         }
@@ -280,9 +309,9 @@
             } 
             else if(it.y > 400) {
                 arcActive = false;
-                document.getElementById('arcade-msg').innerText = "❌ Yem İsrafı! Tekrar Dene.";
+                document.getElementById('arcade-msg').innerText = "❌ Yem İsrafı! Seviye Başarısız.";
                 document.getElementById('arcade-msg').style.color = "#e74c3c";
-                document.getElementById('start-btn').innerText = "Yeniden Başlat";
+                document.getElementById('start-btn').innerText = "Yeniden Dene";
                 document.getElementById('start-btn').style.display = "inline-block";
                 return;
             }
@@ -293,9 +322,17 @@
 
         if(pScore >= 100 && eScore >= 100) {
             arcActive = false;
-            document.getElementById('arcade-msg').innerText = "🏆 İdeal Rasyon Hazır!";
-            document.getElementById('arcade-msg').style.color = "#27ae60";
-            document.getElementById('start-btn').innerText = "Yeniden Başlat";
+            if(currentLevel < 3) {
+                document.getElementById('arcade-msg').innerText = "🎉 Tebrikler! Üst Seviyeye Geçtin.";
+                document.getElementById('arcade-msg').style.color = "#27ae60";
+                currentLevel++;
+                document.getElementById('start-btn').innerText = levels[currentLevel].name + " Başlat";
+            } else {
+                document.getElementById('arcade-msg').innerText = "🏆 MUHTEŞEM! Baş Mühendis Oldun.";
+                document.getElementById('arcade-msg').style.color = "#27ae60";
+                currentLevel = 1;
+                document.getElementById('start-btn').innerText = "Kariyerine Baştan Başla";
+            }
             document.getElementById('start-btn').style.display = "inline-block";
         }
         if(arcActive) animationId = requestAnimationFrame(gameLoop);
