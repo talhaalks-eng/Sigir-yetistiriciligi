@@ -21,7 +21,7 @@
             position: relative;
             height: 50vh; 
             min-height: 400px;
-            background: #1b4d3e url('sigir-surusu.png') no-repeat center center;
+            background: #1b4d3e url('https://images.unsplash.com/photo-1547448415-e9f5b28e570d?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
@@ -68,7 +68,7 @@
         .card h3 { color: #1b4d3e; margin-top: 0; }
         .card p { font-size: 0.95rem; color: #666; margin-top: 15px; }
 
-        /* SİMÜLASYON MERKEZİ PANELİ */
+        /* SİMÜLASYON MERKEZİ */
         #game-center {
             background: #ffffff; border-radius: 20px; padding: 40px; margin: 60px 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0;
@@ -86,11 +86,9 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MÜHENDİS MODU */
         .slider-box { max-width: 500px; margin: 0 auto 20px; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 10px; }
         input[type=range] { width: 100%; accent-color: #27ae60; cursor: pointer; }
 
-        /* ARCADE MODU */
         #arcadeCanvas { 
             background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd;
             max-width: 100%; touch-action: none; cursor: crosshair; display: block; margin: 0 auto;
@@ -108,6 +106,7 @@
         .modal-content { background: white; margin: 5% auto; padding: 40px; border-radius: 15px; width: 90%; max-width: 700px; position: relative; max-height: 85vh; overflow-y: auto; }
         .close { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
         .close:hover { color: #333; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
 
         footer { text-align: center; padding: 60px; background: #1b4d3e; color: white; margin-top: 100px; }
         footer a { color: #27ae60; text-decoration: none; font-weight: bold; }
@@ -137,23 +136,50 @@
         <div class="card" onclick="openModal('modal-islah')">
             <div>
                 <h3>🐄 Islah ve Seleksiyon</h3>
-                <p>Geleceğin genetiğini inşa etmek. Sürü kalitesini sistematik artırma ve veri odaklı seçim stratejileri.</p>
+                <p>Geleceğin genetiğini inşa etmek. Sürü kalitesini sistematik artırma stratejileri.</p>
             </div>
             <span style="color: #27ae60; font-weight: bold; margin-top: 15px;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-besleme')">
             <div>
                 <h3>🌾 Hayvan Besleme</h3>
-                <p>Potansiyeli performansa dönüştürmek. Rasyon optimizasyonu ve metabolik sağlık yönetimi.</p>
+                <p>Potansiyeli performansa dönüştürmek. Rasyon optimizasyonu ve metabolik sağlık.</p>
             </div>
             <span style="color: #27ae60; font-weight: bold; margin-top: 15px;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-barinak')">
             <div>
                 <h3>🏗️ Barınak Yönetimi</h3>
-                <p>Konfor ve refahın adresi. Hayvan refahı odaklı, biyolojik sınırları koruyan modern yaşam alanları.</p>
+                <p>Konfor ve refahın adresi. Hayvan refahı odaklı modern yaşam alanları.</p>
             </div>
             <span style="color: #27ae60; font-weight: bold; margin-top: 15px;">Detayları Gör →</span>
+        </div>
+    </div>
+
+    <div id="modal-islah" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-islah')">&times;</span>
+            <h2 style="color: #1b4d3e;">🐄 Islah ve Seleksiyon</h2>
+            <hr>
+            <p>Hayvancılıkta verimi ve kaliteyi artırmak amacıyla yapılan genetik iyileştirme çalışmalarıdır. Sürü içerisindeki en sağlıklı ve en yüksek verimli (süt, et vb.) bireylerin seçilerek (seleksiyon) bir sonraki neslin genetik temelinin oluşturulmasını hedefler. Veri odaklı stratejilerle sürünün uzun vadeli kalitesini artırır.</p>
+        </div>
+    </div>
+
+    <div id="modal-besleme" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
+            <h2 style="color: #1b4d3e;">🌾 Hayvan Besleme</h2>
+            <hr>
+            <p>Hayvanların genetik potansiyellerini en üst düzeyde sergileyebilmeleri için ihtiyaç duydukları besin maddelerinin sağlanmasıdır. Rasyon optimizasyonu (yem karışımlarının dengelenmesi) ve metabolik sağlık yönetimi sayesinde, hem hayvan sağlığı korunur hem de yemden alınan verim maksimuma çıkarılır.</p>
+        </div>
+    </div>
+
+    <div id="modal-barinak" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
+            <h2 style="color: #1b4d3e;">🏗️ Barınak Yönetimi</h2>
+            <hr>
+            <p>Hayvanların yaşam alanlarının konfor ve refah standartlarına uygun hale getirilmesidir. Uygun havalandırma, sıcaklık kontrolü, hijyen ve biyolojik sınırların gözetilmesi gibi unsurları kapsar. İyi bir barınak yönetimi, hayvan refahını artırarak stres kaynaklı verim kayıplarının önüne geçer.</p>
         </div>
     </div>
 
@@ -162,8 +188,8 @@
         <p style="color: #666; margin-bottom: 30px;">Ziraat mühendisliği tekniklerini interaktif olarak deneyimleyin.</p>
         
         <div class="mode-selector">
-            <button class="mode-btn active" onclick="switchMode('engineer', this)">🛠️ Mühendis Modu (Hassas)</button>
-            <button class="mode-btn" onclick="switchMode('arcade', this)">🎮 Arcade Modu (Sürükle)</button>
+            <button class="mode-btn active" onclick="switchMode('engineer', this)">🛠️ Mühendis Modu</button>
+            <button class="mode-btn" onclick="switchMode('arcade', this)">🎮 Arcade Modu</button>
         </div>
 
         <div id="engineer-mode" class="game-content active">
@@ -180,7 +206,7 @@
         </div>
 
         <div id="arcade-mode" class="game-content">
-            <p style="font-size: 0.9rem; color: #555; margin-bottom: 15px;">İneği sürükleyerek <strong>Yonca (🌾)</strong> ve <strong>Mısır (🌽)</strong> toplayın!</p>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 15px;">İneği hareket ettirerek <strong>Yonca (🌾)</strong> ve <strong>Mısır (🌽)</strong> toplayın!</p>
             <canvas id="arcadeCanvas" width="600" height="320"></canvas>
             <div class="game-bars">
                 <div class="bar-wrapper">
@@ -212,10 +238,23 @@
 </footer>
 
 <script>
-    // JS KODLARI
-    function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
-    function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
+    // MODAL KONTROLLERİ
+    function openModal(id) { 
+        document.getElementById(id).style.display = "block"; 
+        document.body.style.overflow = "hidden"; 
+    }
+    function closeModal(id) { 
+        document.getElementById(id).style.display = "none"; 
+        document.body.style.overflow = "auto"; 
+    }
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            event.target.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
 
+    // MOD SEÇİMİ
     function switchMode(mode, btn) {
         document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -229,27 +268,28 @@
         }
     }
 
+    // MÜHENDİS MODU FONKSİYONLARI
     function updateEngValues() {
         document.getElementById('p-val').innerText = document.getElementById('p-slider').value;
         document.getElementById('e-val').innerText = document.getElementById('e-slider').value;
     }
 
     function checkEngRation() {
-        const p = document.getElementById('p-slider').value;
-        const e = document.getElementById('e-slider').value;
+        const p = parseFloat(document.getElementById('p-slider').value);
+        const e = parseFloat(document.getElementById('e-slider').value);
         const res = document.getElementById('eng-result');
         if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
             res.innerText = "🎯 Mükemmel Rasyon! Verim ve sağlık dengede."; res.style.color = "#27ae60";
         } else {
-            res.innerText = "⚠️ Dengesiz Rasyon. Değerleri optimize edin."; res.style.color = "#e74c3c";
+            res.innerText = "⚠️ Dengesiz Rasyon. Protein %16-18, Enerji 1.7-1.9 arası olmalı."; res.style.color = "#e74c3c";
         }
     }
 
+    // ARCADE MODU (OYUN) FONKSİYONLARI
     const canvas = document.getElementById('arcadeCanvas');
     const ctx = canvas.getContext('2d');
     let arcActive = false, pScore = 0, eScore = 0, cowX = 270, items = [];
 
-    canvas.style.touchAction = "none";
     function handleMove(e) {
         if(!arcActive) return;
         const rect = canvas.getBoundingClientRect();
@@ -257,10 +297,9 @@
         cowX = clientX - rect.left - 25;
         if (cowX < 0) cowX = 0;
         if (cowX > canvas.width - 50) cowX = canvas.width - 50;
-        if(e.cancelable) e.preventDefault();
     }
     canvas.addEventListener('mousemove', handleMove);
-    canvas.addEventListener('touchmove', handleMove, { passive: false });
+    canvas.addEventListener('touchmove', handleMove);
 
     function startArcade() { 
         arcActive = true; pScore = 0; eScore = 0; items = [];
@@ -274,13 +313,24 @@
     function gameLoop() {
         if(!arcActive) return;
         ctx.clearRect(0,0,600,320);
-        ctx.font = "45px Arial"; ctx.fillText("🐄", cowX, 290);
+        
+        // İnek Çizimi
+        ctx.font = "45px Arial"; 
+        ctx.fillText("🐄", cowX, 290);
+
+        // Öğe Oluşturma
         if(Math.random() < 0.04) {
             items.push({ x: Math.random()*560, y: 0, type: Math.random()>0.5?'🌾':'🌽', speed: 2+Math.random()*3 });
         }
+
+        // Öğe Güncelleme
         items.forEach((it, i) => {
-            it.y += it.speed; ctx.font = "30px Arial"; ctx.fillText(it.type, it.x, it.y);
-            if(it.y > 240 && it.y < 300 && it.x > cowX-15 && it.x < cowX+45) {
+            it.y += it.speed; 
+            ctx.font = "30px Arial"; 
+            ctx.fillText(it.type, it.x, it.y);
+
+            // Çarpışma Kontrolü
+            if(it.y > 250 && it.y < 300 && it.x > cowX-20 && it.x < cowX+40) {
                 if(it.type === '🌾') pScore = Math.min(100, pScore + 5);
                 else eScore = Math.min(100, eScore + 5);
                 items.splice(i, 1);
@@ -289,6 +339,8 @@
             }
             if(it.y > 320) items.splice(i, 1);
         });
+
+        // Kazanma Durumu
         if(pScore >= 100 && eScore >= 100) {
             document.getElementById('arcade-msg').innerText = "🏆 Tebrikler! İdeal Rasyon Tamamlandı.";
             document.getElementById('restart-btn').style.display = "inline-block";
