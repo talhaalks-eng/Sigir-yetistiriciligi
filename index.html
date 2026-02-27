@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sığır Yetiştiriciliği | Lütfi Talha Alkış</title>
+    <title>Dijital Ahır | Lütfi Talha Alkış</title>
     <style>
         /* GENEL AYARLAR */
         html { scroll-behavior: smooth; }
@@ -118,7 +118,7 @@
 <header>
     <div class="overlay"></div>
     <div class="header-text">
-        <h1>Sığır Yetiştiriciliği</h1>
+        <h1>Dijital Ahır</h1>
         <p>Lütfi Talha Alkış | Ziraat Mühendisi Adayı</p>
     </div>
 </header>
@@ -162,7 +162,7 @@
             <span class="close" onclick="closeModal('modal-islah')">&times;</span>
             <h2 style="color: #1b4d3e; font-size: 1.5rem;">🐄 Islah ve Seleksiyon</h2>
             <hr>
-            <p>Hayvancılıkta verimi ve kaliteyi artırmak amacıyla yapılan genetik iyileştirme çalışmalarıdır. Sürü içerisindeki en sağlıklı ve en yüksek verimli (süt, et vb.) bireylerin seçilerek (seleksiyon) bir sonraki neslin genetik temelinin oluşturulmasını hedefler. Veri odaklı stratejilerle sürünün uzun vadeli kalitesini artırır.</p>
+            <p>Hayvancılıkta verimi ve kaliteyi artırmak amacıyla yapılan genetik iyileştirme çalışmalarıdır. Sürü içerisindeki en sağlıklı ve en yüksek verimli bireylerin seçilerek bir sonraki neslin genetik temelinin oluşturulmasını hedefler.</p>
         </div>
     </div>
 
@@ -171,7 +171,7 @@
             <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
             <h2 style="color: #1b4d3e; font-size: 1.5rem;">🌾 Hayvan Besleme</h2>
             <hr>
-            <p>Hayvanların genetik potansiyellerini en üst düzeyde sergileyebilmeleri için ihtiyaç duydukları besin maddelerinin sağlanmasıdır. Rasyon optimizasyonu (yem karışımlarının dengelenmesi) ve metabolik sağlık yönetimi sayesinde, hem hayvan sağlığı korunur hem de yemden alınan verim maksimuma çıkarılır.</p>
+            <p>Hayvanların genetik potansiyellerini en üst düzeyde sergileyebilmeleri için ihtiyaç duydukları besin maddelerinin sağlanmasıdır.</p>
         </div>
     </div>
 
@@ -180,7 +180,7 @@
             <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
             <h2 style="color: #1b4d3e; font-size: 1.5rem;">🏗️ Barınak Yönetimi</h2>
             <hr>
-            <p>Hayvanların yaşam alanlarının konfor ve refah standartlarına uygun hale getirilmesidir. Uygun havalandırma, sıcaklık kontrolü, hijyen ve biyolojik sınırların gözetilmesi gibi unsurları kapsar. İyi bir barınak yönetimi, hayvan refahını artırarak stres kaynaklı verim kayıplarının önüne geçer.</p>
+            <p>Hayvanların yaşam alanlarının konfor ve refah standartlarına uygun hale getirilmesidir.</p>
         </div>
     </div>
 
@@ -233,7 +233,7 @@
 </div>
 
 <footer>
-    <strong>Sığır Yetiştiriciliği</strong><br>
+    <strong>Dijital Ahır</strong><br>
     Lütfi Talha Alkış | Çukurova Üniversitesi &copy; 2026
 </footer>
 
@@ -263,7 +263,6 @@
         else { res.innerText = "⚠️ Dengesiz Rasyon! Optimize edin."; res.style.color = "#e74c3c"; }
     }
 
-    /* ARCADE SİSTEMİ - GÜNCELLENMİŞ ANİMASYON */
     const canvas = document.getElementById('arcadeCanvas');
     const ctx = canvas.getContext('2d');
     let arcActive = false, pScore = 0, eScore = 0, cowX = 175, items = [];
@@ -292,22 +291,14 @@
     function gameLoop() {
         if(!arcActive) return;
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        
-        // İnek
         ctx.font = "50px Arial"; ctx.fillText("🐄", cowX, 360);
-        
-        // Eşya üretimi
         if(Math.random() < 0.05) {
             items.push({ x: Math.random()*(canvas.width-40), y: 0, type: Math.random()>0.5?'🌾':'🌽', speed: 3+Math.random()*3 });
         }
-        
-        // Animasyon döngüsü
         items.forEach((it, i) => {
             it.y += it.speed; 
             ctx.font = "30px Arial"; 
             ctx.fillText(it.type, it.x, it.y);
-            
-            // Yakalama kontrolü (Genişletildi)
             if(it.y > 310 && it.y < 370 && it.x > cowX-15 && it.x < cowX+45) {
                 if(it.type === '🌾') pScore = Math.min(100, pScore + 10);
                 else eScore = Math.min(100, eScore + 10);
@@ -317,7 +308,6 @@
             }
             if(it.y > canvas.height) items.splice(i, 1);
         });
-
         if(pScore >= 100 && eScore >= 100) {
             document.getElementById('arcade-msg').innerText = "🏆 Tebrikler! İdeal Rasyon Tamamlandı.";
             document.getElementById('restart-btn').style.display = "inline-block";
@@ -326,6 +316,5 @@
         if(arcActive) requestAnimationFrame(gameLoop);
     }
 </script>
-
 </body>
 </html>
