@@ -36,11 +36,7 @@
 
         /* KİŞİSEL FOTOĞRAF */
         .personal-photo-wrapper { text-align: center; margin: 60px 0; }
-        .personal-photo { 
-            display: inline-block; width: 100%; max-width: 500px; 
-            border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            border: 5px solid white;
-        }
+        .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
 
         /* SİMÜLASYON */
@@ -62,7 +58,10 @@
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 700px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
-        .modal-body strong { color: #1b4d3e; display: block; margin-top: 15px; }
+        .modal-body p { margin-bottom: 20px; }
+        .modal-body strong { color: #1b4d3e; display: block; margin-top: 15px; font-size: 1.1rem; }
+        .modal-body ul { list-style-type: none; padding-left: 0; margin-top: 10px; }
+        .modal-body li { padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -173,10 +172,14 @@
         <span class="close" onclick="closeModal('modal-islah')">&times;</span>
         <h2>🐄 Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2>
         <hr>
-        <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
-        <strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.
-        <strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.
-        <strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.
+        <div class="modal-body">
+            <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
+            <ul>
+                <li><strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.</li>
+                <li><strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.</li>
+                <li><strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -185,10 +188,14 @@
         <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
         <h2>🌾 Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2>
         <hr>
-        <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
-        <strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine özel dengelenmiş rasyonlar.
-        <strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.
-        <strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.
+        <div class="modal-body">
+            <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
+            <ul>
+                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine özel dengelenmiş rasyonlar.</li>
+                <li><strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
+                <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -197,17 +204,21 @@
         <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
         <h2>🏗️ Barınak Yönetimi: Konfor ve Refahın Adresi</h2>
         <hr>
-        <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
-        <strong>🛡️ Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.
-        <strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.
-        <strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.
+        <div class="modal-body">
+            <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
+            <ul>
+                <li><strong>🛡️ Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.</li>
+                <li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.</li>
+                <li><strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg süt.</li><li><strong>Yağ Oranı:</strong> %3.5 - 3.7.</li></ul></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Verim:</strong> Kombine (Et ve Süt).</li><li><strong>Özellik:</strong> Sağlam yapısı ve hastalıklara direnci yüksektir.</li></ul></div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Süt Verimi:</strong> 8.000 - 12.000 kg.</li><li><strong>Yağ Oranı:</strong> %3.5 - 3.7.</li></ul></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Kombine:</strong> Hem et hem süt verimi yüksektir.</li><li><strong>Dayanıklılık:</strong> Hastalıklara direnci yüksektir.</li></ul></div></div>
 <div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Süt Yağı:</strong> %5.0 - 6.0.</li><li><strong>Cüsse:</strong> Küçük yapılı, yüksek yem verimliliği.</li></ul></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Hastalıklara karşı en dirençli yerli gen kaynağımızdır.</p></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Anadolu coğrafyasına tam uyum sağlamış, hastalıklara en dirençli yerli gen kaynağımızdır.</p></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -240,7 +251,7 @@
         const p = parseFloat(document.getElementById('p-slider').value);
         const e = parseFloat(document.getElementById('e-slider').value);
         const res = document.getElementById('eng-result');
-        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 Mükemmel Rasyon!"; res.style.color = "#27ae60"; }
+        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 İdeal Rasyon!"; res.style.color = "#27ae60"; }
         else { res.innerText = "⚠️ Dengesiz Rasyon! Optimize edin."; res.style.color = "#e74c3c"; }
     }
 
@@ -257,25 +268,15 @@
         gameLoop();
     }
 
-    // GÜNCELLENDİ: Kaydırma Kontrolü
-    canvas.addEventListener('mousemove', (e) => {
+    function handleMove(e) {
         if (!arcActive) return;
         const rect = canvas.getBoundingClientRect();
-        // Fare imlecinin kanvas üzerindeki yatay pozisyonuna göre ineği hareket ettirir
-        cowX = (e.clientX - rect.left) * (canvas.width / rect.width) - 25;
-        // İneği kanvas sınırları içinde tutar
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        cowX = (clientX - rect.left) * (canvas.width / rect.width) - 25;
         if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
-    });
-
-    // GÜNCELLENDİ: Dokunmatik Kaydırma Kontrolü
-    canvas.addEventListener('touchmove', (e) => {
-        if (!arcActive) return;
-        const rect = canvas.getBoundingClientRect();
-        // Parmağın kanvas üzerindeki yatay pozisyonuna göre ineği hareket ettirir
-        cowX = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width) - 25;
-        // İneği kanvas sınırları içinde tutar
-        if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
-    });
+    }
+    canvas.addEventListener('mousemove', handleMove);
+    canvas.addEventListener('touchmove', handleMove);
 
     function gameLoop() {
         if(!arcActive) return;
