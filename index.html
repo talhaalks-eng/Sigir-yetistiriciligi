@@ -34,7 +34,7 @@
         .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
 
-        /* KİŞİSEL BÖLÜM VE VİZYON */
+        /* VİZYON ALANI */
         .personal-section { text-align: center; margin: 60px 0; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
@@ -50,7 +50,8 @@
         .game-content.active { display: block; animation: fadeIn 0.4s ease; }
 
         .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
-        .tech-info { font-size: 0.85rem; color: #666; margin-top: 10px; line-height: 1.4; border-top: 1px solid #ddd; padding-top: 8px; }
+        .tech-info { font-size: 0.85rem; color: #666; margin-top: 8px; line-height: 1.4; border-top: 1px solid #ddd; padding-top: 5px; }
+        .target-box { background: #e8f5e9; padding: 10px; border-radius: 8px; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; border: 1px dashed #27ae60; }
 
         #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; display: block; margin: 0 auto; }
         .game-bars { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -59,12 +60,13 @@
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
-        /* MODAL */
+        /* MODALLAR */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 750px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
         .modal-body ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
         .modal-body li { margin-bottom: 8px; font-size: 0.95rem; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -133,26 +135,29 @@
     </div>
 
     <div id="game-center">
-        <h2>🌾 Rasyon Simülasyonu (Mühendislik Paneli)</h2>
+        <h2>🌾 Rasyon Simülasyonu</h2>
         <div class="mode-selector">
             <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Mühendis Modu</button>
             <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎬 Animasyon Modu</button>
         </div>
 
         <div id="engineer-mode" class="game-content active">
+            <div class="target-box">
+                🎯 <strong>İdeal Sağmal Hedefi:</strong> Protein: <strong>%16-18</strong> | Enerji: <strong>1.7-1.9 Mcal</strong>
+            </div>
             <div class="slider-box">
                 <label>Ham Protein: %<strong><span id="p-val">12.0</span></strong></label>
                 <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()">
-                <div class="tech-info"><strong>Önem:</strong> Kas gelişimi ve süt proteini için temeldir. Eksikliğinde verim düşer, fazlası maliyeti artırır ve metabolik yük oluşturur.</div>
+                <div class="tech-info">Ham Protein süt sentezi için kritiktir. Hedef: %16-18.</div>
             </div>
             <div class="slider-box">
-                <label>Net Enerji (Laktasyon): <strong><span id="e-val">1.4</span> Mcal</strong></label>
+                <label>Enerji (NEL): <strong><span id="e-val">1.4</span> Mcal</strong></label>
                 <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()">
-                <div class="tech-info"><strong>Önem:</strong> Hayvanın yaşam payı ve süt üretimi için ana yakıttır. Düşük enerji negatif enerji dengesine ve ketozise yol açabilir.</div>
+                <div class="tech-info">Laktasyonun yakıtıdır. Hedef: 1.7-1.9 Mcal.</div>
             </div>
-            <button class="btn-action" onclick="checkEngRation()">Rasyonu Analiz Et</button>
+            <button class="btn-action" onclick="checkEngRation()">Analiz Et</button>
             <div id="eng-result-box" style="margin-top:20px; padding:15px; border-radius:10px; display:none; background:#f0f0f0;">
-                <p id="eng-result" style="font-weight: bold; font-size: 1.1rem; margin:0;"></p>
+                <p id="eng-result" style="font-weight: bold; margin:0;"></p>
                 <p id="eng-advice" style="font-size: 0.9rem; color: #555; margin-top:5px;"></p>
             </div>
         </div>
@@ -163,6 +168,7 @@
                 <div class="bar-wrap">Protein (🌾)<div class="bar-bg"><div id="p-fill" class="bar-fill" style="background:#27ae60;"></div></div></div>
                 <div class="bar-wrap">Enerji (🌽)<div class="bar-bg"><div id="e-fill" class="bar-fill" style="background:#f1c40f;"></div></div></div>
             </div>
+            <p id="arcade-msg" style="font-weight:bold; margin-top:10px; min-height:1.5em;"></p>
             <button class="btn-action" id="start-btn" onclick="startArcade()">Oyunu Başlat</button>
         </div>
     </div>
@@ -176,7 +182,6 @@
             <span class="signature">Lütfi Talha Alkış</span>
         </div>
     </div>
-
 </div>
 
 <div id="modal-islah" class="modal">
@@ -203,7 +208,7 @@
         <div class="modal-body">
             <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
             <ul>
-                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine (laktasyon, kuruda kalma vb.) özel dengelenmiş rasyonlar.</li>
+                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine özel dengelenmiş rasyonlar.</li>
                 <li><strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
                 <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.</li>
             </ul>
@@ -228,75 +233,18 @@
     </div>
 </div>
 
-<div id="modal-holstein" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-holstein')">&times;</span>
-        <h2>🐄 Holstein (Siyah-Alaca): Süt Endüstrisinin Lideri</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li>
-                <li><strong>🥛 Süt Verimi:</strong> Laktasyon başına ortalama 8.000 - 12.000 kg.</li>
-                <li><strong>🧬 Kalite:</strong> %3.5 - 3.7 Yağ ve %3.2 Protein ortalaması.</li>
-                <li><strong>🛠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve ısı stresi yönetimi şarttır.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-simmental" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-simmental')">&times;</span>
-        <h2>🐂 Simental (Fleckvieh): Çift Yönlü Güç</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> İsviçre (Simme Vadisi).</li>
-                <li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200 - 1.500 gram. Karkas randımanı %55-60.</li>
-                <li><strong>🥛 Süt Verimi:</strong> Kombine verimle 6.000 - 8.000 kg süt.</li>
-                <li><strong>🛡️ Avantaj:</strong> Holstein'a göre hastalıklara daha dirençli ve uzun ömürlüdür.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-jersey" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-jersey')">&times;</span>
-        <h2>🥛 Jersey: Kalitenin ve Zarifliğin Temsilcisi</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası - Manş Denizi).</li>
-                <li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranıyla peynir üretimi için altın standarttır.</li>
-                <li><strong>🍃 Yem Verimliliği:</strong> Vücut ağırlığına oranla en fazla süt üreten ve yemi en verimli kullanan ırktır.</li>
-                <li><strong>☀️ Adaptasyon:</strong> Sıcak iklim şartlarına karşı oldukça dayanıklıdır.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modal-yerlikara" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-yerlikara')">&times;</span>
-        <h2>Anadolu Yerli Kara: Milli Genetik Mirasımız</h2>
-        <hr>
-        <div class="modal-body">
-            <ul>
-                <li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu Bölgesi).</li>
-                <li><strong>🦠 Direnç:</strong> Kan parazitlerine ve zorlu yerel doğa şartlarına muazzam dirençlidir.</li>
-                <li><strong>📉 Verim:</strong> Süt miktarı düşük olsa da kuru madde oranı ve yağ içeriği yüksektir.</li>
-                <li><strong>🌳 Önem:</strong> Gelecekteki dirençli ırk ıslah çalışmaları için paha biçilemez bir genetik değerdir.</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Hollanda.</li><li><strong>🥛 Verim:</strong> 8.000-12.000 kg.</li><li><strong>⚖️ Ağırlık:</strong> 600-750 kg.</li></ul></div></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İsviçre.</li><li><strong>🥩 Et:</strong> Canlı ağırlık artışı 1.200-1.500g/gün.</li><li><strong>🥛 Süt:</strong> 6.000-8.000 kg.</li></ul></div></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İngiltere.</li><li><strong>💎 Kalite:</strong> %5-6 yağ oranı.</li></ul></div></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Türkiye.</li><li><strong>🦠 Direnç:</strong> Hastalıklara tam direnç.</li></ul></div></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
     <a href="mailto:talhaalks@gmail.com" style="color:#27ae60; text-decoration:none; font-weight:bold;">📧 talhaalks@gmail.com</a>
     <p>Dijital Ahır | Çukurova Üniversitesi &copy; 2026</p>
 </footer>
+
+
 
 <script>
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
@@ -321,20 +269,13 @@
         const resBox = document.getElementById('eng-result-box');
         const res = document.getElementById('eng-result');
         const adv = document.getElementById('eng-advice');
-        
         resBox.style.display = "block";
         if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
-            res.innerText = "🎯 İdeal Rasyon Dengesi Sağlandı!";
-            res.style.color = "#27ae60";
-            adv.innerText = "Bu rasyon yüksek verimli sağmal inekler için metabolik olarak güvenli ve ekonomik olarak verimlidir.";
-        } else if(p < 16 || e < 1.7) {
-            res.innerText = "⚠️ Eksik Besin Değerleri!";
-            res.style.color = "#e67e22";
-            adv.innerText = "Düşük protein veya enerji, hayvanın kondisyon kaybetmesine ve süt veriminin hızla düşmesine neden olur.";
+            res.innerText = "🎯 İdeal Rasyon Dengesi!"; res.style.color = "#27ae60";
+            adv.innerText = "Mükemmel. Sürü sağlığı ve üretim verimliliği için en uygun aralıktasınız.";
         } else {
-            res.innerText = "⚠️ Aşırı Yükleme Tespit Edildi!";
-            res.style.color = "#e74c3c";
-            adv.innerText = "Protein fazlalığı idrarla atılırken böbreği yorar, enerji fazlalığı ise yağlanmaya ve döl verimi sorunlarına yol açabilir.";
+            res.innerText = "⚠️ Dengesiz Rasyon!"; res.style.color = "#e74c3c";
+            adv.innerText = "Hedef: Protein %16-18, Enerji 1.7-1.9 olmalıdır.";
         }
     }
 
@@ -346,6 +287,7 @@
         cancelAnimationFrame(animationId);
         arcActive = true; pScore = 0; eScore = 0; items = [];
         document.getElementById('start-btn').style.display = "none";
+        document.getElementById('arcade-msg').innerText = "";
         document.getElementById('p-fill').style.width = "0%";
         document.getElementById('e-fill').style.width = "0%";
         gameLoop();
@@ -365,18 +307,38 @@
         if(!arcActive) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = "50px Arial"; ctx.fillText("🐄", cowX, 380);
+
         if(Math.random() < 0.05) items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: 1.5 });
-        items.forEach((it, i) => {
-            it.y += it.speed; ctx.font = "30px Arial"; ctx.fillText(it.type, it.x, it.y);
+
+        for(let i = items.length - 1; i >= 0; i--) {
+            let it = items[i];
+            it.y += it.speed; 
+            ctx.font = "30px Arial"; ctx.fillText(it.type, it.x, it.y);
+
             if(it.y > 340 && it.y < 390 && it.x > cowX-15 && it.x < cowX+45) {
                 if(it.type === '🌾') pScore = Math.min(100, pScore + 10); else eScore = Math.min(100, eScore + 10);
                 items.splice(i, 1);
-                document.getElementById('p-fill').style.width = pScore + "%";
-                document.getElementById('e-fill').style.width = eScore + "%";
+            } 
+            else if(it.y > 400) {
+                arcActive = false;
+                document.getElementById('arcade-msg').innerText = "❌ Yem İsrafı! Tekrar Dene.";
+                document.getElementById('arcade-msg').style.color = "#e74c3c";
+                document.getElementById('start-btn').innerText = "Yeniden Başlat";
+                document.getElementById('start-btn').style.display = "inline-block";
+                return;
             }
-            if(it.y > 400) items.splice(i, 1);
-        });
-        if(pScore >= 100 && eScore >= 100) { arcActive = false; document.getElementById('start-btn').innerText = "Yeniden Başlat"; document.getElementById('start-btn').style.display = "inline-block"; }
+        }
+
+        document.getElementById('p-fill').style.width = pScore + "%";
+        document.getElementById('e-fill').style.width = eScore + "%";
+
+        if(pScore >= 100 && eScore >= 100) {
+            arcActive = false;
+            document.getElementById('arcade-msg').innerText = "🏆 İdeal Rasyon Hazır!";
+            document.getElementById('arcade-msg').style.color = "#27ae60";
+            document.getElementById('start-btn').innerText = "Yeniden Başlat";
+            document.getElementById('start-btn').style.display = "inline-block";
+        }
         if(arcActive) animationId = requestAnimationFrame(gameLoop);
     }
 </script>
