@@ -39,18 +39,7 @@
         .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
         .vision-text { max-width: 750px; margin: 30px auto 0; font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; position: relative; padding: 0 30px; }
-        
-        /* İMZA (KÜÇÜLTÜLDÜ) */
-        .signature { 
-            font-family: 'Brush Script MT', 'Cursive', sans-serif; 
-            font-size: 1.6rem; 
-            color: #1b4d3e; 
-            margin-top: 10px; 
-            display: block;
-            text-align: right;
-            padding-right: 40px;
-            opacity: 0.9;
-        }
+        .signature { font-family: 'Brush Script MT', 'Cursive', sans-serif; font-size: 1.6rem; color: #1b4d3e; margin-top: 10px; display: block; text-align: right; padding-right: 40px; opacity: 0.9; }
 
         /* SİMÜLASYON */
         #game-center { background: #ffffff; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0; }
@@ -60,6 +49,9 @@
         .game-content { display: none; }
         .game-content.active { display: block; animation: fadeIn 0.4s ease; }
 
+        .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
+        .tech-info { font-size: 0.85rem; color: #666; margin-top: 10px; line-height: 1.4; border-top: 1px solid #ddd; padding-top: 8px; }
+
         #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; display: block; margin: 0 auto; }
         .game-bars { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
         .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; }
@@ -67,14 +59,12 @@
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
-        /* MODAL SİSTEMİ */
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 750px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
-        .modal-body strong { color: #1b4d3e; display: block; margin-top: 12px; }
         .modal-body ul { list-style-type: disc; padding-left: 20px; margin-top: 10px; }
         .modal-body li { margin-bottom: 8px; font-size: 0.95rem; }
-        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -143,23 +133,28 @@
     </div>
 
     <div id="game-center">
-        <h2>🌾 Rasyon Simülasyonu</h2>
+        <h2>🌾 Rasyon Simülasyonu (Mühendislik Paneli)</h2>
         <div class="mode-selector">
-            <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Mühendis</button>
-            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎬 Animasyon</button>
+            <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Mühendis Modu</button>
+            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎬 Animasyon Modu</button>
         </div>
 
         <div id="engineer-mode" class="game-content active">
             <div class="slider-box">
-                <label>Protein: %<strong><span id="p-val">12.0</span></strong></label>
+                <label>Ham Protein: %<strong><span id="p-val">12.0</span></strong></label>
                 <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()">
+                <div class="tech-info"><strong>Önem:</strong> Kas gelişimi ve süt proteini için temeldir. Eksikliğinde verim düşer, fazlası maliyeti artırır ve metabolik yük oluşturur.</div>
             </div>
             <div class="slider-box">
-                <label>Enerji: <strong><span id="e-val">1.4</span> Mcal</strong></label>
+                <label>Net Enerji (Laktasyon): <strong><span id="e-val">1.4</span> Mcal</strong></label>
                 <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()">
+                <div class="tech-info"><strong>Önem:</strong> Hayvanın yaşam payı ve süt üretimi için ana yakıttır. Düşük enerji negatif enerji dengesine ve ketozise yol açabilir.</div>
             </div>
-            <button class="btn-action" onclick="checkEngRation()">Analiz Et</button>
-            <p id="eng-result" style="margin-top:20px; font-weight: bold;"></p>
+            <button class="btn-action" onclick="checkEngRation()">Rasyonu Analiz Et</button>
+            <div id="eng-result-box" style="margin-top:20px; padding:15px; border-radius:10px; display:none; background:#f0f0f0;">
+                <p id="eng-result" style="font-weight: bold; font-size: 1.1rem; margin:0;"></p>
+                <p id="eng-advice" style="font-size: 0.9rem; color: #555; margin-top:5px;"></p>
+            </div>
         </div>
 
         <div id="arcade-mode" class="game-content">
@@ -228,15 +223,74 @@
                 <li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.</li>
                 <li><strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.</li>
             </ul>
-            <p style="margin-top:20px; border-top:1px solid #eee; padding-top:15px; font-weight:bold; color:#27ae60;">Özetle: Güçlü bir genetik (Islah), doğru bir yakıt (Besleme) ve huzurlu bir ortam (Barınak) bir araya geldiğinde hayvancılık bir maliyet unsuru değil, karlı bir yatırıma dönüşür.</p>
+            <p style="margin-top:20px; font-weight:bold; color:#27ae60;">Özetle: Güçlü bir genetik (Islah), doğru bir yakıt (Besleme) ve huzurlu bir ortam (Barınak) bir araya geldiğinde hayvancılık bir maliyet unsuru değil, karlı bir yatırıma dönüşür.</p>
         </div>
     </div>
 </div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li><li><strong>🥛 Süt Verimi:</strong> 8.000 - 12.000 kg/laktasyon.</li><li><strong>⚖️ Canlı Ağırlık:</strong> 600 - 750 kg.</li><li><strong>🛠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve ısı stresi yönetimi şarttır.</li></ul></div></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İsviçre (Simme Vadisi).</li><li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200 - 1.500 gram. Randıman %55-60.</li><li><strong>🥛 Süt Verimi:</strong> 6.000 - 8.000 kg süt.</li><li><strong>🛡️ Avantaj:</strong> Sağlam ayak yapısı ve döl verimi yüksektir.</li></ul></div></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası).</li><li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranı (Peynir üretimi için ideal).</li><li><strong>🍃 Verimlilik:</strong> Vücut ağırlığına oranla en yüksek süt üretimi.</li></ul></div></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><div class="modal-body"><ul><li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu).</li><li><strong>🦠 Direnç:</strong> Kan parazitlerine ve yerel hastalıklara tam direnç.</li><li><strong>📈 Önem:</strong> Gelecekteki dirençli ıslah çalışmaları için paha biçilemez gen kaynağı.</li></ul></div></div></div>
+<div id="modal-holstein" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-holstein')">&times;</span>
+        <h2>🐄 Holstein (Siyah-Alaca): Süt Endüstrisinin Lideri</h2>
+        <hr>
+        <div class="modal-body">
+            <ul>
+                <li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li>
+                <li><strong>🥛 Süt Verimi:</strong> Laktasyon başına ortalama 8.000 - 12.000 kg.</li>
+                <li><strong>🧬 Kalite:</strong> %3.5 - 3.7 Yağ ve %3.2 Protein ortalaması.</li>
+                <li><strong>🛠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve ısı stresi yönetimi şarttır.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-simmental" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-simmental')">&times;</span>
+        <h2>🐂 Simental (Fleckvieh): Çift Yönlü Güç</h2>
+        <hr>
+        <div class="modal-body">
+            <ul>
+                <li><strong>🌍 Köken:</strong> İsviçre (Simme Vadisi).</li>
+                <li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200 - 1.500 gram. Karkas randımanı %55-60.</li>
+                <li><strong>🥛 Süt Verimi:</strong> Kombine verimle 6.000 - 8.000 kg süt.</li>
+                <li><strong>🛡️ Avantaj:</strong> Holstein'a göre hastalıklara daha dirençli ve uzun ömürlüdür.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-jersey" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-jersey')">&times;</span>
+        <h2>🥛 Jersey: Kalitenin ve Zarifliğin Temsilcisi</h2>
+        <hr>
+        <div class="modal-body">
+            <ul>
+                <li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası - Manş Denizi).</li>
+                <li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranıyla peynir üretimi için altın standarttır.</li>
+                <li><strong>🍃 Yem Verimliliği:</strong> Vücut ağırlığına oranla en fazla süt üreten ve yemi en verimli kullanan ırktır.</li>
+                <li><strong>☀️ Adaptasyon:</strong> Sıcak iklim şartlarına karşı oldukça dayanıklıdır.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-yerlikara" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-yerlikara')">&times;</span>
+        <h2>Anadolu Yerli Kara: Milli Genetik Mirasımız</h2>
+        <hr>
+        <div class="modal-body">
+            <ul>
+                <li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu Bölgesi).</li>
+                <li><strong>🦠 Direnç:</strong> Kan parazitlerine ve zorlu yerel doğa şartlarına muazzam dirençlidir.</li>
+                <li><strong>📉 Verim:</strong> Süt miktarı düşük olsa da kuru madde oranı ve yağ içeriği yüksektir.</li>
+                <li><strong>🌳 Önem:</strong> Gelecekteki dirençli ırk ıslah çalışmaları için paha biçilemez bir genetik değerdir.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -247,7 +301,6 @@
 <script>
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
-    window.onclick = function(e) { if(e.target.className === 'modal') closeModal(e.target.id); }
 
     function switchMode(mode) {
         document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
@@ -261,12 +314,28 @@
         document.getElementById('p-val').innerText = parseFloat(document.getElementById('p-slider').value).toFixed(1);
         document.getElementById('e-val').innerText = parseFloat(document.getElementById('e-slider').value).toFixed(1);
     }
+
     function checkEngRation() {
         const p = parseFloat(document.getElementById('p-slider').value);
         const e = parseFloat(document.getElementById('e-slider').value);
+        const resBox = document.getElementById('eng-result-box');
         const res = document.getElementById('eng-result');
-        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 İdeal Rasyon!"; res.style.color = "#27ae60"; }
-        else { res.innerText = "⚠️ Dengesiz Rasyon! Optimize edin."; res.style.color = "#e74c3c"; }
+        const adv = document.getElementById('eng-advice');
+        
+        resBox.style.display = "block";
+        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
+            res.innerText = "🎯 İdeal Rasyon Dengesi Sağlandı!";
+            res.style.color = "#27ae60";
+            adv.innerText = "Bu rasyon yüksek verimli sağmal inekler için metabolik olarak güvenli ve ekonomik olarak verimlidir.";
+        } else if(p < 16 || e < 1.7) {
+            res.innerText = "⚠️ Eksik Besin Değerleri!";
+            res.style.color = "#e67e22";
+            adv.innerText = "Düşük protein veya enerji, hayvanın kondisyon kaybetmesine ve süt veriminin hızla düşmesine neden olur.";
+        } else {
+            res.innerText = "⚠️ Aşırı Yükleme Tespit Edildi!";
+            res.style.color = "#e74c3c";
+            adv.innerText = "Protein fazlalığı idrarla atılırken böbreği yorar, enerji fazlalığı ise yağlanmaya ve döl verimi sorunlarına yol açabilir.";
+        }
     }
 
     const canvas = document.getElementById('arcadeCanvas');
@@ -307,7 +376,7 @@
             }
             if(it.y > 400) items.splice(i, 1);
         });
-        if(pScore >= 100 && eScore >= 100) { arcActive = false; document.getElementById('start-btn').style.display = "inline-block"; }
+        if(pScore >= 100 && eScore >= 100) { arcActive = false; document.getElementById('start-btn').innerText = "Yeniden Başlat"; document.getElementById('start-btn').style.display = "inline-block"; }
         if(arcActive) animationId = requestAnimationFrame(gameLoop);
     }
 </script>
