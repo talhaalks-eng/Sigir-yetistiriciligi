@@ -18,9 +18,17 @@
         header { 
             background: linear-gradient(135deg, #1b4d3e 0%, #27ae60 100%);
             color: white; 
-            padding: 4rem 1rem; 
+            padding: 3rem 1rem; 
             text-align: center; 
             border-bottom: 8px solid #f1c40f; 
+        }
+
+        /* LOGO STİLİ */
+        .site-logo {
+            width: 120px; /* Logonun büyüklüğünü buradan ayarlayabilirsin */
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2));
         }
 
         header h1 {
@@ -134,7 +142,7 @@
         /* ALT BİLGİ (FOOTER) */
         footer { 
             text-align: center; 
-            padding: 50 : px; 
+            padding: 40px 20px; 
             background: #1b4d3e; 
             color: white; 
             margin-top: 60px; 
@@ -146,6 +154,7 @@
 <body>
 
 <header>
+    <img src="logo.png" alt="Sığır Yetiştiriciliği Logo" class="site-logo">
     <h1>Sığır Yetiştiriciliği</h1>
     <p>Ziraat Mühendisliği Disipliniyle Bilimsel ve Teknik Yaklaşımlar</p>
 </header>
@@ -220,19 +229,16 @@
 </footer>
 
 <script>
-    // Modalı Açma Fonksiyonu
     function openModal() {
         document.getElementById("islahModal").style.display = "block";
-        document.body.style.overflow = "hidden"; // Sayfa kaymasını engeller
+        document.body.style.overflow = "hidden";
     }
 
-    // Modalı Kapatma Fonksiyonu
     function closeModal() {
         document.getElementById("islahModal").style.display = "none";
-        document.body.style.overflow = "auto"; // Sayfa kaymasını geri açar
+        document.body.style.overflow = "auto";
     }
 
-    // Modal dışına tıklandığında kapatma
     window.onclick = function(event) {
         var modal = document.getElementById("islahModal");
         if (event.target == modal) {
