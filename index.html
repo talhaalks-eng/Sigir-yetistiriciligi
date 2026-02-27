@@ -14,25 +14,25 @@
             color: #333; 
         }
 
-        /* HEADER - FULL ARKA PLAN FOTOĞRAFI */
+        /* HEADER - ARKA PLAN FOTOĞRAFI */
         header { 
             position: relative;
-            height: 55vh; /* Sayfanın yarısından fazlasını kaplar */
+            height: 50vh; 
             min-height: 350px;
-            /* Sığır sürüsü fotoğrafı */
-            background: url('https://images.unsplash.com/photo-1545468843-27966bc4f1ea?q=80&w=2000') no-repeat center center;
+            /* UZANTI .PNG OLARAK GÜNCELLENDİ */
+            background: url('sigir-surusu.png') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            background-color: #1b4d3e; 
         }
 
-        /* Fotoğrafın üzerine metni okutmak için koyu katman */
         .overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.45); 
+            background: rgba(0, 0, 0, 0.4); 
             z-index: 1;
         }
 
@@ -44,14 +44,14 @@
 
         header h1 {
             margin: 0;
-            font-size: 3.2rem;
+            font-size: 3rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 0px 4px 10px rgba(0,0,0,0.7);
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
         }
 
         header p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-top: 10px;
             font-weight: 300;
             opacity: 0.9;
@@ -65,18 +65,18 @@
             position: sticky; 
             top: 0; 
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav a { 
             color: white; 
             text-decoration: none; 
             margin: 0 15px; 
-            font-weight: bold; 
+            font-weight: 600; 
             transition: 0.3s;
         }
 
-        nav a:hover { color: #f1c40f; }
+        nav a:hover { color: #27ae60; }
 
         /* İÇERİK KONTEYNERI */
         .container { 
@@ -123,35 +123,32 @@
 
         .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
 
-        /* FOOTER - İSİM BURADA */
+        /* FOOTER - SADE VE PROFESYONEL */
         footer { 
             text-align: center; 
-            padding: 60px 20px; 
+            padding: 50px 20px; 
             background: #1b4d3e; 
-            color: white; 
+            color: #ecf0f1; 
             margin-top: 50px; 
         }
 
         .my-name {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #f1c40f; /* İsim sarı/altın tonunda vurgulandı */
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
             margin-bottom: 5px;
-            text-transform: uppercase;
         }
 
         .my-title {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-bottom: 25px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
         }
 
-        footer a { color: #f1c40f; text-decoration: none; border-bottom: 1px solid transparent; }
-        footer a:hover { border-bottom: 1px solid #f1c40f; }
+        footer a { color: #27ae60; text-decoration: none; }
 
         @media (max-width: 600px) {
             header h1 { font-size: 2rem; }
-            .my-name { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -192,13 +189,13 @@
     <p>Çukurova Üniversitesi Ziraat Fakültesi'nde edindiğim bilimsel temelleri, hayvancılık sektörünün sahadaki ihtiyaçlarıyla buluşturuyorum.</p>
 
     <h2 id="iletisim" class="section-title" style="margin-top: 50px;">İletişim</h2>
-    <p>📧 <strong>E-posta:</strong> <a href="mailto:talhaalks@gmail.com" style="color: #27ae60;">talhaalks@gmail.com</a></p>
+    <p>📧 <strong>E-posta:</strong> <a href="mailto:talhaalks@gmail.com">talhaalks@gmail.com</a></p>
 </div>
 
 <div id="islahModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 style="color: #1b4d3e; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">Islah ve Seleksiyon</h2>
+        <h2 style="color: #1b4d3e;">Islah ve Seleksiyon</h2>
         <p style="line-height: 1.6; margin-top: 15px;">
             Sürünüzün genetik geleceğini veriyle yönetiyoruz. Genetik ilerleme hızı hesaplamaları ve modern ıslah yöntemleri ile işletme kârlılığını maksimize ediyoruz.
         </p>
@@ -208,12 +205,7 @@
 <footer>
     <div class="my-name">Lütfi Talha Alkış</div>
     <div class="my-title">Ziraat Mühendisi Adayı | Çukurova Üniversitesi</div>
-    
-    <div style="margin-top: 20px;">
-        <p>📧 <a href="mailto:talhaalks@gmail.com">talhaalks@gmail.com</a></p>
-    </div>
-    
-    <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 - Tüm Hakları Saklıdır.</p>
+    <p style="font-size: 0.8rem; opacity: 0.4;">&copy; 2026 - Tüm Hakları Saklıdır.</p>
 </footer>
 
 <script>
