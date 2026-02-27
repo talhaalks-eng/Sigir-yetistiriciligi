@@ -58,10 +58,9 @@
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 700px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
-        .modal-body p { margin-bottom: 20px; }
         .modal-body strong { color: #1b4d3e; display: block; margin-top: 15px; font-size: 1.1rem; }
         .modal-body ul { list-style-type: none; padding-left: 0; margin-top: 10px; }
-        .modal-body li { padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
+        .modal-body li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -110,22 +109,26 @@
         <div class="card" onclick="openModal('modal-holstein')">
             <img src="holstein.jpg" alt="Holstein" onerror="this.src='https://via.placeholder.com/300x160?text=Holstein'">
             <h3>Holstein</h3>
-            <p>Sütçü ırkların dünyadaki lideri.</p>
+            <p>Dünyanın süt makinesi: Yüksek verim ve endüstriyel adaptasyon.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
         </div>
         <div class="card" onclick="openModal('modal-simmental')">
             <img src="simmental.jpg" alt="Simental" onerror="this.src='https://via.placeholder.com/300x160?text=Simental'">
             <h3>Simental</h3>
-            <p>Dayanıklı kombine verimli ırk.</p>
+            <p>Kombine güç: Hem et hem süt verimiyle çiftçinin dostu.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
         </div>
         <div class="card" onclick="openModal('modal-jersey')">
             <img src="jersey.jpg" alt="Jersey" onerror="this.src='https://via.placeholder.com/300x160?text=Jersey'">
             <h3>Jersey</h3>
-            <p>Sütü en yağlı butik sütçü ırk.</p>
+            <p>Küçük dev: Süt yağı ve proteini en yüksek butik ırk.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
         </div>
         <div class="card" onclick="openModal('modal-yerlikara')">
             <img src="yerlikara.jpg" alt="Yerli Kara" onerror="this.src='https://via.placeholder.com/300x160?text=Yerli+Kara'">
             <h3>Yerli Kara</h3>
-            <p>Anadolu'nun kadim yerli ırkı.</p>
+            <p>Kadim genetik: Anadolu'nun hastalıklara en dirençli mirası.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
         </div>
     </div>
 
@@ -191,7 +194,7 @@
         <div class="modal-body">
             <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
             <ul>
-                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine özel dengelenmiş rasyonlar.</li>
+                <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine (laktasyon, kuruda kalma vb.) özel dengelenmiş rasyonlar.</li>
                 <li><strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
                 <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.</li>
             </ul>
@@ -215,10 +218,71 @@
     </div>
 </div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Süt Verimi:</strong> 8.000 - 12.000 kg.</li><li><strong>Yağ Oranı:</strong> %3.5 - 3.7.</li></ul></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Kombine:</strong> Hem et hem süt verimi yüksektir.</li><li><strong>Dayanıklılık:</strong> Hastalıklara direnci yüksektir.</li></ul></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Süt Yağı:</strong> %5.0 - 6.0.</li><li><strong>Cüsse:</strong> Küçük yapılı, yüksek yem verimliliği.</li></ul></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Anadolu coğrafyasına tam uyum sağlamış, hastalıklara en dirençli yerli gen kaynağımızdır.</p></div></div>
+<div id="modal-holstein" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-holstein')">&times;</span>
+        <h2>🐄 Holstein (Siyah-Alaca): Süt Endüstrisinin Lideri</h2>
+        <hr>
+        <div class="modal-body">
+            <p>Kökeni Hollanda olan Holstein, modern süt işletmelerinin vazgeçilmezidir. Vücut yapısı iri, kemikleri sağlam ve meme yapısı makine sağımına en uygun ırktır.</p>
+            <ul>
+                <li><strong>🥛 Süt Verimi:</strong> Laktasyon başına 8.000 - 12.000 kg (İdeal şartlarda daha yüksektir).</li>
+                <li><strong>🧬 Kalite:</strong> %3.5 Yağ ve %3.2 Protein ortalamasına sahiptir.</li>
+                <li><strong>⚖️ Canlı Ağırlık:</strong> Ergin dişilerde 600 - 750 kg, boğalarda 1.000 kg üzerine çıkabilir.</li>
+                <li><strong>⚠️ Not:</strong> Yüksek enerji yoğunluklu rasyonlar ve yüksek konfor (ısı stresi yönetimi) ister.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-simmental" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-simmental')">&times;</span>
+        <h2>🐂 Simental (Fleckvieh): Çift Yönlü Güç</h2>
+        <hr>
+        <div class="modal-body">
+            <p>İsviçre kökenli bu ırk, hem et hem süt verimiyle bilinir (Kombine Verimli). Özellikle Türkiye gibi besiciliğin önemli olduğu ülkelerde çok tercih edilir.</p>
+            <ul>
+                <li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200 - 1.500 gram arasındadır. Karkas randımanı %55-60 civarıdır.</li>
+                <li><strong>🥛 Süt Verimi:</strong> 6.000 - 8.000 kg süt verimi ile sütçü ırkları aratmaz.</li>
+                <li><strong>🛡️ Avantaj:</strong> Hastalıklara karşı Holstein'dan daha dirençlidir, döl verimi yüksektir ve uzun ömürlüdür.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-jersey" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-jersey')">&times;</span>
+        <h2>🥛 Jersey: Kalitenin ve Zarifliğin Temsilcisi</h2>
+        <hr>
+        <div class="modal-body">
+            <p>Kanal Adaları kökenli olan Jersey, küçük cüsseli olmasına rağmen süt kalitesiyle devleşir. Özellikle peynir ve butik süt ürünleri üreticilerinin gözdesidir.</p>
+            <ul>
+                <li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ ve yüksek protein/kazein oranıyla sütü çok kıymetlidir.</li>
+                <li><strong>🍃 Yem Verimliliği:</strong> Vücut ağırlığına oranla en fazla süt üreten ve yemi en verimli kullanan ırktır.</li>
+                <li><strong>☀️ Adaptasyon:</strong> Sıcak iklimlere karşı Holstein ve Simental'den daha dayanıklıdır.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="modal-yerlikara" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-yerlikara')">&times;</span>
+        <h2>Anadolu Yerli Kara: Milli Genetik Mirasımız</h2>
+        <hr>
+        <div class="modal-body">
+            <p>Anadolu coğrafyasına binlerce yılda uyum sağlamış, "kanaatkar" olarak bilinen yerli sığır ırkımızdır. Islah çalışmaları için kritik bir genetik kaynaktır.</p>
+            <ul>
+                <li><strong>🦠 Direnç:</strong> Kan parazitlerine, yerel hastalıklara ve zorlu doğa şartlarına muazzam dirençlidir.</li>
+                <li><strong>📉 Verim:</strong> Süt verimi düşük (500 - 1.500 kg) olsa da kuru madde oranı ve yağ içeriği çok yüksektir.</li>
+                <li><strong>🐃 Cüsse:</strong> Küçük yapılı (250-300 kg), bu sayede enerji ihtiyacı çok düşüktür.</li>
+                <li><strong>🌳 Önem:</strong> Biyoçeşitlilik ve gelecekteki dirençli ırk ıslahları için paha biçilemez bir değerdir.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -251,7 +315,7 @@
         const p = parseFloat(document.getElementById('p-slider').value);
         const e = parseFloat(document.getElementById('e-slider').value);
         const res = document.getElementById('eng-result');
-        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 İdeal Rasyon!"; res.style.color = "#27ae60"; }
+        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 Mükemmel Rasyon!"; res.style.color = "#27ae60"; }
         else { res.innerText = "⚠️ Dengesiz Rasyon! Optimize edin."; res.style.color = "#e74c3c"; }
     }
 
@@ -268,15 +332,19 @@
         gameLoop();
     }
 
-    function handleMove(e) {
+    canvas.addEventListener('mousemove', (e) => {
         if (!arcActive) return;
         const rect = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        cowX = (clientX - rect.left) * (canvas.width / rect.width) - 25;
+        cowX = (e.clientX - rect.left) * (canvas.width / rect.width) - 25;
         if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
-    }
-    canvas.addEventListener('mousemove', handleMove);
-    canvas.addEventListener('touchmove', handleMove);
+    });
+
+    canvas.addEventListener('touchmove', (e) => {
+        if (!arcActive) return;
+        const rect = canvas.getBoundingClientRect();
+        cowX = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width) - 25;
+        if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
+    });
 
     function gameLoop() {
         if(!arcActive) return;
