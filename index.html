@@ -8,27 +8,27 @@
         /* GENEL STİL AYARLARI */
         html { scroll-behavior: smooth; }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             margin: 0; padding: 0;
-            background-color: #f4fbf7; 
+            background-color: #f8faf9; 
             color: #2c3e50; 
+            line-height: 1.6;
         }
 
-        /* ÜST BAŞLIK (HEADER) */
+        /* ÜST BAŞLIK (HEADER) - BEYAZ TEMA */
         header { 
-            background: linear-gradient(135deg, #1b4d3e 0%, #27ae60 100%);
-            color: white; 
-            padding: 3rem 1rem; 
+            background: #ffffff;
+            color: #1b4d3e; 
+            padding: 4rem 1rem; 
             text-align: center; 
-            border-bottom: 8px solid #f1c40f; 
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        /* LOGO STİLİ */
         .site-logo {
-            width: 120px; /* Logonun büyüklüğünü buradan ayarlayabilirsin */
+            width: 100px;
             height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2));
+            margin-bottom: 15px;
+            /* Logo yoksa burası boş görünebilir */
         }
 
         header h1 {
@@ -36,12 +36,12 @@
             font-size: 2.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #1b4d3e;
         }
 
         header p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            color: #666;
             margin-top: 10px;
             font-style: italic;
         }
@@ -54,14 +54,16 @@
             position: sticky; 
             top: 0; 
             z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         nav a { 
             color: white; 
             text-decoration: none; 
             margin: 0 20px; 
-            font-weight: bold; 
+            font-weight: 600; 
             transition: 0.3s;
+            font-size: 0.95rem;
         }
 
         nav a:hover { color: #f1c40f; }
@@ -70,10 +72,10 @@
         .container { 
             max-width: 1100px; 
             margin: 40px auto; 
-            padding: 30px; 
+            padding: 40px; 
             background: white; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
         }
 
         .section-title { 
@@ -81,6 +83,7 @@
             border-left: 6px solid #27ae60; 
             padding-left: 20px; 
             margin-bottom: 30px;
+            font-size: 1.8rem;
         }
 
         .grid { 
@@ -91,72 +94,91 @@
 
         .card { 
             border: 1px solid #eee; 
-            padding: 25px; 
-            border-radius: 15px; 
-            border-top: 4px solid #27ae60;
-            transition: 0.3s ease;
+            padding: 30px; 
+            border-radius: 12px; 
+            border-top: 5px solid #27ae60;
+            transition: all 0.3s ease;
+            background: #fff;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
         }
 
-        /* MODAL (AÇILIR PENCERE) STİLLERİ */
+        .card h3 { color: #1b4d3e; margin-top: 0; }
+
+        /* MODAL STİLLERİ */
         .modal {
             display: none; 
             position: fixed; 
             z-index: 1000; 
             left: 0; top: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); 
-            backdrop-filter: blur(5px);
+            background-color: rgba(0,0,0,0.7); 
+            backdrop-filter: blur(8px);
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: #ffffff;
             margin: 5% auto; 
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
-            width: 80%;
+            width: 85%;
             max-width: 700px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: fadeIn 0.4s;
+            position: relative;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
         }
 
         .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            position: absolute;
+            right: 25px;
+            top: 20px;
+            font-size: 32px;
             font-weight: bold;
+            color: #999;
             cursor: pointer;
+            transition: 0.2s;
         }
 
         .close:hover { color: #e74c3c; }
 
-        @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(-30px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-
-        /* ALT BİLGİ (FOOTER) */
+        /* FOOTER */
         footer { 
             text-align: center; 
-            padding: 40px 20px; 
+            padding: 60px 20px; 
             background: #1b4d3e; 
             color: white; 
-            margin-top: 60px; 
+            margin-top: 80px; 
         }
 
-        footer a { color: #f1c40f; text-decoration: none; }
+        footer a { color: #f1c40f; text-decoration: none; font-weight: bold; }
+        
+        hr.sep {
+            width: 60px;
+            border: 2px solid #f1c40f;
+            margin: 25px auto;
+        }
+
+        /* MOBİL UYUM */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .container { margin: 20px; padding: 20px; }
+            nav a { margin: 0 10px; font-size: 0.85rem; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Sığır Yetiştiriciliği Logo" class="site-logo">
-    <h1>Sığır Yetiştiriciliği</h1>
-    <p>Ziraat Mühendisliği Disipliniyle Bilimsel ve Teknik Yaklaşımlar</p>
+    <img src="logo.png" alt="" class="site-logo" onerror="this.style.display='none'">
+    <h1>Lütfi Talha Alkış</h1>
+    <p>Ziraat Mühendisliği Disipliniyle Sığır Yetiştiriciliği Çözümleri</p>
 </header>
 
 <nav>
@@ -170,7 +192,8 @@
     <div class="grid">
         <div class="card" onclick="openModal()" style="cursor: pointer; border-top-color: #f1c40f;">
             <h3>🐄 Islah & Seleksiyon</h3>
-            <p>Sürü projeksiyonu, genetik ilerleme hızı hesaplamaları ve modern ıslah yöntemleri. <br><br><strong>(Detaylar için tıklayın)</strong></p>
+            <p>Sürü projeksiyonu, genetik ilerleme hızı hesaplamaları ve modern ıslah yöntemleri.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.9rem;">Detayları Gör →</span>
         </div>
 
         <div class="card">
@@ -184,67 +207,67 @@
         </div>
     </div>
 
-    <h2 id="akademik" class="section-title" style="margin-top: 50px;">Akademik Vizyon</h2>
-    <p>Çukurova Üniversitesi Ziraat Fakültesi çatısı altında edindiğim teorik bilgileri, sektörün pratik ihtiyaçlarıyla birleştirerek sürdürülebilir hayvancılık çözümleri üretiyorum.</p>
+    <h2 id="akademik" class="section-title" style="margin-top: 60px;">Akademik Vizyon</h2>
+    <p>Çukurova Üniversitesi Ziraat Fakültesi çatısı altında edindiğim teorik bilgileri, sektörün pratik ihtiyaçlarıyla birleştirerek sürdürülebilir hayvancılık çözümleri üretiyorum. Amacım, veriye dayalı yönetim sistemlerini işletme ölçeğine indirgemektir.</p>
 
-    <h2 id="iletisim" class="section-title" style="margin-top: 50px;">İletişim</h2>
-    <p>Teknik danışmanlık ve akademik iş birlikleri için ulaşabilirsiniz:</p>
-    <p>📧 <strong>E-posta:</strong> <a href="mailto:talhaalks@gmail.com" style="color: #27ae60;">talhaalks@gmail.com</a></p>
+    <h2 id="iletisim" class="section-title" style="margin-top: 60px;">İletişim</h2>
+    <div style="background: #f9f9f9; padding: 25px; border-radius: 10px;">
+        <p>Teknik danışmanlık ve akademik iş birlikleri için ulaşabilirsiniz:</p>
+        <p>📧 <strong>E-posta:</strong> <a href="mailto:talhaalks@gmail.com" style="color: #27ae60;">talhaalks@gmail.com</a></p>
+    </div>
 </div>
 
 <div id="islahModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 style="color: #1b4d3e; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">
-            Islah ve Seleksiyon: Sürünüzün Geleceğini İnşa Ediyoruz
+        <h2 style="color: #1b4d3e; border-bottom: 3px solid #27ae60; padding-bottom: 15px; margin-top: 0;">
+            Islah ve Seleksiyon
         </h2>
-        <div style="line-height: 1.7; color: #333; margin-top: 20px;">
-            <p>Hayvancılıkta sürdürülebilir kârlılık, sadece bugünü yönetmek değil, yarının genetiğini bugünden tasarlamaktır.</p>
+        <div style="line-height: 1.8; color: #444; margin-top: 20px;">
+            <p>Hayvancılıkta kârlılık, yarının genetiğini bugünden tasarlamaktır.</p>
             
-            <ul style="list-style-type: none; padding: 0;">
-                <li style="margin-bottom: 15px;">
-                    <strong>📊 Sürü Projeksiyonu:</strong> Mevcut hayvan varlığınızın gelecekteki demografik yapısını, yenileme oranlarını ve büyüme potansiyelini bilimsel verilerle öngörüyoruz.
-                </li>
-                <li style="margin-bottom: 15px;">
-                    <strong>📈 Genetik İlerleme Hızı:</strong> Bir sonraki neslin, mevcut nesilden ne kadar daha verimli (süt, et, döl verimi vb.) olacağını hesaplayarak, genetik kazanımı maksimum seviyeye çıkarıyoruz.
-                </li>
-                <li style="margin-bottom: 15px;">
-                    <strong>🧬 Modern Islah Yöntemleri:</strong> Geleneksel yaklaşımları, genomik seleksiyon ve veriye dayalı eşleştirme programları gibi ileri teknolojilerle birleştirerek işletmenize en uygun damızlık seçimlerini yapıyoruz.
-                </li>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 12px;"><strong>Sürü Projeksiyonu:</strong> Gelecekteki hayvan varlığı ve büyüme potansiyeli analizi.</li>
+                <li style="margin-bottom: 12px;"><strong>Genetik İlerleme:</strong> Nesiller arası verim artışının matematiksel hesaplanması.</li>
+                <li style="margin-bottom: 12px;"><strong>Modern Yöntemler:</strong> Genomik seleksiyon ve veriye dayalı damızlık seçimi.</li>
             </ul>
 
-            <div style="background: #f4fbf7; padding: 15px; border-radius: 10px; border-left: 5px solid #f1c40f; margin-top: 20px; font-style: italic;">
-                <strong>Vizyonumuz:</strong> Doğru veriyi, doğru genetikle buluşturarak Türkiye'deki sığır yetiştiriciliğini dünya standartlarında bir verimliliğe ulaştırmak.
+            <div style="background: #fff9e6; padding: 15px; border-radius: 8px; border-left: 5px solid #f1c40f; margin-top: 20px;">
+                <strong>Vizyon:</strong> Doğru veriyi doğru genetikle buluşturarak uluslararası standartlarda verimlilik sağlamak.
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <p style="font-size: 1.4rem; font-weight: bold; margin-bottom: 10px;">Lütfi Talha Alkış</p>
-    <p>Ziraat Mühendisi Adayı | Çukurova Üniversitesi</p>
+    <p style="font-size: 1.5rem; font-weight: bold; margin-bottom: 5px;">Lütfi Talha Alkış</p>
+    <p style="opacity: 0.8;">Ziraat Mühendisi Adayı | Çukurova Üniversitesi</p>
+    <hr class="sep">
     <p>📧 <a href="mailto:talhaalks@gmail.com">talhaalks@gmail.com</a></p>
-    <hr style="width: 50px; border: 1px solid #f1c40f; margin: 20px auto;">
-    <p>&copy; 2026 - Tüm Hakları Saklıdır.</p>
+    <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">&copy; 2026 - Tüm Hakları Saklıdır.</p>
 </footer>
 
 <script>
+    const modal = document.getElementById("islahModal");
+
     function openModal() {
-        document.getElementById("islahModal").style.display = "block";
-        document.body.style.overflow = "hidden";
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Kaydırmayı engelle
     }
 
     function closeModal() {
-        document.getElementById("islahModal").style.display = "none";
-        document.body.style.overflow = "auto";
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Kaydırmayı aç
     }
 
+    // Dışarı tıklandığında veya ESC tuşuna basıldığında kapat
     window.onclick = function(event) {
-        var modal = document.getElementById("islahModal");
-        if (event.target == modal) {
-            closeModal();
-        }
+        if (event.target == modal) closeModal();
     }
+
+    window.onkeydown = function(event) {
+        if (event.key === "Escape") closeModal();
+    };
 </script>
 
 </body>
