@@ -26,7 +26,7 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
         .section-title { color: #1b4d3e; border-left: 5px solid #27ae60; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.8rem; }
 
-        /* ANA FOTOĞRAF ALANI (BAŞLIKSIZ) */
+        /* ANA FOTOĞRAF */
         .main-photo-box { background: white; border-radius: 0 0 15px 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; margin-bottom: 40px; }
         .main-photo-box img { width: 100%; height: auto; max-height: 650px; object-fit: cover; display: block; }
         .photo-caption { padding: 15px; background: #fff; font-style: italic; color: #555; border-top: 1px solid #eee; font-size: 0.9rem; }
@@ -51,12 +51,14 @@
         .bar-bg { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 15px; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn-action:hover { background: #219150; transform: scale(1.05); }
 
-        /* MODAL */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
-        .modal-content { background: white; margin: 5% auto; padding: 30px; border-radius: 15px; width: 85%; max-width: 600px; position: relative; text-align: left; }
+        /* MODAL SİSTEMİ */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+        .modal-content { background: white; margin: 5% auto; padding: 30px; border-radius: 15px; width: 85%; max-width: 650px; position: relative; text-align: left; max-height: 80vh; overflow-y: auto; }
         .close { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; color: #aaa; }
+        .modal-content ul { padding-left: 20px; margin-top: 15px; }
+        .modal-content li { margin-bottom: 10px; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -73,20 +75,36 @@
 </header>
 
 <nav>
-    <a href="#irklar">Büyükbaş Irklar</a>
-    <a href="#game-center">Rasyon Analizi</a>
+    <a href="#uzmanlik">Uzmanlık</a>
+    <a href="#irklar">Irklar</a>
+    <a href="#game-center">Simülasyon</a>
     <a href="mailto:talhaalks@gmail.com">İletişim</a>
 </nav>
 
 <div class="container">
-    
     <div class="main-photo-box">
         <img src="saha.jpg" alt="Lütfi Talha Alkış Saha İncelemesi" onerror="this.src='https://via.placeholder.com/1000x600?text=saha.jpg+Bulunamadi'">
-        <div class="photo-caption">Lütfi Talha Alkış - Çukurova Üniversitesi Ziraat Fakültesi / Saha Çalışmaları</div>
+        <div class="photo-caption">Lütfi Talha Alkış - Çukurova Üniversitesi Ziraat Fakültesi Saha İncelemesi</div>
+    </div>
+
+    <h2 id="uzmanlik" class="section-title">Teknik Uzmanlık Alanları</h2>
+    <div class="grid">
+        <div class="card" onclick="openModal('modal-islah')">
+            <h3>🐄 Islah ve Seleksiyon</h3>
+            <p>Genetik ilerleme ve sürü kalitesini artırma stratejileri.</p>
+        </div>
+        <div class="card" onclick="openModal('modal-besleme')">
+            <h3>🌾 Hayvan Besleme</h3>
+            <p>Rasyon optimizasyonu ve performans yönetimi.</p>
+        </div>
+        <div class="card" onclick="openModal('modal-barinak')">
+            <h3>🏗️ Barınak Yönetimi</h3>
+            <p>Hayvan refahı ve teknolojik barınak tasarımı.</p>
+        </div>
     </div>
 
     <h2 id="irklar" class="section-title">Büyükbaş Irk Rehberi</h2>
-    <div class="grid">
+    <div class="grid" style="margin-top: 20px;">
         <div class="card" onclick="openModal('modal-holstein')">
             <img src="holstein.jpg" alt="Holstein">
             <h3>Holstein</h3>
@@ -95,17 +113,17 @@
         <div class="card" onclick="openModal('modal-simmental')">
             <img src="simmental.jpg" alt="Simental">
             <h3>Simental</h3>
-            <p>Dayanıklı kombine ırk.</p>
+            <p>Kombine verimli ırk.</p>
         </div>
         <div class="card" onclick="openModal('modal-jersey')">
             <img src="jersey.jpg" alt="Jersey">
             <h3>Jersey</h3>
-            <p>Yağlı süt, butik üretim.</p>
+            <p>Yağlı süt verimi.</p>
         </div>
         <div class="card" onclick="openModal('modal-yerlikara')">
             <img src="yerlikara.jpg" alt="Yerli Kara">
             <h3>Yerli Kara</h3>
-            <p>Dirençli milli gen kaynağı.</p>
+            <p>Milli gen kaynağı.</p>
         </div>
     </div>
 
@@ -135,28 +153,31 @@
                 <div class="bar-wrap">Protein (🌾)<div class="bar-bg"><div id="p-fill" class="bar-fill" style="background:#27ae60;"></div></div></div>
                 <div class="bar-wrap">Enerji (🌽)<div class="bar-bg"><div id="e-fill" class="bar-fill" style="background:#f1c40f;"></div></div></div>
             </div>
-            <p id="arcade-msg" style="font-weight:bold; color:#1b4d3e; margin-top:10px;"></p>
-            <button class="btn-action" id="restart-btn" style="display:none;" onclick="startArcade()">Yeniden Başlat</button>
+            <button class="btn-action" id="restart-btn" style="display:none;" onclick="startArcade()">Tekrar Başlat</button>
         </div>
     </div>
 </div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>Holstein</h2><hr><p>Dünya süt üretiminin %80'ini karşılayan, yüksek verimli sütçü ırk.</p></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>Simental</h2><hr><p>Hem et hem süt verimiyle öne çıkan, sağlam yapılı kombine ırk.</p></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>Jersey</h2><hr><p>Sütündeki yüksek yağ oranıyla bilinen, küçük yapılı ve kanaatkar ırk.</p></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Yerli Kara</h2><hr><p>Hastalıklara en dirençli, Anadolu'ya özgü milli gen kaynağımız.</p></div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr><ul><li><strong>Genomik Testler:</strong> Buzağıda gelecek verim tahmini.</li><li><strong>Soy Kütüğü:</strong> Akrabalı yetiştirmeyi önleyen dijital kayıt sistemleri.</li><li><strong>Seleksiyon:</strong> Sürü yenileme için en iyi genetik materyalin seçimi.</li></ul></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme</h2><hr><ul><li><strong>TMR Yönetimi:</strong> Toplam karışım rasyonunda partikül kontrolü.</li><li><strong>Rasyon Optimizasyonu:</strong> Kaba/kesif yem dengesi ile verim artışı.</li><li><strong>Metabolik Sağlık:</strong> Ketozis ve asidoz gibi hastalıkların önlenmesi.</li></ul></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr><ul><li><strong>Isı Stresi:</strong> Fan/fıskiye sistemleri ile yaz konforu.</li><li><strong>Havalandırma:</strong> Doğal ve mekanik hava kalitesi kontrolü.</li><li><strong>Refah:</strong> Hayvanın doğal davranışını sergileyebileceği alanlar.</li></ul></div></div>
+
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Süt Verimi:</strong> 8.000 - 12.000 kg.</li><li><strong>Yağ Oranı:</strong> %3.6.</li><li><strong>Not:</strong> Yüksek enerji yoğunluklu rasyon gerektirir.</li></ul></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Kombine:</strong> Hem et hem süt verimi yüksektir.</li><li><strong>Dayanıklılık:</strong> Hastalıklara ve çevreye adaptasyonu yüksektir.</li></ul></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Süt Yağı:</strong> %5.0 - 6.0 (En yüksek).</li><li><strong>Cüsse:</strong> Küçük yapılıdır, az yemle çok kalite sunar.</li></ul></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><ul><li><strong>Direnç:</strong> Yerel hastalıklara en dirençli gen kaynağımızdır.</li><li><strong>Mizaç:</strong> Kanaatkardır, zor mera şartlarında hayatta kalır.</li></ul></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
-    <div style="margin-top: 20px;">
+    <div style="margin-top: 15px;">
         <a href="mailto:talhaalks@gmail.com" class="btn-action">📧 talhaalks@gmail.com</a>
     </div>
-    <p style="margin-top: 25px; font-size: 0.8rem; opacity: 0.7;">Dijital Ahır &copy; 2026</p>
+    <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">Dijital Ahır &copy; 2026</p>
 </footer>
 
 <script>
-    function openModal(id) { document.getElementById(id).style.display = "block"; }
-    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
 
     function switchMode(mode) {
         document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
@@ -191,7 +212,6 @@
     function startArcade() {
         arcActive = true; pScore = 0; eScore = 0; items = [];
         document.getElementById('restart-btn').style.display = "none";
-        document.getElementById('arcade-msg').innerText = "Rasyonu Toplayın!";
         gameLoop();
     }
 
@@ -228,7 +248,6 @@
         document.getElementById('e-fill').style.width = eScore + "%";
 
         if(pScore >= 100 && eScore >= 100) {
-            document.getElementById('arcade-msg').innerText = "🏆 Rasyon Hazır!";
             document.getElementById('restart-btn').style.display = "inline-block";
             arcActive = false;
         }
