@@ -39,7 +39,15 @@
         .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
         .personal-photo img { width: 100%; height: auto; display: block; }
         .vision-text { max-width: 750px; margin: 30px auto 0; font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; position: relative; padding: 0 30px; }
-        .vision-text::before { content: '"'; font-size: 4rem; color: #27ae60; position: absolute; left: 0; top: -30px; opacity: 0.3; }
+        .signature { 
+            font-family: 'Brush Script MT', 'Cursive', sans-serif; 
+            font-size: 2.2rem; 
+            color: #1b4d3e; 
+            margin-top: 15px; 
+            display: block;
+            text-align: right;
+            padding-right: 20px;
+        }
 
         /* SİMÜLASYON */
         #game-center { background: #ffffff; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0; }
@@ -54,7 +62,7 @@
         .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; }
         .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
-        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
         /* MODAL SİSTEMİ */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
@@ -112,25 +120,25 @@
             <img src="holstein.jpg" alt="Holstein" onerror="this.src='https://via.placeholder.com/300x160?text=Holstein'">
             <h3>Holstein</h3>
             <p>Dünyanın süt makinesi: Yüksek verim ve endüstriyel adaptasyon.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
         <div class="card" onclick="openModal('modal-simmental')">
             <img src="simmental.jpg" alt="Simental" onerror="this.src='https://via.placeholder.com/300x160?text=Simental'">
             <h3>Simental</h3>
             <p>Kombine güç: Hem et hem süt verimiyle çiftçinin dostu.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
         <div class="card" onclick="openModal('modal-jersey')">
             <img src="jersey.jpg" alt="Jersey" onerror="this.src='https://via.placeholder.com/300x160?text=Jersey'">
             <h3>Jersey</h3>
             <p>Küçük dev: Süt yağı ve proteini en yüksek butik ırk.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
         <div class="card" onclick="openModal('modal-yerlikara')">
             <img src="yerlikara.jpg" alt="Yerli Kara" onerror="this.src='https://via.placeholder.com/300x160?text=Yerli+Kara'">
             <h3>Yerli Kara</h3>
             <p>Anadolu'nun kadim yerli ırkı: Hastalıklara en dirençli miras.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Irk Detayları →</span>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Teknik Detaylar →</span>
         </div>
     </div>
 
@@ -170,6 +178,7 @@
         </div>
         <div class="vision-text">
             "Bir Ziraat Mühendisi adayı olarak vizyonum, ziraati sadece tarladan ve çiftlikten ibaret görmeyip, gelişen dünyanın en büyük gücü olan dijitalliği bu alana entegre etmektir. Üretimin her aşamasında verimliliği artırmak ve modern çözümler sunmak adına kendimi hem teknik hem de teknolojik her yönde geliştirmeye devam ediyorum."
+            <span class="signature">Lütfi Talha Alkış</span>
         </div>
     </div>
 
@@ -182,8 +191,8 @@
         <hr>
         <div class="modal-body">
             <ul>
-                <li><strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik karakterlerin nesilden nesile aktarılması.</li>
-                <li><strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.</li>
+                <li><strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi karakterlerin nesilden nesile aktarılması.</li>
+                <li><strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa seçimleriyle kalıtsal kusurların elimine edilmesi.</li>
                 <li><strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında damızlıkların bilimsel belirlenmesi.</li>
             </ul>
         </div>
@@ -199,7 +208,7 @@
             <ul>
                 <li><strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, ağırlığına ve verim dönemine özel dengelenmiş besleme.</li>
                 <li><strong>📈 Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.</li>
-                <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz ve ketozis gibi besleme kaynaklı hastalıkların önleyici protokollerle engellenmesi.</li>
+                <li><strong>🏥 Metabolik Sağlık:</strong> Asidoz ve ketozis gibi besleme kaynaklı hastalıkların önlenmesi.</li>
             </ul>
         </div>
     </div>
@@ -212,8 +221,8 @@
         <hr>
         <div class="modal-body">
             <ul>
-                <li><strong>🛡️ Hayvan Refahı:</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.</li>
-                <li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen havalandırma ve fotoperiyodizme uygun aydınlatma.</li>
+                <li><strong>🛡️ Hayvan Refahı:</strong> Temiz hava, uygun sıcaklık ve kuru yataklık ile stres faktörlerinin ortadan kaldırılması.</li>
+                <li><strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen havalandırma ve uygun aydınlatma yönetimi.</li>
                 <li><strong>🧼 Hijyen:</strong> Hastalık yayılımını engelleyen biyotasarım ve periyodik dezenfeksiyon süreçleri.</li>
             </ul>
         </div>
@@ -227,10 +236,11 @@
         <hr>
         <div class="modal-body">
             <ul>
+                <li><strong>🌍 Köken:</strong> Hollanda ve Kuzey Almanya.</li>
                 <li><strong>🥛 Süt Verimi:</strong> Laktasyon başına ortalama 8.000 - 12.000 kg.</li>
-                <li><strong>🧬 Kalite:</strong> %3.5 - 3.7 Yağ ve %3.2 Protein ortalaması.</li>
+                <li><strong>🧬 Kalite:</strong> %3.5 - 3.7 Yağ ve %3.2 Protein.</li>
                 <li><strong>⚖️ Canlı Ağırlık:</strong> Ergin dişilerde 600 - 750 kg.</li>
-                <li><strong>⚠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve yüksek konfor (ısı stresi yönetimi) gerektirir.</li>
+                <li><strong>🛠️ Not:</strong> Yüksek enerji yoğunluklu rasyon ve ısı stresi yönetimi şarttır.</li>
             </ul>
         </div>
     </div>
@@ -243,9 +253,10 @@
         <hr>
         <div class="modal-body">
             <ul>
-                <li><strong>🥩 Et Verimi:</strong> Günlük canlı ağırlık artışı 1.200 - 1.500 gram. Karkas randımanı %55-60.</li>
+                <li><strong>🌍 Köken:</strong> İsviçre (Simme Vadisi).</li>
+                <li><strong>🥩 Et Verimi:</strong> Canlı ağırlık artışı 1.200 - 1.500 gram/gün. Randıman %55-60.</li>
                 <li><strong>🥛 Süt Verimi:</strong> Kombine verimle 6.000 - 8.000 kg süt.</li>
-                <li><strong>🛡️ Avantaj:</strong> Holstein'a göre hastalıklara daha dirençli ve uzun ömürlüdür.</li>
+                <li><strong>🛡️ Avantaj:</strong> Sağlam ayak yapısı, döl verimi ve uzun ömürlülük.</li>
             </ul>
         </div>
     </div>
@@ -254,13 +265,14 @@
 <div id="modal-jersey" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modal-jersey')">&times;</span>
-        <h2>🥛 Jersey: Kalitenin ve Zarifliğin Temsilcisi</h2>
+        <h2>🥛 Jersey: Kalitenin Temsilcisi</h2>
         <hr>
         <div class="modal-body">
             <ul>
-                <li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranıyla peynir üretimi için altın standarttır.</li>
-                <li><strong>🍃 Yem Verimliliği:</strong> Vücut ağırlığına oranla en fazla süt üreten ve yemi en verimli kullanan ırktır.</li>
-                <li><strong>☀️ Adaptasyon:</strong> Sıcak iklim şartlarına karşı oldukça dayanıklıdır.</li>
+                <li><strong>🌍 Köken:</strong> İngiltere (Jersey Adası).</li>
+                <li><strong>💎 Süt Kalitesi:</strong> %5.0 - 6.0 Yağ oranıyla peynir üretimi için altın standart.</li>
+                <li><strong>🍃 Yem Verimliliği:</strong> Vücut ağırlığına oranla en yüksek süt verimi.</li>
+                <li><strong>☀️ Adaptasyon:</strong> Sıcak iklimlere karşı oldukça dayanıklıdır.</li>
             </ul>
         </div>
     </div>
@@ -273,9 +285,10 @@
         <hr>
         <div class="modal-body">
             <ul>
-                <li><strong>🦠 Direnç:</strong> Kan parazitlerine ve zorlu yerel doğa şartlarına muazzam dirençlidir.</li>
-                <li><strong>📉 Verim:</strong> Süt miktarı düşük olsa da kuru madde oranı ve yağ içeriği yüksektir.</li>
-                <li><strong>🌳 Önem:</strong> Gelecekteki dirençli ırk ıslah çalışmaları için paha biçilemez bir genetik değerdir.</li>
+                <li><strong>🌍 Köken:</strong> Türkiye (Orta Anadolu Bölgesi).</li>
+                <li><strong>🦠 Direnç:</strong> Yerel hastalıklara ve zor doğa şartlarına muazzam direnç.</li>
+                <li><strong>📉 Verim:</strong> Miktar düşük olsa da kuru madde oranı çok yüksektir.</li>
+                <li><strong>🌳 Önem:</strong> Gelecekteki dirençli ıslah çalışmaları için paha biçilemez gen kaynağı.</li>
             </ul>
         </div>
     </div>
