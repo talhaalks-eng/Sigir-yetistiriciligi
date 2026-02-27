@@ -32,10 +32,9 @@
         .card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 12px; border-top: 6px solid #27ae60; transition: 0.4s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
-        .card p { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
 
-        /* KÜÇÜLTÜLMÜŞ KİŞİSEL FOTOĞRAF */
+        /* KİŞİSEL FOTOĞRAF */
         .personal-photo-wrapper { text-align: center; margin: 60px 0; }
         .personal-photo { 
             display: inline-block; width: 100%; max-width: 500px; 
@@ -52,22 +51,18 @@
         .game-content { display: none; }
         .game-content.active { display: block; animation: fadeIn 0.4s ease; }
 
-        .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 400px; border: 1px solid #eee; }
-        input[type=range] { width: 100%; accent-color: #27ae60; cursor: pointer; }
-
         #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; display: block; margin: 0 auto; }
         .game-bars { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
         .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; }
         .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
-        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; text-decoration: none; display: inline-block; transition: 0.3s; }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 700px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
         .modal-body strong { color: #1b4d3e; display: block; margin-top: 15px; }
-        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -178,12 +173,10 @@
         <span class="close" onclick="closeModal('modal-islah')">&times;</span>
         <h2>🐄 Islah ve Seleksiyon: Geleceğin Genetiğini İnşa Etmek</h2>
         <hr>
-        <div class="modal-body">
-            <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
-            <strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.
-            <strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.
-            <strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.
-        </div>
+        <p>Hayvancılıkta karlılığın temel taşı, sürü kalitesini sistematik olarak artırmaktır. Islah çalışmaları, sadece "en iyi" olanı seçmek değil, işletme hedeflerine uygun genetik haritayı oluşturmaktır.</p>
+        <strong>🧬 Genetik İlerleme:</strong> Süt verimi, döl verimi ve hastalıklara direnç gibi ekonomik önemi yüksek karakterlerin nesilden nesile aktarılması.
+        <strong>🎯 Doğru Eşleştirme:</strong> Sürüdeki zayıf yönleri iyileştirecek boğa veya koç seçimleriyle kalıtsal kusurların elimine edilmesi.
+        <strong>📊 Veri Odaklı Seçim:</strong> Pedigri kayıtları ve genomik testler ışığında, sürüde kalacak damızlıkların bilimsel yöntemlerle belirlenmesi.
     </div>
 </div>
 
@@ -192,12 +185,10 @@
         <span class="close" onclick="closeModal('modal-besleme')">&times;</span>
         <h2>🌾 Hayvan Besleme: Potansiyeli Performansa Dönüştürmek</h2>
         <hr>
-        <div class="modal-body">
-            <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
-            <strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine (laktasyon, kuruda kalma vb.) özel dengelenmiş rasyonlar.
-            <strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.
-            <strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.
-        </div>
+        <p>En iyi genetik bile, doğru besleme stratejisi olmadan tam performans gösteremez. Besleme, yalnızca karın doyurmak değil, hayvanın fizyolojik ihtiyaçlarını en ekonomik şekilde karşılamaktır.</p>
+        <strong>🍲 Rasyon Optimizasyonu:</strong> Hayvanın yaşına, canlı ağırlığına ve verim dönemine özel dengelenmiş rasyonlar.
+        <strong>📈 Yem Kalitesi ve Verimlilik:</strong> Kaba ve kesif yemlerin besin değerlerinin korunması ve yemden yararlanma oranının (FCR) maksimize edilmesi.
+        <strong>🏥 Metabolik Sağlık:</strong> Asidoz, ketozis gibi besleme kaynaklı hastalıkların önlenmesi için koruyucu besleme protokolleri.
     </div>
 </div>
 
@@ -206,22 +197,23 @@
         <span class="close" onclick="closeModal('modal-barinak')">&times;</span>
         <h2>🏗️ Barınak Yönetimi: Konfor ve Refahın Adresi</h2>
         <hr>
-        <div class="modal-body">
-            <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
-            <strong>🛡️ Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.
-            <strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.
-            <strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.
-            <p style="margin-top:20px; font-style:italic;">Özetle: Güçlü bir genetik (Islah), doğru bir yakıt (Besleme) ve huzurlu bir ortam (Barınak) bir araya geldiğinde hayvancılık karlı bir yatırıma dönüşür.</p>
-        </div>
+        <p>Modern barınaklar, hayvanların stres seviyesini minimize ederek biyolojik sınırlarını zorlamadan verim vermelerini sağlayan yaşam alanlarıdır.</p>
+        <strong>🛡️ Hayvan Refahı (Animal Welfare):</strong> Temiz hava, uygun sıcaklık ve kuru yataklık alanları ile stres faktörlerinin ortadan kaldırılması.
+        <strong>🌬️ Havalandırma ve Aydınlatma:</strong> Amonyak birikimini önleyen etkin havalandırma sistemleri ve fotoperiyodizme uygun aydınlatma yönetimi.
+        <strong>🧼 Biyogüvenlik ve Hijyen:</strong> Hastalıkların sürüye girişini ve yayılımını engelleyen altyapı tasarımı ve periyodik dezenfeksiyon süreçleri.
     </div>
 </div>
 
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Süt Verimi:</strong> 8.000 - 12.000 kg.</li><li><strong>Yağ Oranı:</strong> %3.5 - 3.7.</li></ul></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Süt Verimi:</strong> 6.000 - 8.000 kg.</li><li><strong>Avantaj:</strong> Hem et hem süt verimi yüksektir.</li></ul></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Süt Yağı:</strong> %5.0 - 6.0.</li><li><strong>Özellik:</strong> Küçük cüsse, yüksek yem verimliliği.</li></ul></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><ul><li><strong>Direnç:</strong> Hastalık ve parazitlere en dirençli milli ırkımızdır.</li></ul></div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg süt.</li><li><strong>Yağ Oranı:</strong> %3.5 - 3.7.</li></ul></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li><strong>Avantaj:</strong> Hem et hem süt verimi yüksektir.</li><li><strong>Dayanıklılık:</strong> Hastalıklara direnci yüksektir.</li></ul></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li><strong>Yağ:</strong> %5.0 - 6.0.</li><li><strong>Cüsse:</strong> Küçük yapılı, yüksek yem verimliliği.</li></ul></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Hastalıklara karşı en dirençli yerli gen kaynağımızdır.</p></div></div>
 
-<footer><strong>Lütfi Talha Alkış</strong><br>Dijital Ahır | Çukurova Üniversitesi &copy; 2026</footer>
+<footer>
+    <strong>Lütfi Talha Alkış</strong><br>
+    <a href="mailto:talhaalks@gmail.com" style="color:#27ae60; text-decoration:none; font-weight:bold;">📧 talhaalks@gmail.com</a>
+    <p>Dijital Ahır | Çukurova Üniversitesi &copy; 2026</p>
+</footer>
 
 <script>
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
@@ -231,9 +223,13 @@
         document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(mode + '-mode').classList.add('active');
-        if(mode === 'engineer') document.getElementById('btn-eng').classList.add('active');
-        else { document.getElementById('btn-arc').classList.add('active'); startArcade(); }
-        arcActive = false;
+        if(mode === 'engineer') {
+            document.getElementById('btn-eng').classList.add('active');
+            arcActive = false;
+        } else {
+            document.getElementById('btn-arc').classList.add('active');
+            startArcade();
+        }
     }
 
     function updateEngValues() {
@@ -244,29 +240,29 @@
         const p = parseFloat(document.getElementById('p-slider').value);
         const e = parseFloat(document.getElementById('e-slider').value);
         const res = document.getElementById('eng-result');
-        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 İdeal Rasyon!"; res.style.color = "#27ae60"; }
+        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) { res.innerText = "🎯 Mükemmel Rasyon!"; res.style.color = "#27ae60"; }
         else { res.innerText = "⚠️ Dengesiz Rasyon! Optimize edin."; res.style.color = "#e74c3c"; }
     }
 
     const canvas = document.getElementById('arcadeCanvas');
     const ctx = canvas.getContext('2d');
-    let arcActive = false, cowX = 175, pScore = 0, eScore = 0, items = [];
+    let arcActive = false, cowX = 175, pScore = 0, eScore = 0, items = [], animationId;
 
     function startArcade() {
+        cancelAnimationFrame(animationId);
         arcActive = true; pScore = 0; eScore = 0; items = [];
         document.getElementById('start-btn').style.display = "none";
+        document.getElementById('p-fill').style.width = "0%";
+        document.getElementById('e-fill').style.width = "0%";
         gameLoop();
     }
 
-    function handleMove(e) {
+    canvas.addEventListener('mousemove', (e) => {
         if (!arcActive) return;
         const rect = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        cowX = (clientX - rect.left) * (canvas.width / rect.width) - 25;
+        cowX = (e.clientX - rect.left) * (canvas.width / rect.width) - 25;
         if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
-    }
-    canvas.addEventListener('mousemove', handleMove);
-    canvas.addEventListener('touchmove', handleMove);
+    });
 
     function gameLoop() {
         if(!arcActive) return;
@@ -274,28 +270,24 @@
         ctx.font = "50px Arial";
         ctx.fillText("🐄", cowX, 380);
 
-        if(Math.random() < 0.05) {
-            items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: 1.5 });
-        }
+        if(Math.random() < 0.05) items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: 1.5 });
 
         items.forEach((it, i) => {
             it.y += it.speed; ctx.font = "30px Arial"; ctx.fillText(it.type, it.x, it.y);
             if(it.y > 340 && it.y < 390 && it.x > cowX-15 && it.x < cowX+45) {
                 if(it.type === '🌾') pScore = Math.min(100, pScore + 10); else eScore = Math.min(100, eScore + 10);
                 items.splice(i, 1);
+                document.getElementById('p-fill').style.width = pScore + "%";
+                document.getElementById('e-fill').style.width = eScore + "%";
             }
-            if(it.y > 400) items.splice(i, 1);
         });
-
-        document.getElementById('p-fill').style.width = pScore + "%";
-        document.getElementById('e-fill').style.width = eScore + "%";
 
         if(pScore >= 100 && eScore >= 100) {
             arcActive = false;
             document.getElementById('start-btn').innerText = "Yeniden Başlat";
             document.getElementById('start-btn').style.display = "inline-block";
         }
-        if(arcActive) requestAnimationFrame(gameLoop);
+        if(arcActive) animationId = requestAnimationFrame(gameLoop);
     }
 </script>
 </body>
