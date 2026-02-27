@@ -21,7 +21,8 @@
             position: relative;
             height: 50vh; 
             min-height: 400px;
-            background: #1b4d3e url('https://images.unsplash.com/photo-1547448415-e9f5b28e570d?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+            /* Senin eklediğin PNG dosyası burada aktif */
+            background: #1b4d3e url('sigir-surusu.png') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
@@ -68,7 +69,7 @@
         .card h3 { color: #1b4d3e; margin-top: 0; }
         .card p { font-size: 0.95rem; color: #666; margin-top: 15px; }
 
-        /* SİMÜLASYON MERKEZİ */
+        /* SİMÜLASYON MERKEZİ PANELİ */
         #game-center {
             background: #ffffff; border-radius: 20px; padding: 40px; margin: 60px 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0;
@@ -86,9 +87,11 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* MÜHENDİS MODU */
         .slider-box { max-width: 500px; margin: 0 auto 20px; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 10px; }
         input[type=range] { width: 100%; accent-color: #27ae60; cursor: pointer; }
 
+        /* ARCADE MODU */
         #arcadeCanvas { 
             background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd;
             max-width: 100%; touch-action: none; cursor: crosshair; display: block; margin: 0 auto;
@@ -136,14 +139,14 @@
         <div class="card" onclick="openModal('modal-islah')">
             <div>
                 <h3>🐄 Islah ve Seleksiyon</h3>
-                <p>Geleceğin genetiğini inşa etmek. Sürü kalitesini sistematik artırma stratejileri.</p>
+                <p>Geleceğin genetiğini inşa etmek. Sürü kalitesini sistematik artırma ve veri odaklı seçim stratejileri.</p>
             </div>
             <span style="color: #27ae60; font-weight: bold; margin-top: 15px;">Detayları Gör →</span>
         </div>
         <div class="card" onclick="openModal('modal-besleme')">
             <div>
                 <h3>🌾 Hayvan Besleme</h3>
-                <p>Potansiyeli performansa dönüştürmek. Rasyon optimizasyonu ve metabolik sağlık.</p>
+                <p>Potansiyeli performansa dönüştürmek. Rasyon optimizasyonu ve metabolik sağlık yönetimi.</p>
             </div>
             <span style="color: #27ae60; font-weight: bold; margin-top: 15px;">Detayları Gör →</span>
         </div>
@@ -206,7 +209,7 @@
         </div>
 
         <div id="arcade-mode" class="game-content">
-            <p style="font-size: 0.9rem; color: #555; margin-bottom: 15px;">İneği hareket ettirerek <strong>Yonca (🌾)</strong> ve <strong>Mısır (🌽)</strong> toplayın!</p>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 15px;">İneği sürükleyerek <strong>Yonca (🌾)</strong> ve <strong>Mısır (🌽)</strong> toplayın!</p>
             <canvas id="arcadeCanvas" width="600" height="320"></canvas>
             <div class="game-bars">
                 <div class="bar-wrapper">
@@ -238,15 +241,9 @@
 </footer>
 
 <script>
-    // MODAL KONTROLLERİ
-    function openModal(id) { 
-        document.getElementById(id).style.display = "block"; 
-        document.body.style.overflow = "hidden"; 
-    }
-    function closeModal(id) { 
-        document.getElementById(id).style.display = "none"; 
-        document.body.style.overflow = "auto"; 
-    }
+    function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
+    
     window.onclick = function(event) {
         if (event.target.className === 'modal') {
             event.target.style.display = "none";
@@ -254,7 +251,6 @@
         }
     }
 
-    // MOD SEÇİMİ
     function switchMode(mode, btn) {
         document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -268,24 +264,22 @@
         }
     }
 
-    // MÜHENDİS MODU FONKSİYONLARI
     function updateEngValues() {
         document.getElementById('p-val').innerText = document.getElementById('p-slider').value;
         document.getElementById('e-val').innerText = document.getElementById('e-slider').value;
     }
 
     function checkEngRation() {
-        const p = parseFloat(document.getElementById('p-slider').value);
-        const e = parseFloat(document.getElementById('e-slider').value);
+        const p = document.getElementById('p-slider').value;
+        const e = document.getElementById('e-slider').value;
         const res = document.getElementById('eng-result');
         if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
             res.innerText = "🎯 Mükemmel Rasyon! Verim ve sağlık dengede."; res.style.color = "#27ae60";
         } else {
-            res.innerText = "⚠️ Dengesiz Rasyon. Protein %16-18, Enerji 1.7-1.9 arası olmalı."; res.style.color = "#e74c3c";
+            res.innerText = "⚠️ Dengesiz Rasyon. Değerleri optimize edin."; res.style.color = "#e74c3c";
         }
     }
 
-    // ARCADE MODU (OYUN) FONKSİYONLARI
     const canvas = document.getElementById('arcadeCanvas');
     const ctx = canvas.getContext('2d');
     let arcActive = false, pScore = 0, eScore = 0, cowX = 270, items = [];
@@ -313,24 +307,13 @@
     function gameLoop() {
         if(!arcActive) return;
         ctx.clearRect(0,0,600,320);
-        
-        // İnek Çizimi
-        ctx.font = "45px Arial"; 
-        ctx.fillText("🐄", cowX, 290);
-
-        // Öğe Oluşturma
+        ctx.font = "45px Arial"; ctx.fillText("🐄", cowX, 290);
         if(Math.random() < 0.04) {
             items.push({ x: Math.random()*560, y: 0, type: Math.random()>0.5?'🌾':'🌽', speed: 2+Math.random()*3 });
         }
-
-        // Öğe Güncelleme
         items.forEach((it, i) => {
-            it.y += it.speed; 
-            ctx.font = "30px Arial"; 
-            ctx.fillText(it.type, it.x, it.y);
-
-            // Çarpışma Kontrolü
-            if(it.y > 250 && it.y < 300 && it.x > cowX-20 && it.x < cowX+40) {
+            it.y += it.speed; ctx.font = "30px Arial"; ctx.fillText(it.type, it.x, it.y);
+            if(it.y > 240 && it.y < 300 && it.x > cowX-15 && it.x < cowX+45) {
                 if(it.type === '🌾') pScore = Math.min(100, pScore + 5);
                 else eScore = Math.min(100, eScore + 5);
                 items.splice(i, 1);
@@ -339,8 +322,6 @@
             }
             if(it.y > 320) items.splice(i, 1);
         });
-
-        // Kazanma Durumu
         if(pScore >= 100 && eScore >= 100) {
             document.getElementById('arcade-msg').innerText = "🏆 Tebrikler! İdeal Rasyon Tamamlandı.";
             document.getElementById('restart-btn').style.display = "inline-block";
