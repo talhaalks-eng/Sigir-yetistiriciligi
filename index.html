@@ -45,7 +45,7 @@
         .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
 
-        /* OYUN & SİMÜLASYON */
+        /* SİMÜLASYON & OYUN */
         #game-center { background: #ffffff; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0; }
         .mode-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
         .mode-btn { padding: 10px 20px; border: 2px solid #1b4d3e; background: transparent; color: #1b4d3e; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; }
@@ -58,6 +58,10 @@
         .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; }
         .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
+
+        /* MÜHENDİSLİK DETAYLARI */
+        .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
+        .tech-info { font-size: 0.85rem; color: #555; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 8px; line-height: 1.4; }
 
         /* VİZYON ALANI VE İMZA */
         .personal-section { text-align: center; margin: 60px 0; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
@@ -174,11 +178,19 @@
         </div>
 
         <div id="engineer-mode" class="game-content active">
-            <p>Protein: %<span id="p-val">12.0</span> | Enerji: <span id="e-val">1.4</span> Mcal</p>
-            <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()" style="width:70%">
-            <br><br>
-            <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()" style="width:70%">
-            <br>
+            <div style="background: #e8f5e9; padding: 10px; border-radius: 8px; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; border: 1px dashed #27ae60; color: #1b4d3e;">
+                🎯 <strong>İdeal Sağmal Hedefi:</strong> Protein: <strong>%16-18</strong> | Enerji: <strong>1.7-1.9 Mcal</strong>
+            </div>
+            <div class="slider-box">
+                <label>Ham Protein: %<span id="p-val">12.0</span></label>
+                <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()" style="width:100%">
+                <div class="tech-info"><strong>Önem:</strong> Süt sentezi, kas yapısı ve doku onarımı için temel yapı taşıdır.</div>
+            </div>
+            <div class="slider-box">
+                <label>Enerji (NEL): <span id="e-val">1.4</span> Mcal</label>
+                <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()" style="width:100%">
+                <div class="tech-info"><strong>Önem:</strong> Hayvanın yaşam payı ve süt üretimi için gereken ana yakıttır.</div>
+            </div>
             <button class="btn-action" onclick="checkEngRation()">Rasyonu Kontrol Et</button>
         </div>
 
@@ -205,13 +217,19 @@
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon: Teknik Detaylar</h2><hr><p><strong>Genetik İyileştirme:</strong> Sürü genetiğini bilimsel yöntemlerle iyileştirerek verimliliği artırma sürecidir.</p><ul><li>Pedigri Yönetimi ile akrabalı yetiştirmenin önlenmesi.</li><li>DNA testleri ile erken aşamada gelecek verim tahmini.</li><li>Süt, döl verimi ve uzun ömürlülüğün ağırlıklandırılması.</li></ul></div></div>
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme: Profesyonel Çözümler</h2><hr><p><strong>Rasyon Optimizasyonu:</strong> Besin maddelerinin verime en karlı şekilde dönüştürülmesini sağlayan tekniklerdir.</p><ul><li>Kuru Madde Tüketimi (KMT) kontrolü.</li><li>Protein, enerji ve mineral dengesinin dönemlik ayarlanması.</li><li>Asidoz ve ketozis gibi hastalıkların rasyonla önlenmesi.</li></ul></div></div>
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor Yönetimi:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlar.</p><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik durak tasarımları.</li></ul></div></div>
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p>Endüstriyel süt üretiminin dünyadaki bir numaralı temsilcisidir.</p><ul><li>Laktasyon Verimi: 8.000 - 12.000 kg.</li><li>Süt Yağı: %3.5 - 3.8.</li><li>Ergin ağırlık 600-750 kg, sağıma en uyumlu meme yapısı.</li></ul></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p>Et ve sütte kombine yetenek sunan, üretici dostu bir ırktır.</p><ul><li>Süt Verimi: 6.000-8.500 kg + Yüksek karkas randımanı.</li><li>Besi performansında günlük 1.300 - 1.500g artış potansiyeli.</li><li>Ayak hastalıklarına ve mastitise karşı doğal direnç.</li></ul></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p>Yüksek yağ oranıyla peynir üretiminin altın ırkıdır.</p><ul><li>Süt Yağı: %5.0 - 6.5 (Yüksek Kazein).</li><li>Cüssesine oranla en yüksek yem dönüşüm oranı.</li><li>Sıcak iklim koşullarına en dayanıklı sütçü ırk.</li></ul></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p>Anadolu'nun kadim ve dirençli genetik mirasıdır.</p><ul><li>Yerel hastalıklara ve zorlu iklim koşullarına muazzam direnç.</li><li>Kıt yem kaynaklarını verime dönüştürebilme kabiliyeti.</li><li>Milli genetik kaynağımız olarak saf hatların korunması şarttır.</li></ul></div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon: Teknik Detaylar</h2><hr><p><strong>Genetik İyileştirme:</strong> Sürü ortalamasını her nesilde belirli verim karakterleri yönünde artırma hedefidir.</p><ul><li>Pedigri Yönetimi ile akrabalı yetiştirmenin önlenmesi.</li><li>DNA testleri (Genomik Seleksiyon) ile erken aşamada verim tahmini.</li><li>Süt, döl verimi ve uzun ömürlülük kriterlerinin ağırlıklandırılması.</li></ul></div></div>
+
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme: Profesyonel Çözümler</h2><hr><p><strong>Rasyon Optimizasyonu:</strong> Genetik potansiyeli performansa ve karlılığa dönüştüren süreçlerdir.</p><ul><li>Kuru Madde Tüketimi (KMT) kontrolü ile enerji dengesi.</li><li>Protein ve kaba yem oranının laktasyon dönemine göre ayarlanması.</li><li>Asidoz ve ketozis gibi metabolik hastalıkların rasyonla önlenmesi.</li></ul></div></div>
+
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor ve Refah:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlardır.</p><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik ve yumuşak yataklık tasarımları.</li></ul></div></div>
+
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p><strong>Köken:</strong> Hollanda ve Kuzey Almanya.</p><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg laktasyon verimi.</li><li><strong>Süt Kalitesi:</strong> %3.5 - 3.8 yağ oranı ile endüstriyel standart.</li><li><strong>Fizyoloji:</strong> Ergin ağırlık 600-750 kg, mekanize sağıma en uyumlu ırk.</li></ul></div></div>
+
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p><strong>Köken:</strong> İsviçre (Alp Dağları).</p><ul><li><strong>Verim:</strong> 6.000-8.500 kg süt + Yüksek karkas randımanı.</li><li><strong>Besi Performansı:</strong> Günlük 1.300 - 1.500g canlı ağırlık artış potansiyeli.</li><li><strong>Özellik:</strong> Ayak hastalıklarına ve mastitise karşı yüksek doğal direnç.</li></ul></div></div>
+
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p><strong>Köken:</strong> Manş Denizi (Jersey Adası).</p><ul><li><strong>Kalite:</strong> %5.0 - 6.5 yağ oranı (Peynir üretimi için altın standart).</li><li><strong>Verimlilik:</strong> Cüssesine oranla yemi süte en iyi dönüştüren ırk.</li><li><strong>Sıcaklık:</strong> Sıcak iklim koşullarına en dayanıklı sütçü ırk.</li></ul></div></div>
+
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p><strong>Köken:</strong> Türkiye (Anadolu).</p><ul><li><strong>Direnç:</strong> Yerel hastalıklara ve zorlu iklim koşullarına muazzam adaptasyon.</li><li><strong>Besleme:</strong> Kıt yem kaynaklarını verime dönüştürebilme kabiliyeti.</li><li><strong>Miras:</strong> Milli genetik kaynağımız olarak saf hatların korunması stratejik önemdedir.</li></ul></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong> <br>
@@ -219,32 +237,56 @@
 </footer>
 
 <script>
-    // EKONOMİK ANALİZ VE GRAFİK (KESİN TAMİR)
-    let pLabels = []; let pData = [];
+    // EKONOMİK ANALİZ VE GRAFİK (YENİDEN YAPILANDIRILDI)
+    let pLabels = []; 
+    let pData = [];
     const ctxChart = document.getElementById('profitChart').getContext('2d');
+    
     let profitChart = new Chart(ctxChart, {
         type: 'bar',
-        data: { labels: pLabels, datasets: [{ label: 'Günlük Kar (₺)', data: pData, backgroundColor: '#27ae60', borderRadius: 8 }] },
-        options: { responsive: true, maintainAspectRatio: false }
+        data: { 
+            labels: pLabels, 
+            datasets: [{ 
+                label: 'Günlük Kar (₺)', 
+                data: pData, 
+                backgroundColor: '#27ae60', 
+                borderRadius: 8 
+            }] 
+        },
+        options: { 
+            responsive: true, 
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
     });
 
     function calculateProfit() {
         const kg = parseFloat(document.getElementById('milk-input').value);
         const cost = parseFloat(document.getElementById('feed-cost-input').value);
         const price = parseFloat(document.getElementById('milk-price-input').value);
+        
         if(!isNaN(kg) && !isNaN(cost) && !isNaN(price)) {
-            const rev = kg * price; const profit = rev - cost;
+            const rev = kg * price; 
+            const profit = rev - cost;
+            
             document.getElementById('daily-revenue').innerText = rev.toFixed(0) + " ₺";
             document.getElementById('daily-cost').innerText = cost.toFixed(0) + " ₺";
             document.getElementById('daily-profit').innerText = profit.toFixed(0) + " ₺";
             
+            // Grafik verilerini güncelle
             pLabels.push("G" + (pLabels.length + 1)); 
             pData.push(profit.toFixed(0)); 
+            
+            // Grafiği yeniden çiz
             profitChart.update();
-        } else { alert("Lütfen Süt Fiyatı dahil tüm alanları doldurunuz!"); }
+        } else { 
+            alert("Lütfen Süt Fiyatı dahil tüm alanları doldurunuz!"); 
+        }
     }
 
-    // MODALLAR
+    // GENEL FONKSİYONLAR
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
 
@@ -266,7 +308,7 @@
         if(p >= 16 && p <= 18) alert("🎯 İdeal Rasyon!"); else alert("⚠️ Rasyon Dengesiz.");
     }
 
-    // OYUN MOTORU (KADEMELİ SİSTEM TAMİR EDİLDİ)
+    // OYUN MOTORU
     const canvas = document.getElementById('arcadeCanvas');
     const gctx = canvas.getContext('2d');
     let arcActive = false, cowX = 175, pScore = 0, eScore = 0, items = [], animId, lastSpawn = 0;
