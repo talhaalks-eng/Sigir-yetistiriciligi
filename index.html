@@ -7,9 +7,9 @@
     <style>
         /* GENEL TASARIM */
         html { scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #fdfdfd; color: #333; line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER - sigir-surusu.png */
+        /* HEADER */
         header { 
             position: relative; height: 45vh; min-height: 300px;
             background: #1b4d3e url('sigir-surusu.png') no-repeat center center;
@@ -17,54 +17,56 @@
         }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; }
         .header-text { position: relative; z-index: 2; color: white; padding: 20px; }
-        header h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; text-transform: uppercase; letter-spacing: 3px; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+        header h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; text-transform: uppercase; letter-spacing: 3px; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
 
         /* NAVİGASYON */
-        nav { background: #1b4d3e; padding: 12px 5px; text-align: center; position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
-        nav a { color: white; text-decoration: none; margin: 5px 15px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: #27ae60; }
+        nav { background: #1b4d3e; padding: 12px 5px; text-align: center; position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; gap: 20px; }
+        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
 
         .container { max-width: 1100px; margin: 30px auto; padding: 15px; }
-        .section-title { color: #1b4d3e; border-left: 6px solid #27ae60; padding-left: 15px; margin: 50px 0 25px 0; font-size: clamp(1.5rem, 5vw, 2rem); }
-        .scroll-hint { font-size: 0.85rem; color: #27ae60; margin-bottom: 10px; font-weight: bold; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        .section-title { color: #1b4d3e; border-left: 6px solid #27ae60; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.8rem; }
+        .scroll-hint { font-size: 0.8rem; color: #27ae60; margin: -10px 0 10px 0; font-weight: bold; }
 
         /* KAYDIRMALI KARTLAR (KÜÇÜLTÜLMÜŞ) */
-        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding: 15px 5px; scrollbar-width: none; }
+        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 5px; scrollbar-width: none; }
         .scroll-container::-webkit-scrollbar { display: none; }
-        
-        /* Uzmanlık kartları küçültüldü */
-        .uzmanlik-card { min-width: 260px; background: white; border: 1px solid #eee; padding: 15px; border-radius: 12px; border-top: 5px solid #27ae60; flex-shrink: 0; cursor: pointer; transition: 0.3s; }
-        .uzmanlik-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-        .uzmanlik-card p { font-size: 0.85rem; line-height: 1.4; }
-
-        .irk-card { min-width: 280px; background: white; border: 1px solid #eee; padding: 15px; border-radius: 12px; flex-shrink: 0; cursor: pointer; text-align: center; }
-        .irk-card img { width: 100%; height: 160px; border-radius: 10px; object-fit: cover; margin-bottom: 10px; }
+        .card { min-width: 260px; background: white; border: 1px solid #eee; padding: 15px; border-radius: 12px; border-top: 5px solid #27ae60; flex-shrink: 0; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
         /* MÜHENDİSLİK MODU & OYUN */
-        .analysis-box { background: white; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 1px solid #e0e0e0; }
-        .tab-btn { padding: 12px 25px; border: 2px solid #27ae60; background: white; color: #27ae60; border-radius: 10px; cursor: pointer; font-weight: bold; margin: 0 5px; }
+        .module-box { background: white; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eef0f2; text-align: center; }
+        .tab-btn { padding: 10px 25px; border: 2px solid #27ae60; background: white; color: #27ae60; border-radius: 10px; cursor: pointer; font-weight: bold; margin: 5px; }
         .tab-btn.active { background: #27ae60; color: white; }
 
-        .tech-note { background: #f0fdf4; border-left: 5px solid #27ae60; padding: 20px; border-radius: 10px; margin-bottom: 25px; text-align: left; font-size: 0.9rem; }
-        
-        /* OYUN TASARIMI */
-        #arcadeCanvas { background: #e8f5e9; border-radius: 15px; border: 2px solid #ddd; touch-action: none; cursor: grab; display: block; margin: 0 auto; }
-        #arcadeCanvas:active { cursor: grabbing; }
+        /* OYUN BÖLÜMÜ */
+        #arcadeCanvas { background: #e8f5e9; border-radius: 15px; border: 2px solid #ddd; touch-action: none; cursor: crosshair; display: block; margin: 0 auto; }
+        .game-ui { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
+        .bar-wrap { width: 120px; text-align: left; font-size: 0.75rem; font-weight: bold; }
+        .bar-bg { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 4px; }
+        .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
 
-        /* İŞLETME ANALİZİ SONUÇLARI */
-        .res-card { padding: 15px; border-radius: 12px; background: #fff; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .res-card strong { font-size: 1.25rem; color: #27ae60; display: block; }
+        /* İŞLETME ANALİZİ (TABLO / HESAP MAKİNESİ) */
+        .calc-container { width: 100%; border-collapse: separate; border-spacing: 0; border: 2px solid #1b4d3e; border-radius: 15px; overflow: hidden; background: white; }
+        .calc-container th { background: #1b4d3e; color: white; padding: 15px; text-align: left; font-size: 0.9rem; }
+        .calc-container td { padding: 15px; border-bottom: 1px solid #f0f0f0; }
+        .calc-container input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 1rem; background: #fafafa; }
+        .calc-result-row { background: #f0fdf4; font-weight: bold; }
 
-        /* VİZYON ALANI - saha.jpg */
-        .personal-section { text-align: center; margin: 60px 0; padding: 40px 20px; background: #fff; border-radius: 25px; }
-        .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; border: 8px solid white; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-        .signature { font-family: 'Brush Script MT', cursive; color: #1b4d3e; text-align: right; padding-right: 40px; font-size: 1.8rem; display: block; margin-top: 15px; }
+        /* VİZYON ALANI - saha.jpg BOYUTU DÜZELTİLDİ */
+        .personal-section { text-align: center; margin: 60px 0; padding: 40px; background: #fff; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .personal-photo { display: inline-block; width: 100%; max-width: 400px; border-radius: 20px; overflow: hidden; border: 6px solid white; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .personal-photo img { width: 100%; height: auto; display: block; }
+        .signature { font-family: 'Brush Script MT', cursive; color: #1b4d3e; font-size: 1.8rem; text-align: right; padding-right: 20px; }
 
         /* MODAL */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-        .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 750px; position: relative; max-height: 80vh; overflow-y: auto; text-align: left; }
-        .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 5% auto; padding: 30px; border-radius: 15px; width: 85%; max-width: 700px; position: relative; max-height: 80vh; overflow-y: auto; text-align: left; }
+        .close { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; color: #888; }
+
+        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+        footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; }
     </style>
 </head>
 <body>
@@ -79,7 +81,7 @@
 
 <nav>
     <a href="#uzmanlik">Uzmanlık</a>
-    <a href="#irklar">Irk Rehberi</a>
+    <a href="#irklar">Irklar</a>
     <a href="#muhendislik">Mühendislik Modu</a>
     <a href="#analiz">İşletme Analizi</a>
 </nav>
@@ -87,209 +89,143 @@
 <div class="container">
 
     <h2 id="uzmanlik" class="section-title">Uzmanlık Alanları</h2>
-    <p class="scroll-hint">➔ Sağa kaydırarak inceleyin</p>
+    <p class="scroll-hint">➔ Sağa kaydırarak detayları görün</p>
     <div class="scroll-container">
-        <div class="uzmanlik-card" onclick="openModal('modal-islah')"><h3>🐄 Islah</h3><p>Sürü potansiyelini bilimsel yöntemlerle iyileştirme süreci.</p></div>
-        <div class="uzmanlik-card" onclick="openModal('modal-besleme')"><h3>🌾 Besleme</h3><p>Rasyon optimizasyonu ve karlı dönüşüm teknikleri.</p></div>
-        <div class="uzmanlik-card" onclick="openModal('modal-barinak')"><h3>🏗️ Barınak</h3><p>Hayvan refahı ve modern barınak projeleri.</p></div>
+        <div class="card" onclick="openModal('modal-islah')"><h3>🐄 Islah</h3><p>Genetik iyileştirme ve seleksiyon süreçleri.</p></div>
+        <div class="card" onclick="openModal('modal-besleme')"><h3>🌾 Besleme</h3><p>Rasyon optimizasyonu ve maliyet dengesi.</p></div>
+        <div class="card" onclick="openModal('modal-barinak')"><h3>🏗️ Barınak</h3><p>Modern ahır projeleri ve hayvan refahı.</p></div>
     </div>
 
     <h2 id="irklar" class="section-title">Irk Kütüphanesi</h2>
-    <p class="scroll-hint">➔ Sağa kaydırarak inceleyin</p>
+    <p class="scroll-hint">➔ Sağa kaydırarak ırkları inceleyin</p>
     <div class="scroll-container">
-        <div class="irk-card" onclick="openModal('modal-holstein')"><img src="holstein.jpg"><h3>Holstein</h3><p>Sütçü lider.</p></div>
-        <div class="irk-card" onclick="openModal('modal-simmental')"><img src="simmental.jpg"><h3>Simental</h3><p>Kombine verim.</p></div>
-        <div class="irk-card" onclick="openModal('modal-jersey')"><img src="jersey.jpg"><h3>Jersey</h3><p>Yağ kalitesi.</p></div>
-        <div class="irk-card" onclick="openModal('modal-yerlikara')"><img src="yerlikara.jpg"><h3>Yerli Kara</h3><p>Anadolu mirası.</p></div>
+        <div class="card" onclick="openModal('modal-holstein')"><img src="holstein.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;"><h3>Holstein</h3><p>Süt verim lideri.</p></div>
+        <div class="card" onclick="openModal('modal-simmental')"><img src="simmental.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;"><h3>Simental</h3><p>Kombine yetenek.</p></div>
+        <div class="card" onclick="openModal('modal-jersey')"><img src="jersey.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;"><h3>Jersey</h3><p>Süt yağı uzmanı.</p></div>
+        <div class="card" onclick="openModal('modal-yerlikara')"><img src="yerlikara.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;"><h3>Yerli Kara</h3><p>Dirençli miras.</p></div>
     </div>
 
     <h2 id="muhendislik" class="section-title">Mühendislik Modu</h2>
-    <div class="analysis-box">
+    <div class="module-box">
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 25px;">
-            <button class="tab-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Rasyon Bilimi</button>
-            <button class="tab-btn" id="btn-arc" onclick="switchMode('arcade')">🎮 Oyun</button>
+            <button class="tab-btn active" id="btn-eng" onclick="switchMod('engineer')">🛠️ Rasyon Bilimi</button>
+            <button class="tab-btn" id="btn-arc" onclick="switchMod('arcade')">🎮 Oyun</button>
         </div>
 
-        <div id="engineer-mode" style="display: block;" class="mode-content">
-            <div class="tech-note">
-                <strong>Protein Önemi:</strong> Süt sentezi için ana yapı taşıdır. İdeal ham protein: <strong>%16 - %18</strong>.
-                <br><strong>Enerji (NEL):</strong> Yaşam payı ve verim yakıtıdır. İdeal seviye: <strong>1.7 - 1.9 Mcal/kg</strong>.
+        <div id="engineer-mode" class="mode-content">
+            <div style="background: #f0fdf4; border-left: 5px solid #27ae60; padding: 15px; border-radius: 8px; text-align: left; font-size: 0.9rem; margin-bottom: 20px;">
+                <strong>Protein (%16-18):</strong> Süt sentezi için yapı taşıdır.<br>
+                <strong>Enerji (1.7-1.9 NEL):</strong> Yaşam payı ve verim yakıtıdır.
             </div>
-            <div style="max-width: 400px; margin: 0 auto;">
+            <div style="max-width: 400px; margin: 0 auto; text-align: left;">
                 <label>Protein: %<span id="p-val">12.0</span></label><input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEng()" style="width:100%; margin-bottom:15px;">
                 <label>Enerji: <span id="e-val">1.4</span> NEL</label><input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEng()" style="width:100%;">
-                <div style="text-align:center;"><button style="background:#27ae60; color:white; border:none; padding:12px 40px; border-radius:30px; font-weight:bold; cursor:pointer; margin-top:20px;" onclick="checkRation()">Analiz Et</button></div>
+                <center><button class="btn-action" onclick="checkRation()">Analiz Et</button></center>
             </div>
         </div>
 
-        <div id="arcade-mode" style="display: none;" class="mode-content">
+        <div id="arcade-mode" class="mode-content" style="display:none;">
             <div style="margin-bottom: 10px; font-weight: bold; color:#1b4d3e;">
-                Bölüm: <span id="lvl-txt">1. Stajyer Mühendis</span> | Skor: <span id="score-txt">0</span>
+                Bölüm: <span id="lvl-txt">1. Stajyer Mühendis</span>
             </div>
             <canvas id="arcadeCanvas" width="350" height="350"></canvas>
-            <p id="arcade-msg" style="font-weight:bold; margin-top:10px; color:#e74c3c;"></p>
-            <button style="background:#27ae60; color:white; border:none; padding:12px 40px; border-radius:30px; font-weight:bold; cursor:pointer;" id="start-btn" onclick="startArcade()">Oyuna Başla</button>
+            <div class="game-ui">
+                <div class="bar-wrap">Protein (🌾)<div class="bar-bg"><div id="p-bar" class="bar-fill" style="background:#27ae60;"></div></div></div>
+                <div class="bar-wrap">Enerji (🌽)<div class="bar-bg"><div id="e-bar" class="bar-fill" style="background:#f1c40f;"></div></div></div>
+            </div>
+            <p id="arcade-msg" style="font-weight:bold; margin-top:10px;"></p>
+            <button class="btn-action" id="start-btn" onclick="startArcade()">Bölümü Başlat</button>
         </div>
     </div>
 
     <h2 id="analiz" class="section-title">📊 İşletme Analiz Paneli</h2>
-    <div class="analysis-box">
+    <div class="module-box" style="text-align: left;">
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
-            <button id="tab-milk" class="tab-btn active" onclick="switchAnalysis('milk')">🥛 Sütçü</button>
-            <button id="tab-meat" class="tab-btn" onclick="switchAnalysis('meat')">🥩 Besici</button>
+            <button id="tab-milk" class="tab-btn active" onclick="switchAnaliz('milk')">🥛 Sütçü</button>
+            <button id="tab-meat" class="tab-btn" onclick="switchAnaliz('meat')">🥩 Besici</button>
         </div>
 
-        <div id="analysis-milk" style="display: block;" class="analiz-tab-content">
-            <div class="input-grid">
-                <div class="input-wrapper"><label>Günlük Süt (kg)</label><input type="number" id="milk-input"></div>
-                <div class="input-wrapper"><label>Yem Gideri (₺)</label><input type="number" id="milk-feed"></div>
-                <div class="input-wrapper"><label>Süt Fiyatı (₺/kg)</label><input type="number" id="milk-price"></div>
-            </div>
-            <button style="background:#27ae60; color:white; border:none; padding:12px 40px; border-radius:30px; font-weight:bold; cursor:pointer;" onclick="calcMilk()">Hesapla</button>
-            <div class="res-card" style="margin-top:20px;">Günlük Brüt Kar: <strong id="milk-profit">0 ₺</strong></div>
+        <div id="analiz-milk">
+            <table class="calc-container">
+                <tr><th>PARAMETRE</th><th>GİRİŞ</th></tr>
+                <tr><td>Günlük Süt (kg)</td><td><input type="number" id="m-kg"></td></tr>
+                <tr><td>Günlük Toplam Yem Gideri (₺)</td><td><input type="number" id="m-cost"></td></tr>
+                <tr><td>Süt Satış Fiyatı (₺/kg)</td><td><input type="number" id="m-price"></td></tr>
+                <tr class="calc-result-row"><td>GÜNLÜK BRÜT KAR</td><td id="res-m">0 ₺</td></tr>
+                <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMilk()">Hesapla</button></td></tr>
+            </table>
         </div>
 
-        <div id="analysis-meat" style="display: none;" class="analiz-tab-content">
-            <div class="input-grid">
-                <div class="input-wrapper"><label>Hayvan Sayısı</label><input type="number" id="meat-count"></div>
-                <div class="input-wrapper"><label>Toplam Kilo Artışı (kg)</label><input type="number" id="meat-total-kg"></div>
-                <div class="input-wrapper"><label>Geçen Gün</label><input type="number" id="meat-days"></div>
-                <div class="input-wrapper"><label>Hayvan Başı Yem (₺/Gün)</label><input type="number" id="meat-feed-day"></div>
-                <div class="input-wrapper"><label>Karkas Fiyatı (₺/kg)</label><input type="number" id="meat-price-kg"></div>
-            </div>
-            <button style="background:#27ae60; color:white; border:none; padding:12px 40px; border-radius:30px; font-weight:bold; cursor:pointer;" onclick="calcMeat()">Analiz Çıkar</button>
-            <div style="margin-top:20px; font-weight:bold; text-align:center;">
-                Sürü GCAA Ortalaması: <span id="meat-gcaa-val" style="color:#27ae60; font-size:1.3rem;">0.00</span> kg/gün
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top:15px;">
-                    <div class="res-card"><h4>Günlük</h4><strong id="m-d">0 ₺</strong></div>
-                    <div class="res-card"><h4>15 Günlük</h4><strong id="m-15">0 ₺</strong></div>
-                    <div class="res-card"><h4>Aylık</h4><strong id="m-m">0 ₺</strong></div>
-                </div>
-            </div>
+        <div id="analiz-meat" style="display:none;">
+            <table class="calc-container">
+                <tr><th>PARAMETRE</th><th>GİRİŞ</th></tr>
+                <tr><td>Hayvan Sayısı (Baş)</td><td><input type="number" id="b-count"></td></tr>
+                <tr><td>Toplam Alınan Kilo (kg)</td><td><input type="number" id="b-total-kg"></td></tr>
+                <tr><td>Geçen Gün Sayısı</td><td><input type="number" id="b-days"></td></tr>
+                <tr><td>Yem Gideri (₺/Gün/Hayvan)</td><td><input type="number" id="b-feed"></td></tr>
+                <tr><td>Baskül Fiyatı (₺/kg)</td><td><input type="number" id="b-price"></td></tr>
+                <tr class="calc-result-row"><td>GÜNLÜK TOPLAM KAR</td><td id="res-b-d">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>15 GÜNLÜK TAHMİN</td><td id="res-b-15">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR</td><td id="res-b-30">0 ₺</td></tr>
+                <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMeat()">Hesapla</button></td></tr>
+            </table>
         </div>
     </div>
 
     <div class="personal-section">
         <div class="personal-photo"><img src="saha.jpg" alt="Lütfi Talha Alkış"></div>
         <div class="vision-text">
-            "Bir Ziraat Mühendisi adayı olarak vizyonum, ziraati sadece tarladan ve çiftlikten ibaret görmeyip, gelişen dünyanın en büyük gücü olan dijitalliği bu alana entegre etmektir. Üretimin her aşamasında verimliliği artırmak ve modern çözümler sunmak adına kendimi hem teknik hem de teknolojik her yönde geliştirmeye devam ediyorum."
+            <br>"Bir Ziraat Mühendisi adayı olarak vizyonum, ziraati sadece tarladan ve çiftlikten ibaret görmeyip, gelişen dünyanın en büyük gücü olan dijitalliği bu alana entegre etmektir. Üretimin her aşamasında verimliliği artırmak ve modern çözümler sunmak adına kendimi hem teknik hem de teknolojik her yönde geliştirmeye devam ediyorum."
             <span class="signature">Lütfi Talha Alkış</span>
         </div>
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr>
-    <p><strong>Genetik İlerleme:</strong> Sürü genetiğini her nesilde belirli verim karakterleri yönünde artırma hedefidir.</p>
-    <ul>
-        <li><strong>Pedigri Kaydı:</strong> Akrabalı yetiştirmeyi önlemek için soy ağacı takibi.</li>
-        <li><strong>Genomik Test:</strong> DNA analizi ile buzağılık döneminde verim tahmini.</li>
-        <li><strong>Döl Verimi:</strong> Tohumlama indeksi ve servis periyodu optimizasyonu.</li>
-    </ul>
-</div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr><ul><li>Pedigri ve Soy Kütüğü Kayıtları</li><li>Genomik Seleksiyon (DNA Testleri)</li><li>Döl Verimi ve Seleksiyon İndeksleri</li></ul></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme Bilimi</h2><hr><ul><li>Kuru Madde Tüketimi (KMT) Yönetimi</li><li>Protein ve Enerji Dengesi (NEL/NEF)</li><li>İşkembe pH ve Metabolik Sağlık</li></ul></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr><ul><li>Fan ve Duş Sistemleri (Isı Stresi)</li><li>Amonyak ve Nem Kontrolü</li><li>Konforlu Yataklık ve Durak Tasarımı</li></ul></div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr><p>Köken: Hollanda. Laktasyon verimi: 8.000 - 12.000 kg. Süt yağı: %3.4 - 3.8.</p></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr><p>Köken: İsviçre. Kombine (Et + Süt). GCAA potansiyeli: 1.3 - 1.5 kg.</p></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><p>Köken: Jersey Adası. Yağ oranı: %5.5 - 6.5. Peynir sütünün altın standardı.</p></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>🐃 Anadolu Yerli Kara</h2><hr><p>Dirençli saf genetik mirasımız. Zorlu Anadolu şartlarına tam adaptasyon.</p></div></div>
 
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme</h2><hr>
-    <p><strong>Rasyon Optimizasyonu:</strong> Hayvan ihtiyaçlarını en ekonomik yemlerle karşılama bilimidir.</p>
-    <ul>
-        <li><strong>KMT Kontrolü:</strong> Kuru madde tüketimi takibi ile maksimum besin alımı.</li>
-        <li><strong>NEL/NEF Dengesi:</strong> Net enerji laktasyon dengesi ile metabolik sağlık.</li>
-        <li><strong>İşkembe pH:</strong> Asidoz ve ketozis risklerinin rasyonla minimize edilmesi.</li>
-    </ul>
-</div></div>
-
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr>
-    <p><strong>Konfor Yönetimi:</strong> Hayvan stresini sıfırlayarak verimi maksimize etmektir.</p>
-    <ul>
-        <li><strong>Isı Stresi:</strong> Sensörlü fan ve duşlama sistemleri ile termal konfor.</li>
-        <li><strong>Yataklık:</strong> Meme sağlığı ve dinlenme süresini artıran hijyenik tasarımlar.</li>
-        <li><strong>Havalandırma:</strong> Amonyak birikimini önleyen aktif hava akışı projeleri.</li>
-    </ul>
-</div></div>
-
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr>
-    <p><strong>Köken:</strong> Hollanda ve Kuzey Almanya. Dünya süt endüstrisinin lokomotifidir.</p>
-    <ul>
-        <li><strong>Verim:</strong> 8.000 - 12.000 kg süt kapasitesi.</li>
-        <li><strong>Kalite:</strong> %3.4 - %3.8 yağ oranı.</li>
-        <li><strong>Fizyoloji:</strong> Ergin ağırlık 600-750 kg, sağıma tam uyumlu meme yapısı.</li>
-    </ul>
-</div></div>
-
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr>
-    <p><strong>Köken:</strong> İsviçre Alp dağları. Kombine (Et+Süt) verimli güçlü bir ırktır.</p>
-    <ul>
-        <li><strong>Besi Performansı:</strong> GCAA potansiyeli günlük 1.300 - 1.500 gram.</li>
-        <li><strong>Kombine Verim:</strong> Hem yüksek et randımanı hem de 6.000-8.500 kg süt sunar.</li>
-        <li><strong>Dayanıklılık:</strong> Güçlü ayak-bacak yapısı ve iklim adaptasyonu.</li>
-    </ul>
-</div></div>
-
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr>
-    <p><strong>Köken:</strong> İngiltere Jersey adası. Sütünün kalitesiyle tanınan bir ırktır.</p>
-    <ul>
-        <li><strong>Yağ Oranı:</strong> %5.5 - %6.5 yağ ile peynir üretimi için altın standart.</li>
-        <li><strong>Ekonomi:</strong> Cüssesi küçük olduğu için yemi süte en ekonomik dönüştüren ırktır.</li>
-        <li><strong>Isı Toleransı:</strong> Sıcak iklim koşullarına en dayanıklı sütçü ırktır.</li>
-    </ul>
-</div></div>
-
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>🐃 Anadolu Yerli Kara</h2><hr>
-    <p><strong>Köken:</strong> Türkiye'nin yerli genetik mirası. Anadolu steplerine tam adapte.</p>
-    <ul>
-        <li><strong>Direnç:</strong> Kısıtlı imkanlarda hayatta kalma ve verim sunma yeteneği.</li>
-        <li><strong>Sağlık:</strong> Yerel hastalıklara ve parazitlere karşı doğal bağışıklık.</li>
-        <li><strong>Saf Hat:</strong> Korunması gereken milli genetik hazinemizdir.</li>
-    </ul>
-</div></div>
-
-<footer>
-    <strong>Lütfi Talha Alkış</strong> | talhaalks@gmail.com <br>
-    Dijital Ahır Projesi &copy; 2026
-</footer>
+<footer><strong>Lütfi Talha Alkış</strong> | talhaalks@gmail.com | Dijital Ahır &copy; 2026</footer>
 
 <script>
-    // ANALİZ MANTIĞI
-    function switchAnalysis(type) {
-        document.querySelectorAll('.analiz-tab-content').forEach(c => c.style.display = 'none');
-        document.getElementById('analysis-' + type).style.display = 'block';
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        if(type==='milk') document.getElementById('tab-milk').classList.add('active');
-        else document.getElementById('tab-meat').classList.add('active');
+    // ANALİZ VE MODLAR
+    function switchAnaliz(t) {
+        document.getElementById('analiz-milk').style.display = t==='milk'?'block':'none';
+        document.getElementById('analiz-meat').style.display = t==='meat'?'block':'none';
+        document.getElementById('tab-milk').className = t==='milk'?'tab-btn active':'tab-btn';
+        document.getElementById('tab-meat').className = t==='meat'?'tab-btn active':'tab-btn';
     }
 
     function calcMilk() {
-        const kg = parseFloat(document.getElementById('milk-input').value);
-        const cost = parseFloat(document.getElementById('milk-feed').value);
-        const price = parseFloat(document.getElementById('milk-price').value);
-        if(!isNaN(kg)) document.getElementById('milk-profit').innerText = (kg * price - cost).toFixed(0) + " ₺";
+        const kg = parseFloat(document.getElementById('m-kg').value);
+        const cost = parseFloat(document.getElementById('m-cost').value);
+        const price = parseFloat(document.getElementById('m-price').value);
+        if(!isNaN(kg)) document.getElementById('res-m').innerText = (kg * price - cost).toFixed(0) + " ₺";
     }
 
     function calcMeat() {
-        const count = parseFloat(document.getElementById('meat-count').value);
-        const totalKg = parseFloat(document.getElementById('meat-total-kg').value);
-        const days = parseFloat(document.getElementById('meat-days').value);
-        const feedDay = parseFloat(document.getElementById('meat-feed-day').value);
-        const priceKg = parseFloat(document.getElementById('meat-price-kg').value);
-
-        if(!isNaN(count) && days > 0) {
-            const gcaa = (totalKg / days / count);
-            document.getElementById('meat-gcaa-val').innerText = gcaa.toFixed(3);
-            const dailyKarSuru = ((gcaa * priceKg) - feedDay) * count;
-            document.getElementById('m-d').innerText = Math.round(dailyKarSuru).toLocaleString() + " ₺";
-            document.getElementById('m-15').innerText = Math.round(dailyKarSuru * 15).toLocaleString() + " ₺";
-            document.getElementById('m-m').innerText = Math.round(dailyKarSuru * 30).toLocaleString() + " ₺";
+        const c = parseFloat(document.getElementById('b-count').value);
+        const t = parseFloat(document.getElementById('b-total-kg').value);
+        const d = parseFloat(document.getElementById('b-days').value);
+        const f = parseFloat(document.getElementById('b-feed').value);
+        const p = parseFloat(document.getElementById('b-price').value);
+        if(!isNaN(c) && d > 0) {
+            const dailyKar = ((t / d / c) * p - f) * c;
+            document.getElementById('res-b-d').innerText = Math.round(dailyKar).toLocaleString() + " ₺";
+            document.getElementById('res-b-15').innerText = Math.round(dailyKar * 15).toLocaleString() + " ₺";
+            document.getElementById('res-b-30').innerText = Math.round(dailyKar * 30).toLocaleString() + " ₺";
         }
     }
 
-    // MODALLAR
-    function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
-    function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
-
-    // MÜHENDİSLİK & OYUN
-    function switchMode(m) {
-        document.querySelectorAll('.mode-content').forEach(c => c.style.display = 'none');
-        document.getElementById(m + '-mode').style.display = 'block';
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-' + (m==='engineer'?'eng':'arc')).classList.add('active');
+    function switchMod(m) {
+        document.getElementById('engineer-mode').style.display = m==='engineer'?'block':'none';
+        document.getElementById('arcade-mode').style.display = m==='arcade'?'block':'none';
+        document.getElementById('btn-eng').className = m==='engineer'?'tab-btn active':'tab-btn';
+        document.getElementById('btn-arc').className = m==='arcade'?'tab-btn active':'tab-btn';
         arcActive = false;
     }
 
@@ -300,60 +236,71 @@
 
     function checkRation() {
         const p = parseFloat(document.getElementById('p-slider').value);
-        if(p >= 16 && p <= 18) alert("🎯 İdeal Rasyon! Verim Maksimize Edildi."); else alert("⚠️ Rasyon Dengesiz.");
+        if(p >= 16 && p <= 18) alert("🎯 İdeal Rasyon!"); else alert("⚠️ Rasyon Dengesiz.");
     }
 
-    // OYUN MOTORU (SÜRÜKLEMELİ + BÖLÜMLER)
+    function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
+
+    // OYUN MOTORU
     const canvas = document.getElementById('arcadeCanvas');
     const gctx = canvas.getContext('2d');
-    let arcActive = false, cowX = 150, items = [], lastS = 0, score = 0, level = 1;
-    const levelNames = ["1. Stajyer Mühendis", "2. İşletme Sorumlusu", "3. Baş Mühendis"];
+    let arcActive = false, cowX = 150, items = [], lastS = 0, pScore = 0, eScore = 0, level = 1;
+    const lvls = ["1. Stajyer Mühendis", "2. İşletme Sorumlusu", "3. Baş Mühendis"];
 
     function startArcade() { 
-        arcActive = true; items = []; score = 0; level = 1;
-        document.getElementById('lvl-txt').innerText = levelNames[0];
-        document.getElementById('score-txt').innerText = score;
-        document.getElementById('start-btn').style.display = "none"; 
+        arcActive = true; items = []; pScore = 0; eScore = 0; 
+        document.getElementById('p-bar').style.width = "0%";
+        document.getElementById('e-bar').style.width = "0%";
+        document.getElementById('start-btn').style.display = "none";
+        document.getElementById('arcade-msg').innerText = "";
         loop(0); 
     }
 
-    const moveCow = (clientX) => {
+    canvas.addEventListener('mousemove', e => {
+        if(!arcActive) return;
         const r = canvas.getBoundingClientRect();
-        cowX = (clientX - r.left) * (canvas.width / r.width) - 25;
+        cowX = (e.clientX - r.left) * (canvas.width / r.width) - 25;
         if(cowX < 0) cowX = 0; if(cowX > 300) cowX = 300;
-    };
-    canvas.addEventListener('mousemove', e => { if(arcActive) moveCow(e.clientX); });
-    canvas.addEventListener('touchmove', e => { if(arcActive) { e.preventDefault(); moveCow(e.touches[0].clientX); } }, {passive: false});
+    });
 
     function loop(t) {
         if(!arcActive) return;
         gctx.clearRect(0,0,350,350);
         gctx.font = "40px Arial"; gctx.fillText("🐄", cowX, 330);
 
-        let spawnRate = 1200 - (level * 250);
-        let speed = 2.5 + (level * 1.2);
-
-        if(t - lastS > spawnRate) { items.push({x: Math.random()*310, y: 0, t: Math.random()>0.5?'🌾':'🌽'}); lastS = t; }
+        let speed = 2.5 + (level * 0.8);
+        if(t - lastS > 1000 - (level * 100)) { items.push({x: Math.random()*310, y: 0, t: Math.random()>0.5?'🌾':'🌽'}); lastS = t; }
 
         for(let i=items.length-1; i>=0; i--) {
             items[i].y += speed;
             gctx.font = "30px Arial"; gctx.fillText(items[i].t, items[i].x, items[i].y);
-            
             if(items[i].y > 300 && items[i].x > cowX-15 && items[i].x < cowX+45) {
+                if(items[i].t === '🌾') pScore = Math.min(100, pScore + 10);
+                else eScore = Math.min(100, eScore + 10);
                 items.splice(i,1);
-                score += 10;
-                document.getElementById('score-txt').innerText = score;
-                if(score > 0 && score % 100 === 0 && level < 3) { 
-                    level++; 
-                    document.getElementById('lvl-txt').innerText = levelNames[level-1];
-                }
             } else if(items[i].y > 360) {
-                arcActive = false;
-                document.getElementById('arcade-msg').innerText = "❌ Yem İsrafı! Puan: " + score;
+                arcActive = false; document.getElementById('arcade-msg').innerText = "❌ Yem Kaçırdınız!";
                 document.getElementById('start-btn').style.display = "inline-block";
             }
         }
-        requestAnimationFrame(loop);
+
+        document.getElementById('p-bar').style.width = pScore + "%";
+        document.getElementById('e-bar').style.width = eScore + "%";
+
+        if(pScore >= 100 && eScore >= 100) {
+            arcActive = false;
+            if(level < 3) {
+                document.getElementById('arcade-msg').innerText = "🎉 Bölüm Tamamlandı!";
+                level++; document.getElementById('lvl-txt').innerText = lvls[level-1];
+                document.getElementById('start-btn').innerText = "Sonraki Bölüme Geç";
+            } else {
+                document.getElementById('arcade-msg').innerText = "🏆 MUHTEŞEM MÜHENDİS!";
+                level = 1;
+            }
+            document.getElementById('start-btn').style.display = "inline-block";
+        }
+        if(arcActive) requestAnimationFrame(loop);
     }
 </script>
 </body>
