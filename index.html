@@ -74,8 +74,11 @@
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
-        /* ÜYE GİRİŞİ MODAL ÖZEL */
+        /* ÜYELİK SİSTEMİ ÖZEL */
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
         .login-input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .auth-toggle { color: #27ae60; cursor: pointer; font-weight: bold; text-decoration: underline; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         footer { text-align: center; padding: 50px 20px; background: #1b4d3e; color: white; margin-top: 50px; }
@@ -97,11 +100,10 @@
     <a href="#irklar">Irk Kütüphanesi</a>
     <a href="#game-center">Formül & Oyun</a>
     <a href="#analiz">İşletme Analizi</a>
-    <button class="login-nav-btn" onclick="openModal('modal-login')">Üye Girişi</button>
+    <button class="login-nav-btn" onclick="openAuthModal('login')">Üye Girişi</button>
 </nav>
 
 <div class="container">
-
     <h2 id="uzmanlik" class="section-title">Teknik Uzmanlık Alanları</h2>
     <div class="grid">
         <div class="card" onclick="openModal('modal-islah')">
@@ -223,19 +225,34 @@
 <div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor Yönetimi:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlar.</p><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik ve yumuşak yataklık tasarımları.</li></ul></div></div>
 <div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p><strong>Köken:</strong> Hollanda ve Kuzey Almanya.</p><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg laktasyon verimi.</li><li><strong>Süt Kalitesi:</strong> %3.5 - 3.8 yağ oranı.</li><li><strong>Fizyoloji:</strong> Ergin ağırlık 600-750 kg.</li></ul></div></div>
 <div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p><strong>Köken:</strong> İsviçre (Alp Dağları).</p><ul><li><strong>Verim:</strong> 6.000-8.500 kg süt + Et verimi.</li><li><strong>Besi Performansı:</strong> Günlük 1.300 - 1.500g artış potansiyeli.</li><li><strong>Özellik:</strong> Ayak hastalıklarına karşı doğal direnç.</li></ul></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p><strong>Köken:</strong> Manş Denizi (Jersey Adası).</p><ul><li><strong>Kalite:</strong> %5.0 - 6.5 yağ oranı.</li><li><strong>Verimlilik:</strong> Yemi süte en iyi dönüştüren ırk.</li><li><strong>Sıcaklık:</strong> Sıcak iklimlere en dayanıklı sütçü ırk.</li></ul></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p><strong>Köken:</strong> Manş Denizi (Jersey Adası).</p><ul><li><strong>Kalite:</strong> %5.0 - 6.5 yağ oranı.</li><li><strong>Verimlilik:</strong> Yemi süte en iyi dönüştüren 1. ırk.</li><li><strong>Sıcaklık:</strong> Sıcak iklimlere en dayanıklı sütçü ırk.</li></ul></div></div>
 <div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p><strong>Köken:</strong> Türkiye (Anadolu).</p><ul><li><strong>Direnç:</strong> Yerel hastalıklara muazzam adaptasyon.</li><li><strong>Besleme:</strong> Kıt yem kaynaklarını dahi verime dönüştürebilme.</li><li><strong>Miras:</strong> Milli genetik kaynağımız olarak korunması şarttır.</li></ul></div></div>
 
-<div id="modal-login" class="modal">
+<div id="modal-auth" class="modal">
     <div class="modal-content" style="max-width: 400px; text-align: center;">
-        <span class="close" onclick="closeModal('modal-login')">&times;</span>
-        <h2 style="color: #1b4d3e;">Mühendis Girişi</h2>
-        <p style="font-size: 0.8rem; color: #666;">Dijital Ahır verilerine erişmek için giriş yapın.</p>
-        <hr>
-        <input type="text" class="login-input" placeholder="Kullanıcı Adı">
-        <input type="password" class="login-input" placeholder="Şifre">
-        <button class="btn-action" style="width: 100%;" onclick="alert('Demo Sürümü: Kayıtlı kullanıcı bulunamadı.')">Giriş Yap</button>
-        <p style="font-size: 0.7rem; margin-top: 15px; color: #999;">Henüz üye değil misiniz? <a href="#" style="color: #27ae60;">Kayıt Ol</a></p>
+        <span class="close" onclick="closeModal('modal-auth')">&times;</span>
+        
+        <div id="auth-login" class="auth-form active">
+            <h2 style="color: #1b4d3e;">Mühendis Girişi</h2>
+            <p style="font-size: 0.8rem; color: #666;">Verilere erişmek için giriş yapın.</p>
+            <hr>
+            <input type="text" class="login-input" placeholder="Kullanıcı Adı">
+            <input type="password" class="login-input" placeholder="Şifre">
+            <button class="btn-action" style="width: 100%;" onclick="alert('Demo: Giriş başarılı!')">Giriş Yap</button>
+            <p style="font-size: 0.8rem; margin-top: 15px;">Hesabınız yok mu? <span class="auth-toggle" onclick="toggleAuth('signup')">Kayıt Ol</span></p>
+        </div>
+
+        <div id="auth-signup" class="auth-form">
+            <h2 style="color: #1b4d3e;">Mühendis Kaydı</h2>
+            <p style="font-size: 0.8rem; color: #666;">Dijital Ahır ailesine katılın.</p>
+            <hr>
+            <input type="text" class="login-input" placeholder="Ad Soyad">
+            <input type="email" class="login-input" placeholder="E-posta">
+            <input type="text" class="login-input" placeholder="Üniversite / İşletme">
+            <input type="password" class="login-input" placeholder="Şifre">
+            <button class="btn-action" style="width: 100%;" onclick="alert('Demo: Kayıt başarıyla tamamlandı!')">Kayıt Ol</button>
+            <p style="font-size: 0.8rem; margin-top: 15px;">Zaten üye misiniz? <span class="auth-toggle" onclick="toggleAuth('login')">Giriş Yap</span></p>
+        </div>
     </div>
 </div>
 
@@ -247,11 +264,22 @@
 </footer>
 
 <script>
+    // ÜYELİK FONKSİYONLARI
+    function openAuthModal(type) {
+        openModal('modal-auth');
+        toggleAuth(type);
+    }
+    function toggleAuth(type) {
+        document.getElementById('auth-login').classList.remove('active');
+        document.getElementById('auth-signup').classList.remove('active');
+        document.getElementById('auth-' + type).classList.add('active');
+    }
+
+    // DİĞER FONKSİYONLAR
     function calculateProfit() {
         const kg = parseFloat(document.getElementById('milk-input').value);
         const cost = parseFloat(document.getElementById('feed-cost-input').value);
         const price = parseFloat(document.getElementById('milk-price-input').value);
-        
         if(!isNaN(kg) && !isNaN(cost) && !isNaN(price)) {
             const rev = kg * price; const profit = rev - cost;
             document.getElementById('daily-revenue').innerText = rev.toFixed(0) + " ₺";
@@ -315,17 +343,14 @@
         if(!arcActive) return;
         gctx.clearRect(0,0,400,400);
         gctx.font = "45px Arial"; gctx.fillText("🐄", cowX, 380);
-
         const cfg = levels[currentLevel];
         if(time - lastSpawn > cfg.cooldown) {
             items.push({x: Math.random()*370, y: 0, t: Math.random()>0.5?'🌾':'🌽', s: cfg.speed});
             lastSpawn = time;
         }
-
         for(let i=items.length-1; i>=0; i--) {
             items[i].y += items[i].s;
             gctx.font = "30px Arial"; gctx.fillText(items[i].t, items[i].x, items[i].y);
-            
             if(items[i].y > 340 && items[i].y < 390 && items[i].x > cowX-15 && items[i].x < cowX+45) {
                 if(items[i].t==='🌾') pScore = Math.min(100, pScore+10); else eScore = Math.min(100, eScore+10);
                 items.splice(i,1);
@@ -339,10 +364,8 @@
                 return;
             }
         }
-
         document.getElementById('p-fill').style.width = pScore + "%";
         document.getElementById('e-fill').style.width = eScore + "%";
-
         if(pScore >= 100 && eScore >= 100) {
             arcActive = false;
             if(currentLevel < 3) {
