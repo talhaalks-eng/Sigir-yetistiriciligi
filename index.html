@@ -56,6 +56,7 @@
         .calc-container td { padding: 12px; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
         .calc-container input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
         .calc-result-row { background: #f0fdf4; font-weight: bold; color: #1b4d3e; }
+        .diff-row { background: #fffbe6; font-weight: bold; color: #856404; font-size: 0.8rem; }
 
         /* VİZYON ALANI VE ÖZEL İMZA */
         .personal-section { text-align: center; margin: 60px 0; padding: 40px 20px; background: #fff; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
@@ -184,9 +185,10 @@
                 <tr><td>Baskül Fiyatı (₺/kg)</td><td><input type="number" id="b-price-live"></td></tr>
                 <tr><td>Karkas Fiyatı (₺/kg)</td><td><input type="number" id="b-price-meat"></td></tr>
                 <tr><td>Karkas Randımanı (%)</td><td><input type="number" id="b-yield" value="58"></td></tr>
-                <tr class="calc-result-row"><td>GÜNLÜK TAHMİNİ NET KAR</td><td id="res-b-d">0 ₺</td></tr>
-                <tr class="calc-result-row"><td>15 GÜNLÜK TAHMİN</td><td id="res-b-15">0 ₺</td></tr>
-                <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR</td><td id="res-b-30">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>GÜNLÜK NET KAR (CANLI)</td><td id="res-b-live">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>GÜNLÜK NET KAR (KARKAS)</td><td id="res-b-meat">0 ₺</td></tr>
+                <tr class="diff-row"><td>AVANTAJLI MODEL FARKI (GÜNLÜK)</td><td id="res-b-diff">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR (MAX)</td><td id="res-b-max">0 ₺</td></tr>
                 <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMeat()">Hesapla</button></td></tr>
             </table>
         </div>
@@ -315,27 +317,23 @@
         const yieldPerc = parseFloat(document.getElementById('b-yield').value) / 100;
 
         if(!isNaN(c) && d > 0 && !isNaN(t)) {
-            // 1. Hayvan başına günlük canlı ağırlık artışı (GCAA)
             const dailyGainPerAnimal = t / d / c;
+            const dailyGainTotal = t / d;
             
-            // 2. Hayvan başına günlük canlı gelir
-            const dailyRevLive = dailyGainPerAnimal * pLive;
+            const dailyRevenueLive = dailyGainTotal * pLive;
+            const dailyRevenueMeat = (dailyGainTotal * yieldPerc) * pMeat;
             
-            // 3. Hayvan başına günlük karkas gelir
-            const dailyRevMeat = (dailyGainPerAnimal * yieldPerc) * pMeat;
-            
-            // 4. En karlı modeli seç
-            const bestDailyRevAnimal = Math.max(dailyRevLive, dailyRevMeat);
-            
-            // 5. Yem Giderini Günlükleştir (ÖNEMLİ DÜZELTME): f (toplam masraf) / d (gün sayısı)
             const dailyTotalFeedCost = f / d;
             
-            // 6. İşletme günlük net kârı
-            const dailyNetProfit = (bestDailyRevAnimal * c) - dailyTotalFeedCost;
+            const netProfitLive = dailyRevenueLive - dailyTotalFeedCost;
+            const netProfitMeat = dailyRevenueMeat - dailyTotalFeedCost;
+            const bestProfit = Math.max(netProfitLive, netProfitMeat);
+            const diff = Math.abs(netProfitLive - netProfitMeat);
 
-            document.getElementById('res-b-d').innerText = Math.round(dailyNetProfit).toLocaleString() + " ₺";
-            document.getElementById('res-b-15').innerText = Math.round(dailyNetProfit * 15).toLocaleString() + " ₺";
-            document.getElementById('res-b-30').innerText = Math.round(dailyNetProfit * 30).toLocaleString() + " ₺";
+            document.getElementById('res-b-live').innerText = Math.round(netProfitLive).toLocaleString() + " ₺";
+            document.getElementById('res-b-meat').innerText = Math.round(netProfitMeat).toLocaleString() + " ₺";
+            document.getElementById('res-b-diff').innerText = Math.round(diff).toLocaleString() + " ₺ (" + (netProfitLive > netProfitMeat ? 'Canlı Avantajlı' : 'Karkas Avantajlı') + ")";
+            document.getElementById('res-b-max').innerText = Math.round(bestProfit * 30).toLocaleString() + " ₺";
         }
     }
 
