@@ -66,7 +66,7 @@
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
-        .modal-content { background: white; margin: 10% auto; padding: 25px; border-radius: 15px; width: 90%; max-width: 650px; position: relative; max-height: 80vh; overflow-y: auto; text-align: left; }
+        .modal-content { background: white; margin: 5% auto; padding: 25px; border-radius: 15px; width: 90%; max-width: 650px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; color: #888; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 10px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 15px; }
 
@@ -179,7 +179,7 @@
                 <tr><td>Hayvan Sayısı (Baş)</td><td><input type="number" id="b-count"></td></tr>
                 <tr><td>Toplam Alınan Kilo (kg)</td><td><input type="number" id="b-total-kg"></td></tr>
                 <tr><td>Geçen Gün Sayısı</td><td><input type="number" id="b-days"></td></tr>
-                <tr><td>Yem Gideri (₺/Gün/Hayvan)</td><td><input type="number" id="b-feed"></td></tr>
+                <tr><td>Yem Gideri (₺)</td><td><input type="number" id="b-feed"></td></tr>
                 <tr><td>Baskül Fiyatı (₺/kg)</td><td><input type="number" id="b-price"></td></tr>
                 <tr class="calc-result-row"><td>GÜNLÜK TOPLAM KAR</td><td id="res-b-d">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>15 GÜNLÜK TAHMİN</td><td id="res-b-15">0 ₺</td></tr>
@@ -204,13 +204,68 @@
     Dijital Ahır Projesi &copy; 2026 | <a href="mailto:talhaalks@gmail.com" class="footer-mail">talhaalks@gmail.com</a>
 </footer>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr><p>Genetik iyileştirme süreçleri.</p></div></div>
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme Bilimi</h2><hr><p>Rasyon ve maliyet dengesi.</p></div></div>
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr><p>Modern ahır projeleri.</p></div></div>
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><p>Dünyanın en yüksek süt verim kapasitesine sahip ırkıdır.</p></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><p>Hem et hem süt verimi sunan kombine bir ırktır.</p></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><p>Sütünün kalitesi ve yağ oranıyla tanınan butik bir ırktır.</p></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Yerel şartlara en dayanıklı ırktır.</p></div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr>
+    <p><strong>Tanım:</strong> Sürü genetiğini her nesilde belirli verim karakterleri yönünde artırma ve ıslah etme sürecidir.</p>
+    <ul>
+        <li>Pedigri kayıtları ile akrabalı yetiştirmenin bilimsel kontrolü.</li>
+        <li>Genomik seleksiyon ile buzağılık döneminde verim tahmini.</li>
+        <li>Döl verimi parametrelerinin takibi ve başarı artırımı.</li>
+    </ul>
+</div></div>
+
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme Bilimi</h2><hr>
+    <p><strong>Tanım:</strong> Hayvanın fizyolojik ihtiyaçlarını en ekonomik ve sağlıklı rasyonlarla karşılama bilimidir.</p>
+    <ul>
+        <li>Kuru madde tüketimi takibi ile iştah yönetimi.</li>
+        <li>Protein ve enerji dengesinin NEL/NEF birimleriyle laktasyon dönemine göre ayarlanması.</li>
+        <li>İşkembe pH dengesinin korunarak metabolik hastalıkların önlenmesi.</li>
+    </ul>
+</div></div>
+
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr>
+    <p><strong>Tanım:</strong> Hayvan konforunu merkeze alarak biyolojik verim potansiyelini maksimize etme sürecidir.</p>
+    <ul>
+        <li>Akıllı fan ve duşlama sistemleriyle ısı stresi yönetimi.</li>
+        <li>Hijyenik ve yumuşak yataklık tasarımları ile meme sağlığı koruması.</li>
+        <li>Aktif havalandırma ile amonyak ve nem kontrolü.</li>
+    </ul>
+</div></div>
+
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr>
+    <p><strong>Tanım:</strong> Hollanda kökenli, dünyanın en yüksek süt verim kapasitesine sahip ırkıdır.</p>
+    <ul>
+        <li>Laktasyon başına 10.000 kg üzeri rekor verim potansiyeli.</li>
+        <li>%3.5 - 3.8 oranında endüstriyel kullanıma uygun süt yağı.</li>
+        <li>Makine sağıma en uyumlu meme konformasyonu.</li>
+    </ul>
+</div></div>
+
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr>
+    <p><strong>Tanım:</strong> İsviçre kökenli, hem et hem süt verimi sunan kombine bir ırktır.</p>
+    <ul>
+        <li>Yüksek besi performansı ve kaliteli karkas randımanı.</li>
+        <li>Güçlü ayak ve bacak yapısı ile hastalıklara karşı direnç.</li>
+        <li>6.000 kg üzeri yıllık süt verim kapasitesi.</li>
+    </ul>
+</div></div>
+
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr>
+    <p><strong>Tanım:</strong> İngiltere kökenli, sütünün kalitesi ve yağ oranıyla tanınan butik bir ırktır.</p>
+    <ul>
+        <li>%5.5 - 6.5 oranındaki süt yağı ile peynir üretimi için ideal.</li>
+        <li>Düşük cüsse sayesinde yüksek yem-süt dönüşüm verimliliği.</li>
+        <li>Sıcak iklim koşullarına diğer Avrupa ırklarından daha iyi adaptasyon.</li>
+    </ul>
+</div></div>
+
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr>
+    <p><strong>Tanım:</strong> Türkiye'nin binlerce yıllık yerel genetik mirası olan, yerel şartlara en dayanıklı ırktır.</p>
+    <ul>
+        <li>Zorlu Anadolu iklimine ve kısıtlı mera şartlarına tam adaptasyon.</li>
+        <li>Yerel hastalıklara karşı dünyadaki en dirençli genetik yapıdan biri.</li>
+        <li>Düşük verimli olsa da stratejik ve korunması gereken gen kaynağımız.</li>
+    </ul>
+</div></div>
 
 <script>
     let currentEngType = 'milk';
@@ -240,7 +295,6 @@
         const kg = parseFloat(document.getElementById('m-kg').value);
         const cost = parseFloat(document.getElementById('m-cost').value);
         const price = parseFloat(document.getElementById('m-price').value);
-        
         if(!isNaN(kg) && !isNaN(cost) && !isNaN(price)) {
             const dailyKar = (kg * price) - cost;
             document.getElementById('res-m').innerText = Math.round(dailyKar).toLocaleString() + " ₺";
@@ -256,7 +310,7 @@
         const f = parseFloat(document.getElementById('b-feed').value);
         const p = parseFloat(document.getElementById('b-price').value);
         if(!isNaN(c) && d > 0) {
-            const dailyKar = ((t / d / c) * p - f) * c;
+            const dailyKar = ((t / d / c) * p - (f / c)) * c; // Günlük toplam kar hesabı düzeltildi
             document.getElementById('res-b-d').innerText = Math.round(dailyKar).toLocaleString() + " ₺";
             document.getElementById('res-b-15').innerText = Math.round(dailyKar * 15).toLocaleString() + " ₺";
             document.getElementById('res-b-30').innerText = Math.round(dailyKar * 30).toLocaleString() + " ₺";
@@ -280,7 +334,6 @@
         const p = parseFloat(document.getElementById('p-slider').value);
         const e = parseFloat(document.getElementById('e-slider').value);
         const resBox = document.getElementById('ration-result');
-        
         if(currentEngType === 'milk') {
             if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
                 resBox.innerText = "🎯 İdeal Süt Rasyonu! Verim Maksimize Edildi.";
@@ -303,7 +356,7 @@
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
 
-    // OYUN MOTORU (Kısaltılmış ve düzeltilmiş)
+    // OYUN MOTORU AYNI KALDI
     const canvas = document.getElementById('arcadeCanvas');
     const gctx = canvas.getContext('2d');
     let arcActive = false, cowX = 150, items = [], lastS = 0, pScore = 0, eScore = 0, level = 1;
@@ -332,10 +385,8 @@
         if(!arcActive) return;
         gctx.clearRect(0,0,350,350);
         gctx.font = "40px Arial"; gctx.fillText("🐄", cowX, 330);
-
         let speed = 2.4 + (level * 0.9);
         if(t - lastS > 1100 - (level * 150)) { items.push({x: Math.random()*310, y: 0, t: Math.random()>0.5?'🌾':'🌽'}); lastS = t; }
-
         for(let i=items.length-1; i>=0; i--) {
             items[i].y += speed;
             gctx.font = "30px Arial"; gctx.fillText(items[i].t, items[i].x, items[i].y);
@@ -351,10 +402,8 @@
                 document.getElementById('start-btn').style.display = "inline-block";
             }
         }
-
         document.getElementById('p-bar').style.width = pScore + "%";
         document.getElementById('e-bar').style.width = eScore + "%";
-
         if(pScore >= 100 && eScore >= 100) {
             arcActive = false;
             if(level < 3) {
