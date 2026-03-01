@@ -10,7 +10,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #fdfdfd; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER */
+        /* HEADER & NAV */
         header { 
             position: relative; height: 40vh; min-height: 250px;
             background: #1b4d3e url('sigir-surusu.png') no-repeat center center;
@@ -20,7 +20,6 @@
         .header-text { position: relative; z-index: 2; color: white; padding: 20px; }
         header h1 { font-size: clamp(1.8rem, 8vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* NAVİGASYON */
         nav { background: #1b4d3e; padding: 12px 5px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: center; flex-wrap: wrap; }
         nav a { color: white; text-decoration: none; margin: 5px 15px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: #27ae60; }
@@ -28,57 +27,48 @@
         .container { max-width: 1100px; margin: 30px auto; padding: 15px; }
         .section-title { color: #1b4d3e; border-left: 5px solid #27ae60; padding-left: 15px; margin: 50px 0 25px 0; font-size: clamp(1.5rem, 5vw, 2rem); }
 
-        /* ANALİZ PANELİ STİLLERİ */
+        /* ANALİZ PANELİ */
         .analysis-box { background: white; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
-        .input-wrapper { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-        .input-wrapper label { font-size: 0.8rem; font-weight: bold; color: #1b4d3e; margin-left: 5px; }
         .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .input-wrapper { display: flex; flex-direction: column; gap: 5px; }
+        .input-wrapper label { font-size: 0.8rem; font-weight: bold; color: #1b4d3e; }
         .input-grid input { padding: 12px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; }
         .input-grid input:focus { border-color: #27ae60; }
         
-        .profit-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .profit-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 25px 0; }
         .p-card { padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #eee; background: #fff; }
 
         /* KARTLAR */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 12px; border-top: 6px solid #27ae60; transition: 0.4s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
+        .card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 12px; border-top: 6px solid #27ae60; transition: 0.4s; cursor: pointer; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
-        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
+        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
 
-        /* VİZYON ALANI */
-        .personal-section { text-align: center; margin: 60px 0; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .personal-photo { display: inline-block; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 5px solid white; }
-        .personal-photo img { width: 100%; height: auto; display: block; }
-        .vision-text { max-width: 750px; margin: 30px auto 0; font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; position: relative; padding: 0 30px; }
-        .signature { font-family: 'Brush Script MT', 'Cursive', sans-serif; color: #1b4d3e; margin-top: 15px; display: block; text-align: right; padding-right: 50px; font-size: 1.6rem; letter-spacing: 1px; }
-
-        /* SİMÜLASYON */
+        /* SİMÜLASYON & OYUN */
         #game-center { background: #ffffff; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e0e0e0; }
         .mode-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .mode-btn { padding: 10px 20px; border: 2px solid #1b4d3e; background: transparent; color: #1b4d3e; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
+        .mode-btn { padding: 10px 20px; border: 2px solid #1b4d3e; background: transparent; color: #1b4d3e; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .mode-btn.active { background: #1b4d3e; color: white; }
         .game-content { display: none; }
         .game-content.active { display: block; animation: fadeIn 0.4s ease; }
-
-        .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
-        .target-box { background: #e8f5e9; padding: 10px; border-radius: 8px; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; border: 1px dashed #27ae60; color: #1b4d3e; }
-        .tech-info { font-size: 0.85rem; color: #555; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 8px; line-height: 1.4; }
-
-        #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; display: block; margin: 0 auto; }
-        .game-bars { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; }
+        #arcadeCanvas { background: #e8f5e9; border-radius: 12px; border: 2px solid #ddd; max-width: 100%; touch-action: none; cursor: ew-resize; margin: 0 auto; display: block; }
+        
+        .bar-wrap { width: 130px; text-align: left; font-size: 0.85rem; font-weight: bold; margin: 5px; }
         .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
-        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
-        /* MODAL SİSTEMİ */
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 750px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
+        .modal-body ul { list-style-type: square; padding-left: 20px; }
+        .modal-body li { margin-bottom: 10px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-action:hover { transform: scale(1.05); background: #219150; }
+
         footer { text-align: center; padding: 40px; background: #1b4d3e; color: white; margin-top: 50px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -96,7 +86,6 @@
     <a href="#uzmanlik">Uzmanlık</a>
     <a href="#irklar">Irk Kütüphanesi</a>
     <a href="#game-center">Simülasyon</a>
-    <a href="mailto:talhaalks@gmail.com">İletişim</a>
 </nav>
 
 <div class="container">
@@ -106,51 +95,39 @@
         <div class="input-grid">
             <div class="input-wrapper">
                 <label>Günlük Süt (kg)</label>
-                <input type="number" id="milk-input" placeholder="Örn: 25">
+                <input type="number" id="milk-input" placeholder="Örn: 30">
             </div>
             <div class="input-wrapper">
                 <label>Yem Maliyeti (₺)</label>
-                <input type="number" id="feed-cost-input" placeholder="Örn: 300">
+                <input type="number" id="feed-cost-input" placeholder="Örn: 450">
             </div>
             <div class="input-wrapper">
                 <label>Süt Satış Fiyatı (₺/kg)</label>
-                <input type="number" id="milk-price-input" placeholder="Fiyat giriniz...">
+                <input type="number" id="milk-price-input" placeholder="Üretici Fiyatı Giriniz">
             </div>
         </div>
         <div style="text-align:center;">
             <button class="btn-action" style="margin-top:0;" onclick="calculateProfit()">Veri Ekle ve Analiz Et</button>
         </div>
-
-        <div class="profit-card-container" style="margin-top: 25px;">
-            <div class="p-card" style="background: #f1f8e9; border-color: #c5e1a5;">
-                <small>Günlük Gelir</small><br><strong id="daily-revenue" style="color: #2e7d32;">0 ₺</strong>
-            </div>
-            <div class="p-card" style="background: #ffebee; border-color: #ef9a9a;">
-                <small>Yem Gideri</small><br><strong id="daily-cost" style="color: #c62828;">0 ₺</strong>
-            </div>
-            <div class="p-card" style="background: #fff8e1; border-color: #ffe082;">
-                <small>Brüt Kar</small><br><strong id="daily-profit" style="color: #ef6c00;">0 ₺</strong>
-            </div>
+        <div class="profit-card-container">
+            <div class="p-card" style="background: #f1f8e9; border-color: #c5e1a5;"><small>Günlük Gelir</small><br><strong id="daily-revenue" style="color: #2e7d32;">0 ₺</strong></div>
+            <div class="p-card" style="background: #ffebee; border-color: #ef9a9a;"><small>Yem Gideri</small><br><strong id="daily-cost" style="color: #c62828;">0 ₺</strong></div>
+            <div class="p-card" style="background: #fff8e1; border-color: #ffe082;"><small>Brüt Kar</small><br><strong id="daily-profit" style="color: #ef6c00;">0 ₺</strong></div>
         </div>
         <canvas id="profitChart" style="max-height: 300px;"></canvas>
     </div>
-    
+
     <h2 id="uzmanlik" class="section-title">Teknik Uzmanlık Alanları</h2>
     <div class="grid">
         <div class="card" onclick="openModal('modal-islah')">
             <h3>🐄 Islah ve Seleksiyon</h3>
-            <p>Sürü kalitesini sistematik olarak artırmak amacıyla yapılan genetik iyileştirme çalışmalarıdır.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
+            <p>Sürü genetiğini bilimsel yöntemlerle iyileştirme süreçleri.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detaylı İncele →</span>
         </div>
         <div class="card" onclick="openModal('modal-besleme')">
             <h3>🌾 Hayvan Besleme</h3>
-            <p>Potansiyeli performansa dönüştüren profesyonel rasyon optimizasyon süreçleri.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
-        </div>
-        <div class="card" onclick="openModal('modal-barinak')">
-            <h3>🏗️ Barınak Yönetimi</h3>
-            <p>Hayvan refahı standartlarına uygun modern yaşam alanları tasarımı.</p>
-            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detayları Gör →</span>
+            <p>Maliyet ve verim odaklı profesyonel rasyon çözümleri.</p>
+            <span style="color: #27ae60; font-weight: bold; font-size: 0.8rem;">Detaylı İncele →</span>
         </div>
     </div>
 
@@ -158,62 +135,47 @@
     <div class="grid">
         <div class="card" onclick="openModal('modal-holstein')">
             <img src="holstein.jpg" alt="Holstein" onerror="this.src='https://via.placeholder.com/300x160?text=Holstein'">
-            <h3>Holstein</h3>
-            <p>Sütçü ırkların dünya lideri.</p>
+            <h3>Holstein (Siyah-Alaca)</h3>
+            <p>Dünyanın en popüler sütçü ırkı.</p>
         </div>
         <div class="card" onclick="openModal('modal-simmental')">
             <img src="simmental.jpg" alt="Simental" onerror="this.src='https://via.placeholder.com/300x160?text=Simental'">
-            <h3>Simental</h3>
-            <p>Et ve sütte kombine yetenek.</p>
+            <h3>Simental (Fleckvieh)</h3>
+            <p>Kombine verimli (Et + Süt) üretici dostu.</p>
         </div>
         <div class="card" onclick="openModal('modal-jersey')">
             <img src="jersey.jpg" alt="Jersey" onerror="this.src='https://via.placeholder.com/300x160?text=Jersey'">
             <h3>Jersey</h3>
-            <p>Yüksek yağ oranıyla kalite lideri.</p>
-        </div>
-        <div class="card" onclick="openModal('modal-yerlikara')">
-            <img src="yerlikara.jpg" alt="Yerli Kara" onerror="this.src='https://via.placeholder.com/300x160?text=Yerli+Kara'">
-            <h3>Yerli Kara</h3>
-            <p>Anadolu'nun kadim dirençli mirası.</p>
+            <p>Yüksek süt yağı ve protein kalitesi.</p>
         </div>
     </div>
 
     <div id="game-center">
-        <h2>🌾 Rasyon Simülasyonu</h2>
+        <h2>🌾 Mühendislik Simülasyonu</h2>
         <div class="mode-selector">
-            <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Mühendis Modu</button>
-            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎮 Oyun</button>
+            <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Rasyon Analizi</button>
+            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎮 Rasyon Toplama (Oyun)</button>
         </div>
 
         <div id="engineer-mode" class="game-content active">
-            <div class="target-box">
-                🎯 <strong>İdeal Sağmal Hedefi:</strong> Protein: <strong>%16-18</strong> | Enerji: <strong>1.7-1.9 Mcal</strong>
+            <div class="target-box">🎯 <strong>Hedef:</strong> Protein: <strong>%16-18</strong> | Enerji: <strong>1.7-1.9 Mcal</strong></div>
+            <div style="max-width:450px; margin:0 auto; text-align:left;">
+                <label>Ham Protein: %<span id="p-val">12.0</span></label>
+                <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()" style="width:100%">
+                <br><br>
+                <label>Enerji (NEL): <span id="e-val">1.4</span> Mcal</label>
+                <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()" style="width:100%">
             </div>
-            <div class="slider-box">
-                <label>Ham Protein: %<strong><span id="p-val">12.0</span></strong></label>
-                <input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEngValues()">
-                <div class="tech-info"><strong>Önem:</strong> Süt sentezi, kas yapısı ve doku onarımı için temel yapı taşıdır.</div>
-            </div>
-            <div class="slider-box">
-                <label>Enerji (NEL): <strong><span id="e-val">1.4</span> Mcal</strong></label>
-                <input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEngValues()">
-                <div class="tech-info"><strong>Önem:</strong> Hayvanın yaşam payı ve süt üretimi için gereken ana yakıttır.</div>
-            </div>
-            <button class="btn-action" onclick="checkEngRation()">Analiz Et</button>
-            <div id="eng-result-box" style="margin-top:20px; padding:15px; border-radius:10px; display:none; background:#f0f0f0;">
-                <p id="eng-result" style="font-weight: bold; margin:0;"></p>
-                <p id="eng-advice" style="font-size: 0.9rem; color: #555; margin-top:5px;"></p>
-            </div>
+            <button class="btn-action" onclick="checkEngRation()">Rasyonu Analiz Et</button>
         </div>
 
         <div id="arcade-mode" class="game-content">
-            <div id="level-display" style="font-weight: bold; color: #1b4d3e; margin-bottom: 10px;">Aşama: <span id="current-level-name">Bölüm 1: Stajyer Mühendis</span></div>
+            <p style="font-size:0.9rem; color:#666;">İneği mouse veya parmağınızla <strong>kaydırarak</strong> yemleri toplayın!</p>
             <canvas id="arcadeCanvas" width="400" height="400"></canvas>
-            <div class="game-bars">
-                <div class="bar-wrap">Protein (🌾)<div class="bar-bg"><div id="p-fill" class="bar-fill" style="background:#27ae60;"></div></div></div>
-                <div class="bar-wrap">Enerji (🌽)<div class="bar-bg"><div id="e-fill" class="bar-fill" style="background:#f1c40f;"></div></div></div>
+            <div style="display:flex; justify-content:center; gap:20px; margin-top:15px;">
+                <div class="bar-wrap">Protein🌾<div class="bar-bg"><div id="p-fill" class="bar-fill" style="background:#27ae60;"></div></div></div>
+                <div class="bar-wrap">Enerji🌽<div class="bar-bg"><div id="e-fill" class="bar-fill" style="background:#f1c40f;"></div></div></div>
             </div>
-            <p id="arcade-msg" style="font-weight:bold; margin-top:10px; min-height:1.5em;"></p>
             <button class="btn-action" id="start-btn" onclick="startArcade()">Oyuna Başla</button>
         </div>
     </div>
@@ -223,19 +185,21 @@
             <img src="saha.jpg" alt="Lütfi Talha Alkış" onerror="this.src='https://via.placeholder.com/500x350?text=Lütfi+Talha+Alkış'">
         </div>
         <div class="vision-text">
-            "Bir Ziraat Mühendisi adayı olarak vizyonum, ziraati sadece tarladan ve çiftlikten ibaret görmeyip, gelişen dünyanın en büyük gücü olan dijitalliği bu alana entegre etmektir. Üretimin her aşamasında verimliliği artırmak ve modern çözümler sunmak adına kendimi hem teknik hem de teknolojik her yönde geliştirmeye devam ediyorum."
+            "Ziraat Mühendisi adayı olarak vizyonum, hayvancılığı dijitalleşme ile modernize etmektir."
             <span class="signature">Lütfi Talha Alkış</span>
         </div>
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr><p>Hayvancılıkta verimi ve kaliteyi artırmak amacıyla yapılan genetik iyileştirme çalışmalarıdır. Sürü içerisindeki en sağlıklı ve en yüksek verimli bireylerin seleksiyon yoluyla bir sonraki nesle aktarılmasını hedefler.</p></div></div>
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme</h2><hr><p>Genetik potansiyelin ortaya çıkması için ihtiyaç duyulan besin maddelerinin sağlanmasıdır. Hayvan sağlığı ve verim maksimuma çıkarılır.</p></div></div>
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr><p>Modern barınaklar stres seviyesini minimize ederek biyolojik sınırların verime dönüşmesini sağlayan yaşam alanlarıdır.</p></div></div>
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><ul><li>🌍 Köken: Hollanda/Almanya.</li><li>🥛 Verim: 8.000-12.000 kg.</li><li>📈 Değer: Süt lideri.</li></ul></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><ul><li>🌍 Köken: İsviçre.</li><li>🥩 Verim: Et ve süt kombine.</li></ul></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><ul><li>🌍 Köken: İngiltere.</li><li>💎 Kalite: %5-6 yağ oranı.</li></ul></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><ul><li>🌍 Köken: Türkiye.</li><li>🦠 Direnç: Muazzam yerel direnç.</li></ul></div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon: Detaylı Analiz</h2><hr><div class="modal-body"><ul><li><strong>Genetik İlerleme:</strong> Sürünün ortalama verimini her nesilde %1-2 artırma hedefi.</li><li><strong>Pedigri Kaydı:</strong> Soy ağacı takibi ile akrabalı yetiştirmenin (inbreeding) engellenmesi.</li><li><strong>Genomik Seleksiyon:</strong> DNA testleri ile buzağı aşamasında gelecek verim tahmini.</li><li><strong>Dış Görünüş (Tip) Puanlaması:</strong> Ayak-bacak yapısı ve meme derinliği analizi.</li></ul></div></div></div>
+
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Profesyonel Hayvan Besleme</h2><hr><div class="modal-body"><ul><li><strong>Kuru Madde Tüketimi (KMT):</strong> Hayvanın canlı ağırlığına göre yiyebileceği maksimum miktar.</li><li><strong>Rasyon Dengesi:</strong> Kaba yem ve kesif yem oranının (Örn: %60/40) işkembe sağlığı (pH) için ayarlanması.</li><li><strong>Metabolik Hastalıklar:</strong> Asidoz, ketozis ve süt humması risklerinin rasyonla minimize edilmesi.</li></ul></div></div></div>
+
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><div class="modal-body"><ul><li><strong>Laktasyon Verimi:</strong> 8.000 - 12.000 kg/yıl.</li><li><strong>Süt Yağı:</strong> %3.5 - 3.8 (Düşük/Orta).</li><li><strong>Canlı Ağırlık:</strong> Ergin ineklerde 600 - 750 kg.</li><li><strong>Adaptasyon:</strong> Mekanize sağım ve entansif işletmeler için en uygun ırk.</li></ul></div></div></div>
+
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><div class="modal-body"><ul><li><strong>Çift Verim Yönü:</strong> Hem süt hem de yüksek karkas randımanı.</li><li><strong>Süt Verimi:</strong> 6.000 - 8.500 kg/yıl.</li><li><strong>Direnç:</strong> Mastitise ve ayak hastalıklarına karşı Holstein'dan daha dayanıklı.</li><li><strong>Mizaç:</strong> Sakin yapısı ile yönetim kolaylığı sağlar.</li></ul></div></div></div>
+
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><div class="modal-body"><ul><li><strong>Süt Kalitesi:</strong> %5.0 - 6.0 yağ ve yüksek protein oranı (Peynir üretimi için ideal).</li><li><strong>Cüsse:</strong> Küçük yapılı (350-450 kg), düşük yem tüketimi ile yüksek verimlilik.</li><li><strong>Isı Toleransı:</strong> Sıcak iklim koşullarına en dayanıklı sütçü ırk.</li></ul></div></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong><br>
@@ -245,10 +209,10 @@
 <script>
     // EKONOMİK ANALİZ
     let pLabels = []; let pData = [];
-    const ctxChart = document.getElementById('profitChart').getContext('2d');
-    let profitChart = new Chart(ctxChart, {
+    const ctxP = document.getElementById('profitChart').getContext('2d');
+    let profitChart = new Chart(ctxP, {
         type: 'bar',
-        data: { labels: pLabels, datasets: [{ label: 'Günlük Kar (₺)', data: pData, backgroundColor: '#27ae60', borderRadius: 5 }] },
+        data: { labels: pLabels, datasets: [{ label: 'Günlük Kar (₺)', data: pData, backgroundColor: '#27ae60', borderRadius: 8 }] },
         options: { responsive: true, maintainAspectRatio: false }
     });
 
@@ -261,86 +225,70 @@
             document.getElementById('daily-revenue').innerText = rev.toFixed(0) + " ₺";
             document.getElementById('daily-cost').innerText = cost.toFixed(0) + " ₺";
             document.getElementById('daily-profit').innerText = profit.toFixed(0) + " ₺";
-            pLabels.push("G" + (pLabels.length + 1)); pData.push(profit); profitChart.update();
-        } else { alert("Lütfen tüm alanları doldurunuz!"); }
+            pLabels.push("G"+(pLabels.length+1)); pData.push(profit.toFixed(0)); profitChart.update();
+        } else { alert("Lütfen Süt Fiyatı dahil tüm alanları doldurunuz!"); }
     }
 
     // GENEL FONKSİYONLAR
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
-
-    function switchMode(mode) {
-        document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(mode + '-mode').classList.add('active');
-        if(mode === 'engineer') { document.getElementById('btn-eng').classList.add('active'); arcActive = false; }
-        else { document.getElementById('btn-arc').classList.add('active'); startArcade(); }
-    }
-
     function updateEngValues() {
         document.getElementById('p-val').innerText = parseFloat(document.getElementById('p-slider').value).toFixed(1);
         document.getElementById('e-val').innerText = parseFloat(document.getElementById('e-slider').value).toFixed(1);
     }
-
-    function checkEngRation() {
-        const p = parseFloat(document.getElementById('p-slider').value);
-        const e = parseFloat(document.getElementById('e-slider').value);
-        const resBox = document.getElementById('eng-result-box');
-        resBox.style.display = "block";
-        if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
-            document.getElementById('eng-result').innerText = "🎯 İdeal Rasyon!";
-            document.getElementById('eng-result').style.color = "#27ae60";
-        } else {
-            document.getElementById('eng-result').innerText = "⚠️ Dengesiz Rasyon!";
-            document.getElementById('eng-result').style.color = "#e74c3c";
-        }
+    function switchMode(m) {
+        document.querySelectorAll('.game-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(m + '-mode').classList.add('active');
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-' + (m==='engineer'?'eng':'arc')).classList.add('active');
     }
 
-    // OYUN MOTORU
+    // KAYDIRMALI OYUN MOTORU
     const canvas = document.getElementById('arcadeCanvas');
     const ctx = canvas.getContext('2d');
-    let arcActive = false, cowX = 175, pScore = 0, eScore = 0, items = [], animationId, lastSpawnTime = 0;
-    let currentLevel = 1;
-    const levels = { 1: { name: "Bölüm 1", speed: 1.2, cooldown: 1300 }, 2: { name: "Bölüm 2", speed: 1.8, cooldown: 850 }, 3: { name: "Bölüm 3", speed: 2.6, cooldown: 480 } };
+    let gameOn = false, cowX = 175, pScore = 0, eScore = 0, items = [], animId;
 
     function startArcade() {
-        cancelAnimationFrame(animationId); arcActive = true; pScore = 0; eScore = 0; items = []; lastSpawnTime = 0;
+        gameOn = true; pScore = 0; eScore = 0; items = [];
         document.getElementById('start-btn').style.display = "none";
-        document.getElementById('p-fill').style.width = "0%"; document.getElementById('e-fill').style.width = "0%";
-        gameLoop(0);
+        loop();
     }
 
-    canvas.addEventListener('mousemove', (e) => {
-        if (!arcActive) return;
+    function handleMove(e) {
         const rect = canvas.getBoundingClientRect();
-        cowX = (e.clientX - rect.left) * (canvas.width / rect.width) - 25;
-    });
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        cowX = (clientX - rect.left) * (canvas.width / rect.width) - 25;
+        if(cowX < 0) cowX = 0; if(cowX > 350) cowX = 350;
+    }
+    canvas.addEventListener('mousemove', handleMove);
+    canvas.addEventListener('touchmove', handleMove);
 
-    function gameLoop(timestamp) {
-        if(!arcActive) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.font = "50px Arial"; ctx.fillText("🐄", cowX, 380);
-        const config = levels[currentLevel];
-        if (timestamp - lastSpawnTime > config.cooldown) {
-            items.push({ x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽', speed: config.speed });
-            lastSpawnTime = timestamp;
-        }
+    function loop() {
+        if(!gameOn) return;
+        ctx.clearRect(0, 0, 400, 400);
+        ctx.font = "45px Arial"; ctx.fillText("🐄", cowX, 380);
+
+        if(Math.random() < 0.03) items.push({x: Math.random()*370, y: 0, type: Math.random() > 0.5 ? '🌾' : '🌽'});
+
         for(let i = items.length - 1; i >= 0; i--) {
-            items[i].y += items[i].speed; 
+            items[i].y += 2.5;
             ctx.font = "30px Arial"; ctx.fillText(items[i].type, items[i].x, items[i].y);
-            if(items[i].y > 340 && items[i].y < 390 && items[i].x > cowX-15 && items[i].x < cowX+45) {
+            
+            // Çarpışma (Kaydırma ile yakalama)
+            if(items[i].y > 340 && items[i].y < 390 && items[i].x > cowX-10 && items[i].x < cowX+45) {
                 if(items[i].type === '🌾') pScore = Math.min(100, pScore + 10); else eScore = Math.min(100, eScore + 10);
                 items.splice(i, 1);
-            } else if(items[i].y > 400) {
-                arcActive = false; alert("Oyun Bitti!"); document.getElementById('start-btn').style.display = "inline-block";
-                return;
+            } else if(items[i].y > 410) {
+                gameOn = false; alert("Yem kaçırıldı! Mühendislik dikkati şart.");
+                document.getElementById('start-btn').style.display = "inline-block";
             }
         }
         document.getElementById('p-fill').style.width = pScore + "%";
         document.getElementById('e-fill').style.width = eScore + "%";
-        if(pScore >= 100 && eScore >= 100) { arcActive = false; alert("Seviye Geçildi!"); currentLevel++; startArcade(); }
-        if(arcActive) animationId = requestAnimationFrame(gameLoop);
+        if(pScore >= 100 && eScore >= 100) { gameOn = false; alert("Tebrikler Baş Mühendis!"); document.getElementById('start-btn').style.display = "inline-block"; }
+        if(gameOn) requestAnimationFrame(loop);
     }
 </script>
 </body>
 </html>
+
