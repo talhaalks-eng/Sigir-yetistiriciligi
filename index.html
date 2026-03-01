@@ -25,8 +25,6 @@
 
         .container { max-width: 1100px; margin: 30px auto; padding: 15px; }
         .section-title { color: #1b4d3e; border-left: 6px solid #27ae60; padding-left: 15px; margin: 40px 0 20px 0; font-size: 1.6rem; }
-        
-        /* KAYDIRIN YAZISI STİLİ */
         .scroll-hint { font-size: 0.85rem; color: #27ae60; margin: -10px 0 10px 15px; font-weight: bold; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
@@ -35,7 +33,7 @@
         .scroll-container::-webkit-scrollbar { display: none; }
         .card { min-width: 250px; background: white; border: 1px solid #eee; padding: 15px; border-radius: 12px; border-top: 5px solid #27ae60; flex-shrink: 0; cursor: pointer; transition: 0.3s; }
 
-        /* MÜHENDİSLİK MODU */
+        /* MÜHENDİSLİK MODU & OYUN */
         .module-box { background: white; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eef0f2; text-align: center; }
         .tab-btn { padding: 10px 20px; border: 2px solid #27ae60; background: white; color: #27ae60; border-radius: 10px; cursor: pointer; font-weight: bold; margin: 5px; font-size: 0.85rem; }
         .tab-btn.active { background: #27ae60; color: white; }
@@ -47,7 +45,7 @@
         .bar-bg { background: #eee; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 4px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
 
-        /* TABLOLAR */
+        /* İŞLETME ANALİZİ TABLO */
         .calc-container { width: 100%; border-collapse: separate; border-spacing: 0; border: 2px solid #1b4d3e; border-radius: 12px; overflow: hidden; background: white; }
         .calc-container th { background: #1b4d3e; color: white; padding: 12px; text-align: left; font-size: 0.85rem; }
         .calc-container td { padding: 12px; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
@@ -116,20 +114,24 @@
 
     <h2 id="muhendislik" class="section-title">Mühendislik Modu</h2>
     <div class="module-box">
-        <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
             <button class="tab-btn active" id="btn-eng" onclick="switchMod('engineer')">🛠️ Rasyon Bilimi</button>
             <button class="tab-btn" id="btn-arc" onclick="switchMod('arcade')">🎮 Oyun</button>
         </div>
 
         <div id="engineer-mode" class="mode-content">
-            <div style="background: #f0fdf4; border-left: 5px solid #27ae60; padding: 15px; border-radius: 8px; text-align: left; font-size: 0.9rem; margin-bottom: 20px; color: #1b4d3e;">
-                <strong>💡 Mühendislik Notu:</strong><br>
-                - <strong>Protein:</strong> Süt sentezi için ana yapı taşıdır. İdeal ham protein: <strong>%16 - %18</strong>.<br>
-                - <strong>Enerji:</strong> Hayvanın yaşam payı ve verim yakıtıdır. İdeal seviye: <strong>1.7 - 1.9 NEL Mcal/kg</strong>.
+            <div style="margin-bottom: 15px;">
+                <button class="tab-btn active" id="eng-milk-btn" onclick="setEngType('milk')">🥛 Süt Rasyonu</button>
+                <button class="tab-btn" id="eng-meat-btn" onclick="setEngType('meat')">🥩 Besi Rasyonu</button>
+            </div>
+            <div id="eng-info-box" style="background: #f0fdf4; border-left: 5px solid #27ae60; padding: 15px; border-radius: 8px; text-align: left; font-size: 0.9rem; margin-bottom: 20px; color: #1b4d3e;">
+                <strong>💡 Mühendislik Notu (Süt):</strong><br>
+                - <strong>Protein:</strong> Süt sentezi için ana yapıdır. İdeal: <strong>%16-18 HP</strong>.<br>
+                - <strong>Enerji:</strong> Verim yakıtıdır. İdeal: <strong>1.7-1.9 NEL</strong>.
             </div>
             <div style="max-width: 380px; margin: 0 auto; text-align: left;">
                 <label style="font-size:0.8rem;">Protein: %<span id="p-val">12.0</span></label><input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEng()" style="width:100%; margin-bottom:12px;">
-                <label style="font-size:0.8rem;">Enerji: <span id="e-val">1.4</span> NEL</label><input type="range" id="e-slider" min="1.0" max="2.5" value="1.4" step="0.1" oninput="updateEng()" style="width:100%;">
+                <label style="font-size:0.8rem;">Enerji: <span id="e-val">1.4</span> NEL/ME</label><input type="range" id="e-slider" min="1.0" max="3.0" value="1.4" step="0.1" oninput="updateEng()" style="width:100%;">
                 <center>
                     <button class="btn-action" onclick="checkRation()">Analiz Et</button>
                     <p id="ration-result" style="font-weight:bold; margin-top:15px; font-size: 0.9rem;"></p>
@@ -255,7 +257,7 @@
 </div></div>
 
 <div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr>
-    <p><strong>Tanım:</strong> Türkiye'nin binlerce yıllık yerel genetik mirası olan, en dayanıklı ırktır.</p>
+    <p><strong>Tanım:</strong> Türkiye'nin binlerce yıllık yerel genetik mirası olan, yerel şartlara en dayanıklı ırktır.</p>
     <ul>
         <li>Zorlu Anadolu iklimine ve kısıtlı mera şartlarına tam adaptasyon.</li>
         <li>Yerel hastalıklara karşı dünyadaki en dirençli genetik yapıdan biri.</li>
@@ -264,6 +266,22 @@
 </div></div>
 
 <script>
+    let currentEngType = 'milk';
+
+    function setEngType(t) {
+        currentEngType = t;
+        document.getElementById('eng-milk-btn').className = t==='milk'?'tab-btn active':'tab-btn';
+        document.getElementById('eng-meat-btn').className = t==='meat'?'tab-btn active':'tab-btn';
+        
+        const info = document.getElementById('eng-info-box');
+        if(t === 'milk') {
+            info.innerHTML = "<strong>💡 Mühendislik Notu (Süt):</strong><br>- <strong>Protein:</strong> Süt sentezi için ana yapıdır. İdeal: <strong>%16-18 HP</strong>.<br>- <strong>Enerji:</strong> Verim yakıtıdır. İdeal: <strong>1.7-1.9 NEL</strong>.";
+        } else {
+            info.innerHTML = "<strong>💡 Mühendislik Notu (Besi):</strong><br>- <strong>Enerji:</strong> Canlı ağırlık artışı için ana unsurdur. İdeal: <strong>2.4-2.8 ME</strong>.<br>- <strong>Protein:</strong> Kas gelişimi için gereklidir. İdeal: <strong>%12-14 HP</strong>.";
+        }
+        document.getElementById('ration-result').innerText = "";
+    }
+
     function switchAnaliz(t) {
         document.getElementById('analiz-milk').style.display = t==='milk'?'block':'none';
         document.getElementById('analiz-meat').style.display = t==='meat'?'block':'none';
@@ -307,13 +325,25 @@
 
     function checkRation() {
         const p = parseFloat(document.getElementById('p-slider').value);
+        const e = parseFloat(document.getElementById('e-slider').value);
         const resBox = document.getElementById('ration-result');
-        if(p >= 16 && p <= 18) {
-            resBox.innerText = "🎯 İdeal Rasyon! Verim Maksimize Edildi.";
-            resBox.style.color = "#27ae60";
+        
+        if(currentEngType === 'milk') {
+            if(p >= 16 && p <= 18 && e >= 1.7 && e <= 1.9) {
+                resBox.innerText = "🎯 İdeal Süt Rasyonu! Verim Maksimize Edildi.";
+                resBox.style.color = "#27ae60";
+            } else {
+                resBox.innerText = "⚠️ Rasyon Dengesiz. Protein %16-18, Enerji 1.7-1.9 olmalı.";
+                resBox.style.color = "#e74c3c";
+            }
         } else {
-            resBox.innerText = "⚠️ Rasyon Dengesiz. Proteini Kontrol Edin.";
-            resBox.style.color = "#e74c3c";
+            if(p >= 12 && p <= 14 && e >= 2.4 && e <= 2.8) {
+                resBox.innerText = "🎯 İdeal Besi Rasyonu! GCAA Maksimize Edildi.";
+                resBox.style.color = "#27ae60";
+            } else {
+                resBox.innerText = "⚠️ Rasyon Dengesiz. Protein %12-14, Enerji 2.4-2.8 olmalı.";
+                resBox.style.color = "#e74c3c";
+            }
         }
     }
 
