@@ -20,7 +20,7 @@
         header h1 { font-size: clamp(1.8rem, 8vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
 
         /* NAVİGASYON */
-        nav { background: #1b4d3e; padding: 12px 5px; text-align: center; position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; gap: 15px; }
+        nav { background: #1b4d3e; padding: 12px 5px; text-align: center; position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
 
         .container { max-width: 1100px; margin: 30px auto; padding: 15px; }
@@ -57,10 +57,9 @@
         .personal-photo img { width: 100%; height: auto; display: block; }
         .vision-text { max-width: 800px; margin: 20px auto 0; font-style: italic; color: #444; font-size: 1.05rem; line-height: 1.7; text-align: center; }
         
-        /* İSİM VE MAİL ESKİ DÜZEN */
         .signature-container { width: 100%; max-width: 800px; margin: 20px auto 0; display: flex; justify-content: flex-end; align-items: baseline; gap: 15px; }
         .signature { font-family: 'Brush Script MT', cursive; color: #1b4d3e; font-size: 1.7rem; }
-        .mail-text { color: #666; font-size: 0.85rem; }
+        .mail-text { color: #666; font-size: 0.85rem; text-decoration: none; }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
@@ -91,6 +90,7 @@
     <a href="#irklar">Irklar</a>
     <a href="#muhendislik">Mühendislik Modu</a>
     <a href="#analiz">Analiz</a>
+    <a href="mailto:talhaalks@gmail.com">İletişim</a>
 </nav>
 
 <div class="container">
@@ -120,9 +120,10 @@
         </div>
 
         <div id="engineer-mode" class="mode-content">
-            <div style="background: #f0fdf4; border-left: 5px solid #27ae60; padding: 12px; border-radius: 8px; text-align: left; font-size: 0.85rem; margin-bottom: 15px;">
-                <strong>Protein Önemi:</strong> İdeal ham protein: <strong>%16 - %18</strong>.<br>
-                <strong>Enerji Önemi:</strong> İdeal seviye: <strong>1.7 - 1.9 NEL Mcal/kg</strong>.
+            <div style="background: #f0fdf4; border-left: 5px solid #27ae60; padding: 15px; border-radius: 8px; text-align: left; font-size: 0.9rem; margin-bottom: 20px; color: #1b4d3e;">
+                <strong>💡 Mühendislik Notu:</strong><br>
+                - <strong>Protein:</strong> Süt verimi ve kas gelişimi için kritiktir. İdeal laktasyon rasyonu: <strong>%16 - %18 HP</strong>.<br>
+                - <strong>Enerji:</strong> Hayvanın yaşama ve verim payı için yakıttır. İdeal seviye: <strong>1.7 - 1.9 NEL Mcal/kg</strong>.
             </div>
             <div style="max-width: 380px; margin: 0 auto; text-align: left;">
                 <label style="font-size:0.8rem;">Protein: %<span id="p-val">12.0</span></label><input type="range" id="p-slider" min="10" max="22" value="12" step="0.5" oninput="updateEng()" style="width:100%; margin-bottom:12px;">
@@ -189,73 +190,19 @@
         </div>
         <div class="signature-container">
             <span class="signature">Lütfi Talha Alkış</span>
-            <span class="mail-text">talhaalks@gmail.com</span>
+            <a href="mailto:talhaalks@gmail.com" class="mail-text">talhaalks@gmail.com</a>
         </div>
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr>
-    <p><strong>Tanım:</strong> Sürü genetiğini her nesilde belirli verim karakterleri yönünde artırma ve ıslah etme sürecidir.</p>
-    <ul>
-        <li>Pedigri kayıtları ile akrabalı yetiştirmenin bilimsel olarak önlenmesi.</li>
-        <li>Genomik seleksiyon sayesinde buzağılık döneminde gelecek verim tahmini.</li>
-        <li>Döl verimi parametrelerinin takibiyle tohumlama başarısının artırılması.</li>
-    </ul>
-</div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon</h2><hr><p>Sürü genetiğini her nesilde belirli verim karakterleri yönünde artırma ve ıslah etme sürecidir.</p></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme Bilimi</h2><hr><p>Hayvanın fizyolojik ihtiyaçlarını en ekonomik ve sağlıklı rasyonlarla karşılama bilimidir.</p></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr><p>Hayvan konforunu merkeze alarak biyolojik verim potansiyelini maksimize etme sürecidir.</p></div></div>
 
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme Bilimi</h2><hr>
-    <p><strong>Tanım:</strong> Hayvanın fizyolojik ihtiyaçlarını en ekonomik ve sağlıklı rasyonlarla karşılama bilimidir.</p>
-    <ul>
-        <li>Kuru madde tüketimi takibiyle hayvanın iştah ve doygunluk yönetimi.</li>
-        <li>Protein ve enerji dengesinin NEL/NEF birimleriyle laktasyon dönemine göre ayarlanması.</li>
-        <li>İşkembe pH dengesinin korunarak metabolik hastalık risklerinin sıfırlanması.</li>
-    </ul>
-</div></div>
-
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi</h2><hr>
-    <p><strong>Tanım:</strong> Hayvan konforunu merkeze alarak biyolojik verim potansiyelini maksimize etme sürecidir.</p>
-    <ul>
-        <li>Akıllı fan ve duşlama sistemleriyle ısı stresinin teknik yönetimi.</li>
-        <li>Meme sağlığını koruyan hijyenik ve yumuşak yataklık tasarımları.</li>
-        <li>Aktif havalandırma projeleriyle ahır içi amonyak ve nem kontrolü.</li>
-    </ul>
-</div></div>
-
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca)</h2><hr>
-    <p><strong>Tanım:</strong> Hollanda kökenli, dünyanın en yüksek süt verim kapasitesine sahip ırkıdır.</p>
-    <ul>
-        <li>Laktasyon başına 8.000 - 12.000 kg arasında değişen rekor verim potansiyeli.</li>
-        <li>%3.4 - 3.8 oranında değişen endüstriyel üretime uygun yağ oranı.</li>
-        <li>Makine sağıma en uyumlu meme konformasyonu ve hızlı süt salımı.</li>
-    </ul>
-</div></div>
-
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh)</h2><hr>
-    <p><strong>Tanım:</strong> İsviçre Alp dağları kökenli, hem et hem süt verimi sunan kombine bir ırktır.</p>
-    <ul>
-        <li>Günlük 1.3 - 1.5 kg canlı ağırlık artışı ile yüksek besi performansı.</li>
-        <li>Yüksek et randımanının yanında 6.000 kg üzeri süt verim yeteneği.</li>
-        <li>Güçlü ayak ve bacak yapısı sayesinde hastalıklara karşı doğal direnç.</li>
-    </ul>
-</div></div>
-
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr>
-    <p><strong>Tanım:</strong> İngiltere Jersey adası kökenli, sütünün kalitesiyle tanınan bir ırktır.</p>
-    <ul>
-        <li>%5.5 - 6.5 oranındaki süt yağı ile peynir üretimi için altın standart.</li>
-        <li>Vücut cüssesine oranla dünyadaki en yüksek yem-süt dönüşüm verimliliği.</li>
-        <li>Küçük yapısı sayesinde ahırda daha az alan işgali ve kolay sevk-idare.</li>
-    </ul>
-</div></div>
-
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr>
-    <p><strong>Tanım:</strong> Türkiye'nin binlerce yıllık genetik mirası olan, yerel şartlara en dayanıklı ırktır.</p>
-    <ul>
-        <li>Zorlu Anadolu iklimine ve kısıtlı mera şartlarına kusursuz adaptasyon.</li>
-        <li>Yerel hastalıklara ve parazitlere karşı dünyadaki en dirençli genetik yapı.</li>
-        <li>Koruması gereken milli gen bankamızın en stratejik büyükbaş varlığı.</li>
-    </ul>
-</div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein</h2><hr><p>Dünyanın en yüksek süt verim kapasitesine sahip ırkıdır.</p></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental</h2><hr><p>Hem et hem süt verimi sunan kombine bir ırktır.</p></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey</h2><hr><p>Sütünün kalitesi ve yağ oranıyla tanınan bir ırktır.</p></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara</h2><hr><p>Türkiye'nin dayanıklı genetik mirası.</p></div></div>
 
 <footer><strong>Lütfi Talha Alkış</strong> | Dijital Ahır Projesi &copy; 2026</footer>
 
@@ -359,6 +306,7 @@
             } else if(items[i].y > 360) {
                 arcActive = false; 
                 document.getElementById('arcade-msg').innerText = "⚠️ Yem israfı, tekrar dene!";
+                document.getElementById('arcade-msg').style.color = "#e74c3c";
                 document.getElementById('start-btn').innerText = "Bölümü Yeniden Başlat";
                 document.getElementById('start-btn').style.display = "inline-block";
             }
