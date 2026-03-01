@@ -62,7 +62,7 @@
 
         /* FOOTER */
         footer { text-align: center; padding: 25px; background: #1b4d3e; color: white; font-size: 0.85rem; }
-        .footer-mail { color: #27ae60; text-decoration: none; font-weight: bold; }
+        .footer-mail { color: white; text-decoration: none; font-weight: bold; }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
@@ -180,12 +180,15 @@
                 <tr><td>Toplam Alınan Kilo (kg)</td><td><input type="number" id="b-total-kg"></td></tr>
                 <tr><td>Geçen Gün Sayısı</td><td><input type="number" id="b-days"></td></tr>
                 <tr><td>Yem Gideri (₺)</td><td><input type="number" id="b-feed"></td></tr>
-                <tr><td>Baskül Fiyatı (₺/kg)</td><td><input type="number" id="b-price"></td></tr>
-                <tr class="calc-result-row"><td>GÜNLÜK TOPLAM KAR</td><td id="res-b-d">0 ₺</td></tr>
+                <tr><td>Baskül Fiyatı (₺/kg)</td><td><input type="number" id="b-price-live"></td></tr>
+                <tr><td>Karkas Fiyatı (₺/kg)</td><td><input type="number" id="b-price-meat"></td></tr>
+                <tr><td>Karkas Randımanı (%)</td><td><input type="number" id="b-yield" value="58"></td></tr>
+                <tr class="calc-result-row"><td>GÜNLÜK TAHMİNİ KAR</td><td id="res-b-d">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>15 GÜNLÜK TAHMİN</td><td id="res-b-15">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR</td><td id="res-b-30">0 ₺</td></tr>
                 <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMeat()">Hesapla</button></td></tr>
             </table>
+            <p style="font-size: 0.75rem; color: #666; margin-top: 10px;">*Hesaplama: Baskül ve Karkas fiyatlarından yüksek olanı baz alınarak yapılır.</p>
         </div>
     </div>
 
@@ -308,12 +311,23 @@
         const t = parseFloat(document.getElementById('b-total-kg').value);
         const d = parseFloat(document.getElementById('b-days').value);
         const f = parseFloat(document.getElementById('b-feed').value);
-        const p = parseFloat(document.getElementById('b-price').value);
+        const pLive = parseFloat(document.getElementById('b-price-live').value) || 0;
+        const pMeat = parseFloat(document.getElementById('b-price-meat').value) || 0;
+        const yieldPerc = parseFloat(document.getElementById('b-yield').value) / 100;
+
         if(!isNaN(c) && d > 0) {
-            const dailyKar = ((t / d / c) * p - (f / c)) * c; // Günlük toplam kar hesabı düzeltildi
-            document.getElementById('res-b-d').innerText = Math.round(dailyKar).toLocaleString() + " ₺";
-            document.getElementById('res-b-15').innerText = Math.round(dailyKar * 15).toLocaleString() + " ₺";
-            document.getElementById('res-b-30').innerText = Math.round(dailyKar * 30).toLocaleString() + " ₺";
+            // Canlı kazanç vs Karkas kazanç karşılaştırması
+            const gainKgDaily = (t / d / c);
+            const profitLive = gainKgDaily * pLive;
+            const profitMeat = (gainKgDaily * yieldPerc) * pMeat;
+            
+            // Hangisi daha yüksekse o fiyatı kullan
+            const bestProfit = Math.max(profitLive, profitMeat);
+            const dailyTotalProfit = (bestProfit * c) - f; 
+
+            document.getElementById('res-b-d').innerText = Math.round(dailyTotalProfit).toLocaleString() + " ₺";
+            document.getElementById('res-b-15').innerText = Math.round(dailyTotalProfit * 15).toLocaleString() + " ₺";
+            document.getElementById('res-b-30').innerText = Math.round(dailyTotalProfit * 30).toLocaleString() + " ₺";
         }
     }
 
@@ -356,7 +370,6 @@
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
 
-    // OYUN MOTORU AYNI KALDI
     const canvas = document.getElementById('arcadeCanvas');
     const gctx = canvas.getContext('2d');
     let arcActive = false, cowX = 150, items = [], lastS = 0, pScore = 0, eScore = 0, level = 1;
