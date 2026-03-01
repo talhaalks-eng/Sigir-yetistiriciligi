@@ -33,6 +33,11 @@
         .scroll-container::-webkit-scrollbar { display: none; }
         .card { min-width: 250px; background: white; border: 1px solid #eee; padding: 15px; border-radius: 12px; border-top: 5px solid #27ae60; flex-shrink: 0; cursor: pointer; transition: 0.3s; }
 
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 5% auto; padding: 25px; border-radius: 15px; width: 90%; max-width: 650px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
+        .close { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; color: #888; }
+
         /* MÜHENDİSLİK MODU & OYUN */
         .module-box { background: white; border-radius: 20px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eef0f2; text-align: center; }
         .tab-btn { padding: 10px 20px; border: 2px solid #27ae60; background: white; color: #27ae60; border-radius: 10px; cursor: pointer; font-weight: bold; margin: 5px; font-size: 0.85rem; }
@@ -64,10 +69,6 @@
         footer { text-align: center; padding: 25px; background: #1b4d3e; color: white; font-size: 0.85rem; }
         .footer-mail { color: white; text-decoration: none; font-weight: bold; }
 
-        /* MODAL */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
-        .modal-content { background: white; margin: 5% auto; padding: 25px; border-radius: 15px; width: 90%; max-width: 650px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
-        .close { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; color: #888; }
         .btn-action { background: #27ae60; color: white; border: none; padding: 10px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 15px; }
 
         @media (max-width: 600px) {
@@ -179,16 +180,15 @@
                 <tr><td>Hayvan Sayısı (Baş)</td><td><input type="number" id="b-count"></td></tr>
                 <tr><td>Toplam Alınan Kilo (kg)</td><td><input type="number" id="b-total-kg"></td></tr>
                 <tr><td>Geçen Gün Sayısı</td><td><input type="number" id="b-days"></td></tr>
-                <tr><td>Yem Gideri (₺)</td><td><input type="number" id="b-feed"></td></tr>
+                <tr><td>Yem Gideri (Dönemlik Toplam) (₺)</td><td><input type="number" id="b-feed"></td></tr>
                 <tr><td>Baskül Fiyatı (₺/kg)</td><td><input type="number" id="b-price-live"></td></tr>
                 <tr><td>Karkas Fiyatı (₺/kg)</td><td><input type="number" id="b-price-meat"></td></tr>
                 <tr><td>Karkas Randımanı (%)</td><td><input type="number" id="b-yield" value="58"></td></tr>
-                <tr class="calc-result-row"><td>GÜNLÜK TAHMİNİ KAR</td><td id="res-b-d">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>GÜNLÜK TAHMİNİ NET KAR</td><td id="res-b-d">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>15 GÜNLÜK TAHMİN</td><td id="res-b-15">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR</td><td id="res-b-30">0 ₺</td></tr>
                 <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMeat()">Hesapla</button></td></tr>
             </table>
-            <p style="font-size: 0.75rem; color: #666; margin-top: 10px;">*Hesaplama: Baskül ve Karkas fiyatlarından yüksek olanı baz alınarak yapılır.</p>
         </div>
     </div>
 
@@ -277,7 +277,6 @@
         currentEngType = t;
         document.getElementById('eng-milk-btn').className = t==='milk'?'tab-btn active':'tab-btn';
         document.getElementById('eng-meat-btn').className = t==='meat'?'tab-btn active':'tab-btn';
-        
         const info = document.getElementById('eng-info-box');
         if(t === 'milk') {
             info.innerHTML = "<strong>💡 Mühendislik Notu (Süt):</strong><br>- <strong>Protein:</strong> Süt sentezi için ana yapıdır. İdeal: <strong>%16-18 HP</strong>.<br>- <strong>Enerji:</strong> Verim yakıtıdır. İdeal: <strong>1.7-1.9 NEL</strong>.";
@@ -315,19 +314,28 @@
         const pMeat = parseFloat(document.getElementById('b-price-meat').value) || 0;
         const yieldPerc = parseFloat(document.getElementById('b-yield').value) / 100;
 
-        if(!isNaN(c) && d > 0) {
-            // Canlı kazanç vs Karkas kazanç karşılaştırması
-            const gainKgDaily = (t / d / c);
-            const profitLive = gainKgDaily * pLive;
-            const profitMeat = (gainKgDaily * yieldPerc) * pMeat;
+        if(!isNaN(c) && d > 0 && !isNaN(t)) {
+            // 1. Hayvan başına günlük canlı ağırlık artışı (GCAA)
+            const dailyGainPerAnimal = t / d / c;
             
-            // Hangisi daha yüksekse o fiyatı kullan
-            const bestProfit = Math.max(profitLive, profitMeat);
-            const dailyTotalProfit = (bestProfit * c) - f; 
+            // 2. Hayvan başına günlük canlı gelir
+            const dailyRevLive = dailyGainPerAnimal * pLive;
+            
+            // 3. Hayvan başına günlük karkas gelir
+            const dailyRevMeat = (dailyGainPerAnimal * yieldPerc) * pMeat;
+            
+            // 4. En karlı modeli seç
+            const bestDailyRevAnimal = Math.max(dailyRevLive, dailyRevMeat);
+            
+            // 5. Yem Giderini Günlükleştir (ÖNEMLİ DÜZELTME): f (toplam masraf) / d (gün sayısı)
+            const dailyTotalFeedCost = f / d;
+            
+            // 6. İşletme günlük net kârı
+            const dailyNetProfit = (bestDailyRevAnimal * c) - dailyTotalFeedCost;
 
-            document.getElementById('res-b-d').innerText = Math.round(dailyTotalProfit).toLocaleString() + " ₺";
-            document.getElementById('res-b-15').innerText = Math.round(dailyTotalProfit * 15).toLocaleString() + " ₺";
-            document.getElementById('res-b-30').innerText = Math.round(dailyTotalProfit * 30).toLocaleString() + " ₺";
+            document.getElementById('res-b-d').innerText = Math.round(dailyNetProfit).toLocaleString() + " ₺";
+            document.getElementById('res-b-15').innerText = Math.round(dailyNetProfit * 15).toLocaleString() + " ₺";
+            document.getElementById('res-b-30').innerText = Math.round(dailyNetProfit * 30).toLocaleString() + " ₺";
         }
     }
 
@@ -421,12 +429,10 @@
             arcActive = false;
             if(level < 3) {
                 document.getElementById('arcade-msg').innerText = "🎉 Bölüm Başarıyla Tamamlandı!";
-                document.getElementById('arcade-msg').style.color = "#27ae60";
                 level++; document.getElementById('lvl-txt').innerText = lvls[level-1];
                 document.getElementById('start-btn').innerText = "Sonraki Bölüme Geç";
             } else {
                 document.getElementById('arcade-msg').innerText = "🏆 MUHTEŞEM BAŞ MÜHENDİS!";
-                document.getElementById('arcade-msg').style.color = "#27ae60";
                 level = 1; document.getElementById('start-btn').innerText = "Kariyere Yeniden Başla";
             }
             document.getElementById('start-btn').style.display = "inline-block";
