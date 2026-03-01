@@ -42,6 +42,7 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 12px; border-top: 6px solid #27ae60; transition: 0.4s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card h3 { color: #1b4d3e; margin: 15px 0 10px 0; font-size: 1.2rem; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
 
         /* OYUN & SİMÜLASYON */
@@ -69,7 +70,6 @@
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 5% auto; padding: 35px; border-radius: 15px; width: 85%; max-width: 750px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
-        .modal-body ul { list-style-type: square; padding-left: 20px; margin-top: 10px; }
 
         .btn-action { background: #27ae60; color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 
@@ -91,7 +91,7 @@
     <a href="#analiz">Ekonomik Analiz</a>
     <a href="#uzmanlik">Uzmanlık</a>
     <a href="#irklar">Irk Kütüphanesi</a>
-    <a href="#game-center">Simülasyon</a>
+    <a href="#game-center">Oyun</a>
 </nav>
 
 <div class="container">
@@ -170,7 +170,7 @@
         <h2>🌾 Mühendislik Modülü</h2>
         <div class="mode-selector">
             <button class="mode-btn active" id="btn-eng" onclick="switchMode('engineer')">🛠️ Rasyon Analizi</button>
-            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎮 Kademeli Oyun</button>
+            <button class="mode-btn" id="btn-arc" onclick="switchMode('arcade')">🎮 Oyun</button>
         </div>
 
         <div id="engineer-mode" class="game-content active">
@@ -205,16 +205,16 @@
     </div>
 </div>
 
-<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon: Teknik Detaylar</h2><hr><p><strong>Genetik İyileştirme:</strong> Sürü ortalamasını her nesilde belirli verim karakterleri yönünde artırma hedefi.</p><div class="modal-body"><ul><li>Pedigri Yönetimi ile akrabalı yetiştirmenin önlenmesi.</li><li>DNA testleri ile erken aşamada gelecek verim tahmini.</li><li>Süt, döl verimi ve uzun ömürlülüğün ağırlıklandırılması.</li></ul></div></div></div>
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme: Profesyonel Çözümler</h2><hr><p><strong>Rasyon Optimizasyonu:</strong> Genetik potansiyeli performansa ve karlılığa dönüştüren süreçler.</p><div class="modal-body"><ul><li>Kuru Madde Tüketimi (KMT) kontrolü.</li><li>Protein, enerji ve mineral dengesinin dönemlik ayarlanması.</li><li>Asidoz ve ketozis gibi hastalıkların rasyonla önlenmesi.</li></ul></div></div></div>
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor ve Refah:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlar.</p><div class="modal-body"><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik durak tasarımları.</li></ul></div></div></div>
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p>Endüstriyel süt üretiminin dünyadaki bir numaralı temsilcisidir.</p><div class="modal-body"><ul><li>Laktasyon Verimi: 8.000 - 12.000 kg.</li><li>Süt Yağı: %3.5 - 3.8.</li><li>Ergin ağırlık 600-750 kg, sağıma en uyumlu meme yapısı.</li></ul></div></div></div>
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p>Et ve sütte kombine yetenek sunan, üretici dostu bir ırktır.</p><div class="modal-body"><ul><li>Süt Verimi: 6.000-8.500 kg + Yüksek karkas randımanı.</li><li>Besi performansında günlük 1.300 - 1.500g artış potansiyeli.</li><li>Ayak hastalıklarına ve mastitise karşı doğal direnç.</li></ul></div></div></div>
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p>Yüksek yağ oranıyla peynir üretiminin altın ırkıdır.</p><div class="modal-body"><ul><li>Süt Yağı: %5.0 - 6.5 (Yüksek Kazein).</li><li>Cüssesine oranla en yüksek yem dönüşüm oranı.</li><li>Sıcak iklim koşullarına en dayanıklı sütçü ırk.</li></ul></div></div></div>
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p>Anadolu'nun kadim ve dirençli genetik mirasıdır.</p><div class="modal-body"><ul><li>Yerel hastalıklara ve zorlu iklim koşullarına muazzam direnç.</li><li>Kıt yem kaynaklarını verime dönüştürebilme kabiliyeti.</li><li>Milli genetik kaynağımız olarak saf hatların korunması şarttır.</li></ul></div></div></div>
+<div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon: Teknik Detaylar</h2><hr><p><strong>Genetik İyileştirme:</strong> Sürü genetiğini bilimsel yöntemlerle iyileştirerek verimliliği artırma sürecidir.</p><ul><li>Pedigri Yönetimi ile akrabalı yetiştirmenin önlenmesi.</li><li>DNA testleri ile erken aşamada gelecek verim tahmini.</li><li>Süt, döl verimi ve uzun ömürlülüğün ağırlıklandırılması.</li></ul></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme: Profesyonel Çözümler</h2><hr><p><strong>Rasyon Optimizasyonu:</strong> Besin maddelerinin verime en karlı şekilde dönüştürülmesini sağlayan tekniklerdir.</p><ul><li>Kuru Madde Tüketimi (KMT) kontrolü.</li><li>Protein, enerji ve mineral dengesinin dönemlik ayarlanması.</li><li>Asidoz ve ketozis gibi hastalıkların rasyonla önlenmesi.</li></ul></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor Yönetimi:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlar.</p><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik durak tasarımları.</li></ul></div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p>Endüstriyel süt üretiminin dünyadaki bir numaralı temsilcisidir.</p><ul><li>Laktasyon Verimi: 8.000 - 12.000 kg.</li><li>Süt Yağı: %3.5 - 3.8.</li><li>Ergin ağırlık 600-750 kg, sağıma en uyumlu meme yapısı.</li></ul></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p>Et ve sütte kombine yetenek sunan, üretici dostu bir ırktır.</p><ul><li>Süt Verimi: 6.000-8.500 kg + Yüksek karkas randımanı.</li><li>Besi performansında günlük 1.300 - 1.500g artış potansiyeli.</li><li>Ayak hastalıklarına ve mastitise karşı doğal direnç.</li></ul></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p>Yüksek yağ oranıyla peynir üretiminin altın ırkıdır.</p><ul><li>Süt Yağı: %5.0 - 6.5 (Yüksek Kazein).</li><li>Cüssesine oranla en yüksek yem dönüşüm oranı.</li><li>Sıcak iklim koşullarına en dayanıklı sütçü ırk.</li></ul></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p>Anadolu'nun kadim ve dirençli genetik mirasıdır.</p><ul><li>Yerel hastalıklara ve zorlu iklim koşullarına muazzam direnç.</li><li>Kıt yem kaynaklarını verime dönüştürebilme kabiliyeti.</li><li>Milli genetik kaynağımız olarak saf hatların korunması şarttır.</li></ul></div></div>
 
 <footer>
-    <strong>Lütfi Talha Alkış</strong><br>
+    <strong>Lütfi Talha Alkış</strong> <br>
     <p>Dijital Ahır | Çukurova Üniversitesi &copy; 2026</p>
 </footer>
 
