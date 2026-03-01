@@ -168,7 +168,9 @@
                 <tr><td>Günlük Süt (kg)</td><td><input type="number" id="m-kg"></td></tr>
                 <tr><td>Günlük Yem Gideri (₺)</td><td><input type="number" id="m-cost"></td></tr>
                 <tr><td>Süt Satış Fiyatı (₺/kg)</td><td><input type="number" id="m-price"></td></tr>
+                <tr><td>Analiz Edilecek Gün Sayısı</td><td><input type="number" id="m-days" value="1"></td></tr>
                 <tr class="calc-result-row"><td>GÜNLÜK BRÜT KAR</td><td id="res-m">0 ₺</td></tr>
+                <tr class="calc-result-row"><td>DÖNEMLİK TOPLAM KAR</td><td id="res-m-period">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>15 GÜNLÜK TAHMİN</td><td id="res-m-15">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR</td><td id="res-m-30">0 ₺</td></tr>
                 <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMilk()">Hesapla</button></td></tr>
@@ -188,6 +190,7 @@
                 <tr class="calc-result-row"><td>GÜNLÜK NET KAR (CANLI)</td><td id="res-b-live">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>GÜNLÜK NET KAR (KARKAS)</td><td id="res-b-meat">0 ₺</td></tr>
                 <tr class="diff-row"><td>AVANTAJLI MODEL FARKI (GÜNLÜK)</td><td id="res-b-diff">0 ₺</td></tr>
+                <tr class="calc-result-row" style="background:#e8f5e9;"><td>DÖNEMLİK TOPLAM KAR (GİRİLEN GÜN)</td><td id="res-b-period">0 ₺</td></tr>
                 <tr class="calc-result-row"><td>AYLIK BEKLENEN KAR (MAX)</td><td id="res-b-max">0 ₺</td></tr>
                 <tr><td colspan="2" style="text-align:center;"><button class="btn-action" onclick="calcMeat()">Hesapla</button></td></tr>
             </table>
@@ -299,9 +302,12 @@
         const kg = parseFloat(document.getElementById('m-kg').value);
         const cost = parseFloat(document.getElementById('m-cost').value);
         const price = parseFloat(document.getElementById('m-price').value);
+        const days = parseFloat(document.getElementById('m-days').value) || 1;
+
         if(!isNaN(kg) && !isNaN(cost) && !isNaN(price)) {
             const dailyKar = (kg * price) - cost;
             document.getElementById('res-m').innerText = Math.round(dailyKar).toLocaleString() + " ₺";
+            document.getElementById('res-m-period').innerText = Math.round(dailyKar * days).toLocaleString() + " ₺ (" + days + " Günlük)";
             document.getElementById('res-m-15').innerText = Math.round(dailyKar * 15).toLocaleString() + " ₺";
             document.getElementById('res-m-30').innerText = Math.round(dailyKar * 30).toLocaleString() + " ₺";
         }
@@ -317,7 +323,6 @@
         const yieldPerc = parseFloat(document.getElementById('b-yield').value) / 100;
 
         if(!isNaN(c) && d > 0 && !isNaN(t)) {
-            const dailyGainPerAnimal = t / d / c;
             const dailyGainTotal = t / d;
             
             const dailyRevenueLive = dailyGainTotal * pLive;
@@ -327,13 +332,18 @@
             
             const netProfitLive = dailyRevenueLive - dailyTotalFeedCost;
             const netProfitMeat = dailyRevenueMeat - dailyTotalFeedCost;
-            const bestProfit = Math.max(netProfitLive, netProfitMeat);
+            const bestDailyProfit = Math.max(netProfitLive, netProfitMeat);
             const diff = Math.abs(netProfitLive - netProfitMeat);
 
             document.getElementById('res-b-live').innerText = Math.round(netProfitLive).toLocaleString() + " ₺";
             document.getElementById('res-b-meat').innerText = Math.round(netProfitMeat).toLocaleString() + " ₺";
             document.getElementById('res-b-diff').innerText = Math.round(diff).toLocaleString() + " ₺ (" + (netProfitLive > netProfitMeat ? 'Canlı Avantajlı' : 'Karkas Avantajlı') + ")";
-            document.getElementById('res-b-max').innerText = Math.round(bestProfit * 30).toLocaleString() + " ₺";
+            
+            // Dönemlik Toplam Kâr (Girdiğin gün sayısı kadar)
+            const periodProfit = bestDailyProfit * d;
+            document.getElementById('res-b-period').innerText = Math.round(periodProfit).toLocaleString() + " ₺ (" + d + " Günlük)";
+            
+            document.getElementById('res-b-max').innerText = Math.round(bestDailyProfit * 30).toLocaleString() + " ₺";
         }
     }
 
