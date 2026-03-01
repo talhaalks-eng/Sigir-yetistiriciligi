@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dijital Ahır | Lütfi Talha Alkış</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* GENEL AYARLAR */
         html { scroll-behavior: smooth; }
@@ -35,7 +34,7 @@
         .input-wrapper label { font-size: 0.8rem; font-weight: bold; color: #1b4d3e; margin-left: 5px; }
         .input-grid input { padding: 12px; border: 2px solid #eee; border-radius: 10px; outline: none; transition: 0.3s; }
         
-        .profit-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .profit-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 10px; }
         .p-card { padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #eee; background: #fff; }
 
         /* KARTLAR */
@@ -59,7 +58,6 @@
         .bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 5px; }
         .bar-fill { height: 100%; width: 0%; transition: width 0.3s; }
 
-        /* MÜHENDİSLİK DETAYLARI */
         .slider-box { background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 10px auto; text-align: left; max-width: 450px; border: 1px solid #eee; }
         .tech-info { font-size: 0.85rem; color: #555; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 8px; line-height: 1.4; }
 
@@ -117,14 +115,13 @@
             </div>
         </div>
         <div style="text-align:center;">
-            <button class="btn-action" style="margin-top:0;" onclick="calculateProfit()">Veri Ekle ve Analiz Et</button>
+            <button class="btn-action" style="margin-top:0;" onclick="calculateProfit()">Hesapla</button>
         </div>
         <div class="profit-card-container" style="margin-top: 25px;">
             <div class="p-card">Gelir: <br><strong id="daily-revenue" style="color:#27ae60">0 ₺</strong></div>
             <div class="p-card">Gider: <br><strong id="daily-cost" style="color:#e74c3c">0 ₺</strong></div>
             <div class="p-card">Brüt Kar: <br><strong id="daily-profit" style="color:#f39c12">0 ₺</strong></div>
         </div>
-        <canvas id="profitChart" style="max-height: 300px;"></canvas>
     </div>
 
     <h2 id="uzmanlik" class="section-title">Teknik Uzmanlık Alanları</h2>
@@ -218,18 +215,12 @@
 </div>
 
 <div id="modal-islah" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-islah')">&times;</span><h2>🐄 Islah ve Seleksiyon: Teknik Detaylar</h2><hr><p><strong>Genetik İyileştirme:</strong> Sürü ortalamasını her nesilde belirli verim karakterleri yönünde artırma hedefidir.</p><ul><li>Pedigri Yönetimi ile akrabalı yetiştirmenin önlenmesi.</li><li>DNA testleri (Genomik Seleksiyon) ile erken aşamada verim tahmini.</li><li>Süt, döl verimi ve uzun ömürlülük kriterlerinin ağırlıklandırılması.</li></ul></div></div>
-
-<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme: Profesyonel Çözümler</h2><hr><p><strong>Rasyon Optimizasyonu:</strong> Genetik potansiyeli performansa ve karlılığa dönüştüren süreçlerdir.</p><ul><li>Kuru Madde Tüketimi (KMT) kontrolü ile enerji dengesi.</li><li>Protein ve kaba yem oranının laktasyon dönemine göre ayarlanması.</li><li>Asidoz ve ketozis gibi metabolik hastalıkların rasyonla önlenmesi.</li></ul></div></div>
-
-<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor ve Refah:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlardır.</p><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik ve yumuşak yataklık tasarımları.</li></ul></div></div>
-
-<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p><strong>Köken:</strong> Hollanda ve Kuzey Almanya.</p><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg laktasyon verimi.</li><li><strong>Süt Kalitesi:</strong> %3.5 - 3.8 yağ oranı ile endüstriyel standart.</li><li><strong>Fizyoloji:</strong> Ergin ağırlık 600-750 kg, mekanize sağıma en uyumlu ırk.</li></ul></div></div>
-
-<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p><strong>Köken:</strong> İsviçre (Alp Dağları).</p><ul><li><strong>Verim:</strong> 6.000-8.500 kg süt + Yüksek karkas randımanı.</li><li><strong>Besi Performansı:</strong> Günlük 1.300 - 1.500g canlı ağırlık artış potansiyeli.</li><li><strong>Özellik:</strong> Ayak hastalıklarına ve mastitise karşı yüksek doğal direnç.</li></ul></div></div>
-
-<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p><strong>Köken:</strong> Manş Denizi (Jersey Adası).</p><ul><li><strong>Kalite:</strong> %5.0 - 6.5 yağ oranı (Peynir üretimi için altın standart).</li><li><strong>Verimlilik:</strong> Cüssesine oranla yemi süte en iyi dönüştüren ırk.</li><li><strong>Sıcaklık:</strong> Sıcak iklim koşullarına en dayanıklı sütçü ırk.</li></ul></div></div>
-
-<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p><strong>Köken:</strong> Türkiye (Anadolu).</p><ul><li><strong>Direnç:</strong> Yerel hastalıklara ve zorlu iklim koşullarına muazzam adaptasyon.</li><li><strong>Besleme:</strong> Kıt yem kaynaklarını verime dönüştürebilme kabiliyeti.</li><li><strong>Miras:</strong> Milli genetik kaynağımız olarak saf hatların korunması stratejik önemdedir.</li></ul></div></div>
+<div id="modal-besleme" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-besleme')">&times;</span><h2>🌾 Hayvan Besleme: Profesyonel Çözümler</h2><hr><p><strong>Rasyon Optimizasyonu:</strong> Genetik potansiyeli performansa ve karlılığa dönüştüren süreçler.</p><ul><li>Kuru Madde Tüketimi (KMT) kontrolü.</li><li>Protein ve kaba yem oranının laktasyon dönemine göre ayarlanması.</li><li>Asidoz ve ketozis gibi hastalıkların rasyonla önlenmesi.</li></ul></div></div>
+<div id="modal-barinak" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-barinak')">&times;</span><h2>🏗️ Barınak Yönetimi ve Refah</h2><hr><p><strong>Konfor Yönetimi:</strong> Hayvan stresini azaltarak biyolojik potansiyeli maksimize eden tasarımlar.</p><ul><li>Isı stresi yönetimi için fan ve duş sistemleri.</li><li>Amonyak ve nem birikimini engelleyen hava akış projeleri.</li><li>Meme sağlığı için hijyenik ve yumuşak yataklık tasarımları.</li></ul></div></div>
+<div id="modal-holstein" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-holstein')">&times;</span><h2>🐄 Holstein (Siyah-Alaca) Teknik Kart</h2><hr><p><strong>Köken:</strong> Hollanda ve Kuzey Almanya.</p><ul><li><strong>Verim:</strong> 8.000 - 12.000 kg laktasyon verimi.</li><li><strong>Süt Kalitesi:</strong> %3.5 - 3.8 yağ oranı.</li><li><strong>Fizyoloji:</strong> Ergin ağırlık 600-750 kg.</li></ul></div></div>
+<div id="modal-simmental" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-simmental')">&times;</span><h2>🐂 Simental (Fleckvieh) Teknik Kart</h2><hr><p><strong>Köken:</strong> İsviçre (Alp Dağları).</p><ul><li><strong>Verim:</strong> 6.000-8.500 kg süt + Et verimi.</li><li><strong>Besi Performansı:</strong> Günlük 1.300 - 1.500g artış potansiyeli.</li><li><strong>Özellik:</strong> Ayak hastalıklarına karşı doğal direnç.</li></ul></div></div>
+<div id="modal-jersey" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-jersey')">&times;</span><h2>🥛 Jersey Teknik Kart</h2><hr><p><strong>Köken:</strong> Manş Denizi (Jersey Adası).</p><ul><li><strong>Kalite:</strong> %5.0 - 6.5 yağ oranı.</li><li><strong>Verimlilik:</strong> Yemi süte en iyi dönüştüren ırk.</li><li><strong>Sıcaklık:</strong> Sıcak iklimlere en dayanıklı sütçü ırk.</li></ul></div></div>
+<div id="modal-yerlikara" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-yerlikara')">&times;</span><h2>Anadolu Yerli Kara Teknik Kart</h2><hr><p><strong>Köken:</strong> Türkiye (Anadolu).</p><ul><li><strong>Direnç:</strong> Yerel hastalıklara muazzam adaptasyon.</li><li><strong>Besleme:</strong> Kıt yem kaynaklarını dahi verime dönüştürebilme.</li><li><strong>Miras:</strong> Milli genetik kaynağımız olarak korunması şarttır.</li></ul></div></div>
 
 <footer>
     <strong>Lütfi Talha Alkış</strong> <br>
@@ -237,56 +228,19 @@
 </footer>
 
 <script>
-    // EKONOMİK ANALİZ VE GRAFİK (YENİDEN YAPILANDIRILDI)
-    let pLabels = []; 
-    let pData = [];
-    const ctxChart = document.getElementById('profitChart').getContext('2d');
-    
-    let profitChart = new Chart(ctxChart, {
-        type: 'bar',
-        data: { 
-            labels: pLabels, 
-            datasets: [{ 
-                label: 'Günlük Kar (₺)', 
-                data: pData, 
-                backgroundColor: '#27ae60', 
-                borderRadius: 8 
-            }] 
-        },
-        options: { 
-            responsive: true, 
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true }
-            }
-        }
-    });
-
     function calculateProfit() {
         const kg = parseFloat(document.getElementById('milk-input').value);
         const cost = parseFloat(document.getElementById('feed-cost-input').value);
         const price = parseFloat(document.getElementById('milk-price-input').value);
         
         if(!isNaN(kg) && !isNaN(cost) && !isNaN(price)) {
-            const rev = kg * price; 
-            const profit = rev - cost;
-            
+            const rev = kg * price; const profit = rev - cost;
             document.getElementById('daily-revenue').innerText = rev.toFixed(0) + " ₺";
             document.getElementById('daily-cost').innerText = cost.toFixed(0) + " ₺";
             document.getElementById('daily-profit').innerText = profit.toFixed(0) + " ₺";
-            
-            // Grafik verilerini güncelle
-            pLabels.push("G" + (pLabels.length + 1)); 
-            pData.push(profit.toFixed(0)); 
-            
-            // Grafiği yeniden çiz
-            profitChart.update();
-        } else { 
-            alert("Lütfen Süt Fiyatı dahil tüm alanları doldurunuz!"); 
-        }
+        } else { alert("Lütfen Süt Fiyatı dahil tüm alanları doldurunuz!"); }
     }
 
-    // GENEL FONKSİYONLAR
     function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
 
@@ -357,8 +311,13 @@
                 if(items[i].t==='🌾') pScore = Math.min(100, pScore+10); else eScore = Math.min(100, eScore+10);
                 items.splice(i,1);
             } else if(items[i].y > 410) {
-                arcActive = false; document.getElementById('arcade-msg').innerText = "❌ Yem Kaçırıldı!";
-                document.getElementById('start-btn').innerText = "Tekrar Dene";
+                arcActive = false; 
+                // İSTEDİĞİN GÜNCELLEME BURADA
+                const msg = document.getElementById('arcade-msg');
+                msg.innerText = "❌ Yem İsrafı! Tekrar Dene.";
+                msg.style.color = "#e74c3c"; // Kırmızı renk
+                
+                document.getElementById('start-btn').innerText = "Yeniden Başlat";
                 document.getElementById('start-btn').style.display = "inline-block";
                 return;
             }
@@ -371,9 +330,11 @@
             arcActive = false;
             if(currentLevel < 3) {
                 document.getElementById('arcade-msg').innerText = "🎉 Seviye Tamamlandı!";
+                document.getElementById('arcade-msg').style.color = "#27ae60";
                 currentLevel++; document.getElementById('start-btn').innerText = "Sonraki Bölüm";
             } else {
                 document.getElementById('arcade-msg').innerText = "🏆 EFSANE MÜHENDİS!";
+                document.getElementById('arcade-msg').style.color = "#f39c12";
                 currentLevel = 1; document.getElementById('start-btn').innerText = "Kariyere Baştan Başla";
             }
             document.getElementById('start-btn').style.display = "inline-block";
