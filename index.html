@@ -239,7 +239,7 @@
     <p><strong>Tanım:</strong> Hayvan konforunu merkeze alarak biyolojik verim potansiyelini maksimize etme sürecidir.</p>
     <ul>
         <li>Akıllı fan ve duşlama sistemleriyle ısı stresi yönetimi.</li>
-        <li>Hijyenik ve yumuşak yataklık tasarımları ile meme sağlığı koruması.</li>
+        <li>Hijyenik ve yumuşak yataklık tasarıı ile meme sağlığı koruması.</li>
         <li>Aktif havalandırma ile amonyak ve nem kontrolü.</li>
     </ul>
 </div></div>
@@ -282,6 +282,10 @@
 
 <script>
     let currentEngType = 'milk';
+    const canvas = document.getElementById('arcadeCanvas');
+    const ctx = canvas.getContext('2d');
+    let items = [], pScore = 0, eScore = 0, level = 1, arcActive = false;
+    const lvls = ["1. Stajyer Mühendis", "2. İşletme Teknisyeni", "3. Baş Mühendis"];
 
     function setEngType(t) {
         currentEngType = t;
@@ -363,43 +367,59 @@
         document.getElementById('btn-arc').className = m==='arcade'?'tab-btn active':'tab-btn';
     }
 
-    // OYUN MOTORU (BASİTLEŞTİRİLMİŞ)
-    const canvas = document.getElementById('arcadeCanvas');
-    const ctx = canvas.getContext('2d');
-    let items = [], pScore = 0, eScore = 0, level = 1, arcActive = false;
-    const lvls = ["1. Stajyer", "2. Teknisyen", "3. Baş Mühendis"];
-
     function startArcade() {
         pScore = 0; eScore = 0; items = []; arcActive = true;
         document.getElementById('start-btn').style.display = 'none';
-        loop();
+        document.getElementById('arcade-msg').innerText = "";
+        requestAnimationFrame(loop);
     }
 
     function loop() {
         if(!arcActive) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if(Math.random() < 0.03) items.push({x: Math.random()*330, y: 0, t: Math.random()>0.5?'P':'E'});
+        ctx.clearRect(0,0,350,350);
+        if(Math.random()<0.02 + (level*0.01)) items.push({x:Math.random()*310+10, y:-20, t:Math.random()>0.5?'P':'E'});
         items.forEach((it, i) => {
             it.y += 2 + level;
-            ctx.font = "20px Arial";
-            ctx.fillText(it.t === 'P' ? '🌾' : '🌽', it.x, it.y);
-            if(it.y > 330) { items.splice(i, 1); arcActive=false; document.getElementById('arcade-msg').innerText="Yem israfı!"; document.getElementById('start-btn').style.display='inline-block'; }
+            ctx.font = "24px Arial";
+            ctx.fillText(it.t==='P'?'🌾':'🌽', it.x, it.y);
+            if(it.y > 350) { 
+                items.splice(i,1); 
+                arcActive=false; 
+                document.getElementById('arcade-msg').innerText="Yem yere düştü! Mühendislik hatası."; 
+                document.getElementById('start-btn').style.display='inline-block';
+            }
         });
-        canvas.onclick = (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-            items.forEach((it, i) => {
-                if(Math.abs(it.x - mx) < 30 && Math.abs(it.y - my) < 30) {
-                    if(it.t==='P') pScore += 10; else eScore += 10;
-                    items.splice(i, 1);
-                }
-            });
-        };
-        document.getElementById('p-bar').style.width = pScore + "%";
-        document.getElementById('e-bar').style.width = eScore + "%";
-        if(pScore >= 100 && eScore >= 100) { arcActive = false; document.getElementById('arcade-msg').innerText="Bölüm Geçildi!"; document.getElementById('start-btn').style.display='inline-block'; }
+        document.getElementById('p-bar').style.width = Math.min(pScore, 100) + "%";
+        document.getElementById('e-bar').style.width = Math.min(eScore, 100) + "%";
+        if(pScore>=100 && eScore>=100) {
+            arcActive=false;
+            if(level<3) {
+                level++;
+                document.getElementById('lvl-txt').innerText = lvls[level-1];
+                document.getElementById('arcade-msg').innerText = "TEBRİKLER! Seviye Atladın.";
+            } else {
+                document.getElementById('arcade-msg').innerText = "EFSANE MÜHENDİS! Tüm bölümler bitti.";
+            }
+            document.getElementById('start-btn').innerText = "Sonraki Bölüm";
+            document.getElementById('start-btn').style.display='inline-block';
+        }
         if(arcActive) requestAnimationFrame(loop);
     }
+
+    const handleInteraction = (ex, ey) => {
+        if(!arcActive) return;
+        const rect = canvas.getBoundingClientRect();
+        const mx = ex - rect.left, my = ey - rect.top;
+        items.forEach((it, i) => {
+            if(Math.abs(it.x+10-mx)<35 && Math.abs(it.y-10-my)<35) {
+                if(it.t==='P') pScore+=10; else eScore+=10;
+                items.splice(i,1);
+            }
+        });
+    };
+    canvas.addEventListener('mousedown', e => handleInteraction(e.clientX, e.clientY));
+    canvas.addEventListener('touchstart', e => { e.preventDefault(); handleInteraction(e.touches[0].clientX, e.touches[0].clientY); });
+
 </script>
 </body>
 </html>
